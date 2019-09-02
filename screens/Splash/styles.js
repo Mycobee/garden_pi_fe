@@ -3,6 +3,13 @@ import { StyleSheet, Dimensions } from 'react-native';
 
 export default StyleSheet.create({
   container: {
+    height: Dimensions.get('window').height,
+    width: Dimensions.get('window').width,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#73A686'
+  },  
+  textContainer: {
     borderWidth: 2,
     borderColor: '#A14550',
     backgroundColor: '#C6E6AB',
