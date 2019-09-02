@@ -1,13 +1,17 @@
-import React from 'react';
-import Home from './screens/Home';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component, Fragment } from 'react';
+import Splash from './screens/Splash';
+import Routes from './screens/Routes';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Home />
-    </View>
-  );
+export default class App extends Component {
+  render() {
+    return (
+      <Fragment>
+        <StatusBar barStyle='light-content' />
+        <Routes />
+      </Fragment>
+    );
+  }
 }
 
 const styles = StyleSheet.create({

@@ -1,21 +1,14 @@
 import React, { Component } from 'react';
-import { View, Dimensions, TouchableOpacity, Text, Image } from 'react-native';
-import styles from './styles';
+import { View, Text } from 'react-native';
 
-export default class Home extends Component {
+export class index extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.splashHeader}>Welcome to GardenPi</Text>
-        <Image 
-            source={require('../../assets/images/sprout.png')}
-            style={styles.plantIcon} />
-        <TouchableOpacity style={styles.splashEnterBtn}>
-          <Text>
-            Enter your Garden...
-          </Text>
-        </TouchableOpacity>
+      <View>
+        <Text>This is the home page.</Text>
       </View>
     )
   }
 }
+
+export default index
