@@ -1,7 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import Splash from './screens/Splash';
 import Routes from './screens/Routes';
-import { fetchWeather } from './Api/ApiCalls'
 import { StyleSheet, Text, View, StatusBar } from 'react-native';
 
 export default class App extends Component {
@@ -11,13 +9,6 @@ export default class App extends Component {
       foreCast: {}
     }
   }
-
-  async componentDidMount() {
-    const weatherData = await fetchWeather() 
-    await this.setState({foreCast: weatherData.currently})
-    console.log('weather', this.state)   
-  }
-
 
   render() {
     return (

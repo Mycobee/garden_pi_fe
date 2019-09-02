@@ -5,6 +5,8 @@ import styles from './styles';
 
 export class index extends Component {
   render() {
+    const { navigation } = this.props;
+    console.log(navigation.getParam('foreCast'))
     return (
       <View style={styles.container}>
         <Header style={styles.header} />
