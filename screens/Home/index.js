@@ -8,6 +8,7 @@ export class index extends Component {
     return (
       <View style={styles.container}>
         <Header style={styles.header} />
+        <Text>APIKEY IGNORE TEST</Text>
       </View>
     )
   }
