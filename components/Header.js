@@ -16,7 +16,8 @@ const Header = () => (
 
 const styles = StyleSheet.create({
   header: {
-    fontSize: 50,
+    fontSize: 70
+
   }
 })
 
