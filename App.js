@@ -13,10 +13,9 @@ export default class App extends Component {
   }
 
   async componentDidMount() {
-    // await fetchWeather()
-      const weatherData = await fetchWeather() 
-      await this.setState({foreCast: weatherData.currently})
-      console.log('weather', this.state)   
+    const weatherData = await fetchWeather() 
+    await this.setState({foreCast: weatherData.currently})
+    console.log('weather', this.state)   
   }
 
 
