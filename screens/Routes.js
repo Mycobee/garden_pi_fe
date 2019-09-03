@@ -9,7 +9,7 @@ const AppNavigator = createStackNavigator(
       screen: Splash
     },
     Home: {
-      screen: Home
+      screen: Home,
     }
   },
   {

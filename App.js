@@ -14,7 +14,7 @@ export default class App extends Component {
     return (
       <Fragment>
         <StatusBar barStyle='light-content' />
-        <Routes />
+          <Routes />
       </Fragment>
     );
   }
@@ -22,9 +22,6 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#73A686',
-    alignItems: 'center',
-    justifyContent: 'center',
+    marginTop: 100
   },
 });
