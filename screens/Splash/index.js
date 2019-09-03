@@ -1,15 +1,31 @@
 import React, { Component } from 'react';
-import { View, Dimensions, TouchableOpacity, Text, Image } from 'react-native';
+import { View, Dimensions, TouchableOpacity, Text, Image, ImageBackground } from 'react-native';
+import { fetchCurrentWeather } from '../../Api/ApiCalls';
 import { Header } from '../../components';
 import styles from './styles';
 
 export default class Splash extends Component {
-  onEnterPress = () => {
-    this.props.navigation.navigate('Home')
+  state = {
+    foreCast: {}
   }
+
+  async componentDidMount() {
+    const weatherData = await fetchCurrentWeather() 
+    await this.setState({foreCast: weatherData})
+  }
+
+  onEnterPress = () => {
+    this.props.navigation.navigate('Home', {
+      foreCast: this.state.foreCast
+    })
+  }
+
   render() {
     return (
-      <View style={styles.container}>
+      <ImageBackground 
+        source={require('../../assets/images/splash-background.jpg')}
+        style={styles.container}
+      >
         <Header />
         <View style={styles.textContainer}>
           <Text style={styles.splashHeader}>Welcome!</Text>
@@ -25,7 +41,7 @@ export default class Splash extends Component {
             </Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </ImageBackground>
     )
   }
 }

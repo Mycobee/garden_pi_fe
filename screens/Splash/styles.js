@@ -7,7 +7,8 @@ export default StyleSheet.create({
     width: Dimensions.get('window').width,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#73A686'
+    backgroundColor: '#73A686',
+    
   },  
   textContainer: {
     borderWidth: 2,
