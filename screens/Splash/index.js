@@ -1,28 +1,33 @@
 import React, { Component } from 'react';
 import { View, Dimensions, TouchableOpacity, Text, Image, ImageBackground } from 'react-native';
-import { fetchWeather, fetchGarden } from '../../Api/ApiCalls';
+import { fetchWeather, fetchGarden, fetchGardenEnv } from '../../Api/ApiCalls';
 import { Header } from '../../components';
 import styles from './styles';
 
 export default class Splash extends Component {
   state = {
     foreCast: {},
-    garden: {}
+    garden: {},
+    env: {}
   }
 
   async componentDidMount() {
     this.getWeather()
     this.getGarden()
+    this.getEnv()
   }
   getWeather = async () => {
     await fetchWeather() 
     .then(weatherData => this.setState({foreCast: weatherData}))
-    console.log('weather', this.state.foreCast)  
   }
   getGarden = async () => {
     await fetchGarden()
     .then(gardenData => this.setState({garden: gardenData}))
-    console.log('garden', this.state.garden)
+  }
+
+  getEnv = async () => {
+    await fetchGardenEnv()
+    .then(envData => this.setState({env: envData}))
   }
 
   onEnterPress = () => {

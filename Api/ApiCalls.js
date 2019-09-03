@@ -8,7 +8,14 @@ export const fetchWeather = () => {
 }
 
 export const fetchGarden = () => {
-  return fetch('https://garden-pi-backend.herokuapp.com/api/v1/gardens/1')
+  return fetch('https://garden-pi-be.herokuapp.com/api/v1/gardens/1')
+  .then(res => res.json())
+  .then(res => res)
+  .catch(error => error.message)
+}
+
+export const fetchGardenEnv = () => {
+  return fetch('http://garden-pi-be.herokuapp.com/api/v1/gardens/1/env_measurements')
   .then(res => res.json())
   .then(res => res)
   .catch(error => error.message)
