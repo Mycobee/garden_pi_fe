@@ -1,21 +1,33 @@
 import React, { Component, Fragment } from 'react';
 import Splash from './screens/Splash';
 import Routes from './screens/Routes';
-import { fetchWeather } from './Api/ApiCalls'
+import { fetchWeather, fetchGarden } from './Api/ApiCalls'
 import { StyleSheet, Text, View, StatusBar } from 'react-native';
 
 export default class App extends Component {
   constructor() {
     super()
     this.state = {
-      foreCast: {}
+      foreCast: {},
+      garden: {}
     }
   }
 
   async componentDidMount() {
-    const weatherData = await fetchWeather() 
-    await this.setState({foreCast: weatherData.currently})
-    console.log('weather', this.state)   
+    this.getWeather()
+    this.getGarden()
+  }
+
+  getWeather = async () => {
+    await fetchWeather() 
+    .then(weatherData => this.setState({foreCast: weatherData.currently}))
+    console.log('weather', this.state.foreCast)  
+  }
+
+  getGarden = async () => {
+    await fetchGarden()
+    .then(gardenData => this.setState({garden: gardenData}))
+    console.log('garden', this.state.garden)
   }
 
 
