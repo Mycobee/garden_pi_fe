@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Dimensions, TouchableOpacity, Text, Image } from 'react-native';
+import { View, Dimensions, TouchableOpacity, Text, Image, ImageBackground } from 'react-native';
 import { fetchCurrentWeather } from '../../Api/ApiCalls';
 import { Header } from '../../components';
 import styles from './styles';
@@ -12,7 +12,6 @@ export default class Splash extends Component {
   async componentDidMount() {
     const weatherData = await fetchCurrentWeather() 
     await this.setState({foreCast: weatherData})
-    console.log(new Date(1567980000 * 1000))
   }
 
   onEnterPress = () => {
@@ -23,7 +22,10 @@ export default class Splash extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <ImageBackground 
+        source={require('../../assets/images/splash-background.jpg')}
+        style={styles.container}
+      >
         <Header />
         <View style={styles.textContainer}>
           <Text style={styles.splashHeader}>Welcome!</Text>
@@ -39,7 +41,7 @@ export default class Splash extends Component {
             </Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </ImageBackground>
     )
   }
 }
