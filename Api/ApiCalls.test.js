@@ -39,7 +39,10 @@ describe('apiCalls', () => {
       })
     })
     it('should be able to return the weather given a url', () => {
-      console.log('success')
+      const expected = `https://api.darksky.net/forecast/${ApiKey}/39.751048,-104.996659`
+
+      fetchWeather()
+      expect(window.fetch).toHaveBeenCalledWith(expected)
     })
   })
 })
