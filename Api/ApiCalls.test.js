@@ -39,7 +39,21 @@ describe('apiCalls', () => {
       })
     })
     it('should be able to return the weather given a url', () => {
-      console.log('success')
+      const expected = `https://api.darksky.net/forecast/${ApiKey}/39.751048,-104.996659`
+
+      fetchWeather()
+      expect(window.fetch).toHaveBeenCalledWith(expected)
+    });
+
+    it('should return parsed response if ok', async () => {
+      await expect(fetchWeather()).resolves.toEqual(mockResponse)
+    });
+
+    it('should return an error response', async () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.reject('Error fetching weather')
+      });
+      await expect(window.fetch()).rejects.toEqual('Error fetching weather');;
     })
   })
 })
