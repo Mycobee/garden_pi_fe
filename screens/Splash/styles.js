@@ -5,15 +5,12 @@ export default StyleSheet.create({
   container: {
     height: Dimensions.get('window').height,
     width: Dimensions.get('window').width,
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
     alignItems: 'center',
     backgroundColor: '#73A686',
     
   },  
   textContainer: {
-    borderWidth: 2,
-    borderColor: '#A14550',
-    backgroundColor: '#C6E6AB',
     width: Dimensions.get('window').width * 0.875,
     height: Dimensions.get('window').height * 0.50,
     shadowColor: '#000',
@@ -37,7 +34,8 @@ export default StyleSheet.create({
     borderRadius: 10,
     overflow: 'hidden',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginTop: Dimensions.get('window').height * 0.40,
   },
   plantIcon: {
     width: 200,
