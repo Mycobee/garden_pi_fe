@@ -1,15 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import Routes from './screens/Routes';
+import { fetchWeather, fetchGarden } from './Api/ApiCalls'
 import { StyleSheet, Text, View, StatusBar } from 'react-native';
 
 export default class App extends Component {
-  constructor() {
-    super()
-    this.state = {
-      foreCast: {}
-    }
-  }
-
   render() {
     return (
       <Fragment>
