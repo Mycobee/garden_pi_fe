@@ -12,13 +12,14 @@ export default StyleSheet.create({
     paddingTop: 200
   },
   carouselScroll: {
-    height: 100
+    height: 200
   },
   forecastContainer: {
     display: 'flex',
     flexDirection: 'row',
-    width: Dimensions.get('window').width * .75,
-    height: 55,
-    borderWidth: 1
+    width: Dimensions.get('window').width * .95,
+    paddingTop: 5,
+    paddingLeft: 20,
+    paddingRight: 20
   }
 })
