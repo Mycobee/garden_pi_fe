@@ -44,5 +44,9 @@ describe('apiCalls', () => {
       fetchWeather()
       expect(window.fetch).toHaveBeenCalledWith(expected)
     })
+
+    it('should return parsed response if ok', async () => {
+      await expect(fetchWeather()).resolves.toEqual(mockResponse)
+    });
   })
 })
