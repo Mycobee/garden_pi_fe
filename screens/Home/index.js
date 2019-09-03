@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
-import { Header } from '../../components';
+import { Header, WeatherBox } from '../../components';
 import styles from './styles';
 
 export class index extends Component {
   render() {
     const { navigation } = this.props;
-    console.log(navigation.getParam('foreCast'))
+    const currentWeather = navigation.getParam('foreCast')
+    const forecastBoxes = currentWeather.daily.data.map(datum => {
+      return <WeatherBox summary={datum.summary}/>
+    })
     return (
       <View style={styles.container}>
-        <Header style={styles.header} />
-        <Text>APIKEY IGNORE TEST</Text>
+        <Header />
+        <View style={styles.forecastContainer}>
+          {forecastBoxes}
+        </View>
       </View>
     )
   }
