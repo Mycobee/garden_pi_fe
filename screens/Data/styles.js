@@ -21,5 +21,9 @@ export default StyleSheet.create({
     paddingTop: 5,
     paddingLeft: 20,
     paddingRight: 20
+  },
+  icon: {
+    height: 65,
+    width: 65
   }
 })

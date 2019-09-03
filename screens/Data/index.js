@@ -6,36 +6,27 @@ import styles from './styles';
 export class Data extends Component {
   getWeatherIcon = condition => {
     switch(condition) {
-      case 'Partly cloudy throughout the day.':
+      case 'partly-cloudy-day':
         return <Image 
-          source={require('../../assets/images/cloudy.png')}
+          source={require('../../assets/images/partly-cloudy.png')}
+          style={styles.icon}
         />
-      case 'Mostly cloudy throughout the day.':
+      case 'rain':
         return <Image 
-          source={require('../../assets/images/cloudy-3.png')}
-        />
-      case 'Possible light rain in the evening.':
-        return <Image 
-          source={require('../../assets/images/rainy-2.png')}
-        />
-      case 'Foggy in the morning.':
-        return <Image 
-          source={require('../../assets/images/foggy.png')}
+          source={require('../../assets/images/rain.png')}
+          style={styles.icon}
         />
       default:
         return;
-
     }
   }
   render() {
     const { navigation } = this.props;
     const currentWeather = navigation.getParam('foreCast')
-    console.log(currentWeather)
     const forecastBoxes = currentWeather.daily.data.map((datum, i) => {
-      // console.log(datum)
       const dt = new Date(datum.time * 1000 - 6000)
       const shortenedTime = (dt.getMonth() + 1) + "/" + dt.getDate() + '/' + dt.getFullYear();
-      const weatherIcon = this.getWeatherIcon(datum.summary)
+      const weatherIcon = this.getWeatherIcon(datum.icon)
       return <WeatherBox 
         summary={datum.summary} 
         highTemp={datum.temperatureHigh} 
