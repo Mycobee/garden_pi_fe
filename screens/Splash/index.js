@@ -37,20 +37,18 @@ export default class Splash extends Component {
         source={require('../../assets/images/splash-background.jpg')}
         style={styles.container}
       >
-        <Header />
-        <View style={styles.textContainer}>
-          <Text style={styles.splashHeader}>Welcome!</Text>
-          <Image 
-              source={require('../../assets/images/sprout.png')}
-              style={styles.plantIcon} />
-          <TouchableOpacity 
-            style={styles.splashEnterBtn}
-            onPress={this.onEnterPress}
-          >
-            <Text>
-              Enter your Garden...
-            </Text>
-          </TouchableOpacity>
+        <View>
+          <Header style={styles.splashHeader} />
+          <View style={styles.textContainer}>
+            <TouchableOpacity 
+              style={styles.splashEnterBtn}
+              onPress={this.onEnterPress}
+            >
+              <Text>
+                Enter your Garden...
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </ImageBackground>
     )
