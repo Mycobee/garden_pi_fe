@@ -9,32 +9,32 @@ export default class Splash extends Component {
     foreCast: {},
     garden: {},
     env: {}
-  }
+  };
 
   async componentDidMount() {
     this.getWeather()
     this.getGarden()
     this.getEnv()
-  }
+  };
   getWeather = async () => {
     await fetchWeather() 
     .then(weatherData => this.setState({foreCast: weatherData}))
-  }
+  };
   getGarden = async () => {
     await fetchGarden()
     .then(gardenData => this.setState({garden: gardenData}))
-  }
+  };
 
   getEnv = async () => {
     await fetchGardenEnv()
     .then(envData => this.setState({env: envData}))
-  }
+  };
 
   onEnterPress = () => {
     this.props.navigation.navigate('Home', {
       foreCast: this.state.foreCast
     })
-  }
+  };
 
   render() {
     return (
@@ -58,4 +58,4 @@ export default class Splash extends Component {
       </ImageBackground>
     )
   }
-}
+};

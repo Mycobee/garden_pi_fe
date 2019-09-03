@@ -1,62 +1,55 @@
 import React, { Component } from 'react';
-import { View, ScrollView, Image } from 'react-native';
+import { View, ScrollView, Image, Text, TouchableOpacity } from 'react-native';
 import { Header, WeatherBox } from '../../components';
 import styles from './styles';
 
 export class index extends Component {
   getWeatherIcon = condition => {
     switch(condition) {
-      case 'Partly cloudy throughout the day.':
+      case 'partly-cloudy-day':
         return <Image 
-          source={require('../../assets/images/cloudy.png')}
+          source={require('../../assets/images/partly-cloudy.png')}
+          style={styles.icon}
         />
-      case 'Mostly cloudy throughout the day.':
+      case 'rain':
         return <Image 
-          source={require('../../assets/images/cloudy-3.png')}
-        />
-      case 'Possible light rain in the evening.':
-        return <Image 
-          source={require('../../assets/images/rainy-2.png')}
-        />
-      case 'Foggy in the morning.':
-        return <Image 
-          source={require('../../assets/images/foggy.png')}
+          source={require('../../assets/images/rain.png')}
+          style={styles.icon}
         />
       default:
         return;
-
     }
-  }
-  render() {
+  };
+  onPress = () => {
     const { navigation } = this.props;
     const currentWeather = navigation.getParam('foreCast')
-    const forecastBoxes = currentWeather.daily.data.map((datum, i) => {
-      console.log(datum)
-      const dt = new Date(datum.time * 1000 - 6000)
-      const shortenedTime = (dt.getMonth() + 1) + "/" + dt.getDate() + '/' + dt.getFullYear();
-      const weatherIcon = this.getWeatherIcon(datum.summary)
-      return <WeatherBox 
-        summary={datum.summary} 
-        highTemp={datum.temperatureHigh} 
-        lowTemp={datum.temperatureLow} 
-        time={shortenedTime}
-        icon={weatherIcon}
-        key={i} 
-      />
-    });
+    this.props.navigation.navigate('Data', {
+      foreCast: currentWeather
+    })
+  };
+  render() {
+    const { navigation } = this.props;
+    const currentWeather = navigation.getParam('foreCast').currently
+    const weatherIcon = this.getWeatherIcon(currentWeather.icon)
     return (
       <View style={styles.container}>
         <Header style={styles.header}/>
-        <View style={styles.carouselScroll}>
-          <ScrollView 
-            style={styles.forecastContainer}
-            horizontal 
-            showsHorizontalScrollIndicator={false} 
-            scrollEventThrottle={10} 
-          >
-            {forecastBoxes}
-          </ScrollView>
-        </View>
+          <View style={styles.currentWeatherContainer}>
+            <View>
+              {weatherIcon}
+            </View>
+            <View>
+            <Text>Temperature: {currentWeather.temperature}°F</Text>
+            <Text>Precipitation: {currentWeather.precipProbability}%</Text>
+            <Text>Humidity: {currentWeather.humidity * 100}%</Text>
+            <Text>Wind: {currentWeather.windSpeed}mph</Text>
+          </View>
+          </View>
+          <TouchableOpacity onPress={this.onPress}>
+            <Text>
+              7-day Forecast
+            </Text>
+          </TouchableOpacity>
       </View>
     )
   }

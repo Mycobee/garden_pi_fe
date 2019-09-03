@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     fontSize: 70,
     textShadowColor:'black',
     textShadowOffset:{width: 3, height: 3},
-    textShadowRadius:3,
+    textShadowRadius: 5,
   }
 })
 

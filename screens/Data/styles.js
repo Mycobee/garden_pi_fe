@@ -6,7 +6,7 @@ export default StyleSheet.create({
     width: Dimensions.get('window').width,
     alignItems: 'center',
     backgroundColor: '#73A686',
-    paddingTop: 50,
+    paddingTop: 50
   },
   header: {
     paddingTop: 200
@@ -22,15 +22,8 @@ export default StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 20
   },
-  currentIcon: {
+  icon: {
     height: 65,
-    width: 65,
-  },
-  currentWeatherContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    width: 320,
-    alignItems: 'center'
+    width: 65
   }
 })
