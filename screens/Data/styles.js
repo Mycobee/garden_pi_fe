@@ -2,11 +2,11 @@ import { StyleSheet, Dimensions } from 'react-native';
 
 export default StyleSheet.create({
   container: {
-    height: Dimensions.get('window').height,
-    width: Dimensions.get('window').width,
     alignItems: 'center',
     backgroundColor: '#73A686',
-    paddingTop: 50
+    height: Dimensions.get('window').height,
+    paddingTop: 50,
+    width: Dimensions.get('window').width
   },
   header: {
     paddingTop: 200
@@ -17,9 +17,9 @@ export default StyleSheet.create({
   forecastContainer: {
     display: 'flex',
     flexDirection: 'row',
-    width: Dimensions.get('window').width * .95,
-    paddingTop: 5,
     paddingLeft: 20,
-    paddingRight: 20
+    paddingRight: 20,
+    paddingTop: 5,
+    width: Dimensions.get('window').width * .95
   }
 })

@@ -3,43 +3,43 @@ import { StyleSheet, Dimensions } from 'react-native';
 
 export default StyleSheet.create({
   container: {
-    height: Dimensions.get('window').height,
-    width: Dimensions.get('window').width,
-    justifyContent: 'space-evenly',
     alignItems: 'center',
     backgroundColor: '#73A686',
+    height: Dimensions.get('window').height,
+    justifyContent: 'space-evenly',
+    width: Dimensions.get('window').width
     
   },  
   textContainer: {
-    width: Dimensions.get('window').width * 0.875,
+    alignItems: 'center',
+    borderRadius: 10,
     height: Dimensions.get('window').height * 0.50,
+    justifyContent: 'space-between',
+    padding: 20,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.8,
-    alignItems: 'center',
-    borderRadius: 10,
-    justifyContent: 'space-between',
-    padding: 20
+    width: Dimensions.get('window').width * 0.875
   },
   splashHeader: {
     fontSize: 24,
     fontWeight: 'bold'
   },
   splashEnterBtn: {
-    borderWidth: 2,
-    borderColor: '#A14550',
-    backgroundColor: '#FAF0E6',
-    width: 200,
-    height: 50,
-    borderRadius: 10,
-    overflow: 'hidden',
-    justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#FAF0E6',
+    borderColor: '#A14550',
+    borderRadius: 10,
+    borderWidth: 2,
+    height: 50,
+    justifyContent: 'center',
     marginTop: Dimensions.get('window').height * 0.40,
+    overflow: 'hidden',
+    width: 200
   },
   plantIcon: {
-    width: 200,
-    height: 200
+    height: 200,
+    width: 200
   }
 });
 
