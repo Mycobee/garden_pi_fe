@@ -12,7 +12,8 @@ export default StyleSheet.create({
     paddingTop: 200
   },
   carouselScroll: {
-    height: 200
+    height: 150,
+    justifyContent: 'space-around',
   },
   forecastContainer: {
     display: 'flex',
