@@ -1,6 +1,6 @@
 import { fetchWeather, fetchGarden, fetchGardenEnv } from './ApiCalls';
 import React from 'react';
-import { ApiKey } from './ApiKey'
+// import { ApiKey } from './ApiKey'
 
 describe('apiCalls', () => {
   describe('fetchWeather', () => {
