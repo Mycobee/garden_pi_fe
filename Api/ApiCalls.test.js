@@ -135,5 +135,12 @@ describe('apiCalls', () => {
     it('should return parsed response if ok', async () => {
       await expect(fetchGardenEnv()).resolves.toEqual(mockResponse)
     });
+
+    it('should return an error response', async () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.reject('Error fetching garden environment')
+      });
+      await expect(window.fetch()).rejects.toEqual('Error fetching garden environment');;
+    })
   })
 })
