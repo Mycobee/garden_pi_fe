@@ -1,7 +1,8 @@
-import { ApiKey } from './ApiKey'
+// import { ApiKey } from './ApiKey'
+import {API_KEY} from 'react-native-dotenv'
 
 export const fetchWeather = () => {
-  return fetch(`https://api.darksky.net/forecast/${ApiKey}/39.73915,-104.9847`)
+  return fetch(`https://api.darksky.net/forecast/${API_KEY}/39.73915,-104.9847`)
   .then(res => res.json())
   .then(res => res)
   .catch(error => error.message)
