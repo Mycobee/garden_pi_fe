@@ -80,11 +80,16 @@ describe('apiCalls', () => {
         });
       })
     })
+
     it('should be able to return the garden given a url', () => {
       const expected = 'https://garden-pi-be.herokuapp.com/api/v1/gardens/1'
 
       fetchGarden()
       expect(window.fetch).toHaveBeenCalledWith(expected)
     })
+
+    it('should return parsed response if ok', async () => {
+      await expect(fetchGarden()).resolves.toEqual(mockResponse)
+    });
   })
 })
