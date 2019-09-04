@@ -40,18 +40,18 @@ describe('apiCalls', () => {
         });
       })
     })
-    it.skip('should be able to return the weather given a url', () => {
+    it('should be able to return the weather given a url', () => {
       const expected = `https://api.darksky.net/forecast/${API_KEY}/39.73915,-104.9847`
 
       fetchWeather()
       expect(window.fetch).toHaveBeenCalledWith(expected)
     });
 
-    it.skip('should return parsed response if ok', async () => {
+    it('should return parsed response if ok', async () => {
       await expect(fetchWeather()).resolves.toEqual(mockResponse)
     });
 
-    it.skip('should return an error response', async () => {
+    it('should return an error response', async () => {
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.reject('Error fetching weather')
       });
