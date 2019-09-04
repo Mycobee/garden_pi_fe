@@ -36,30 +36,32 @@ export class Data extends Component {
             source={require('../../assets/images/windy.png')}
             style={styles.icon}
           />
-        // case 'partly-cloudy-night':
-        //     return <Image 
-        //     source={require('../../assets/images/.png')}
-        //     style={styles.icon}
-        //   />
-        // case 'clear-night':
-        //     return <Image 
-        //     source={require('../../assets/images/.png')}
-        //     style={styles.icon}
-        //   />
-        // case 'fog':
-        //     return <Image 
-        //     source={require('../../assets/images/.png')}
-        //     style={styles.icon}
-        //   />
+        case 'partly-cloudy-night':
+            return <Image 
+            source={require('../../assets/images/partly-cloudy-night.png')}
+            style={styles.icon}
+          />
+        case 'clear-night':
+            return <Image 
+            source={require('../../assets/images/moon.png')}
+            style={styles.icon}
+          />
+        case 'fog':
+            return <Image 
+            source={require('../../assets/images/foggy.png')}
+            style={styles.icon}
+          />
       default:
-        return;
+        return <Image 
+        source={require('../../assets/images/warning.png')}
+        style={styles.icon}
+      />;
     }
   };
   render() {
     const { navigation } = this.props;
     const currentWeather = navigation.getParam('foreCast')
     const forecastBoxes = currentWeather.daily.data.map((datum, i) => {
-      console.log(datum.icon)
       const dt = new Date(datum.time * 1000 - 6000)
       const shortenedTime = (dt.getMonth() + 1) + "/" + dt.getDate() + '/' + dt.getFullYear();
       const weatherIcon = this.getWeatherIcon(datum.icon)

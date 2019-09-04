@@ -65,7 +65,6 @@ export class index extends Component {
   render() {
     const { navigation } = this.props;
     const currentWeather = navigation.getParam('foreCast').currently
-    console.log(currentWeather.icon)
     const weatherIcon = this.getWeatherIcon(currentWeather.icon)
     return (
       <View style={styles.container}>
