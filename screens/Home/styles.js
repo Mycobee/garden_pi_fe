@@ -27,18 +27,27 @@ export default StyleSheet.create({
     width: 100,
   },
   currentWeatherContainer: {
-    backgroundColor: '#ffffff',
+    backgroundColor: '#d5fdd5',
     borderRadius: 30,
+    borderWidth: 2,
+    borderColor: '#A14550',
     padding: 20,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    width: Dimensions.get('window').width * .95,
+    width: Dimensions.get('window').width * .80,
     alignItems: 'center',
     marginTop: 10,
   },
   currentWeatherTemp: {
     fontWeight: 'bold',
-    fontSize: 40,
+    fontSize: 30,
+  },
+  label: {
+    fontSize: 13
+  },
+  bold: {
+    fontWeight: 'bold',
+    fontSize: 15
   }
 })
