@@ -23,8 +23,8 @@ export default StyleSheet.create({
     paddingRight: 20
   },
   currentIcon: {
-    height: 65,
-    width: 65,
+    height: 100,
+    width: 100,
   },
   currentWeatherContainer: {
     flexDirection: 'row',

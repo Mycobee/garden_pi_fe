@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ScrollView, Image, Text, TouchableOpacity } from 'react-native';
+import { View, ScrollView, Image, Text, TouchableOpacity, SafeAreaView, Button } from 'react-native';
 import { Header, WeatherBox } from '../../components';
 import styles from './styles';
 
@@ -9,13 +9,48 @@ export class index extends Component {
       case 'partly-cloudy-day':
         return <Image 
           source={require('../../assets/images/partly-cloudy.png')}
-          style={styles.icon}
+          style={styles.currentIcon}
         />
       case 'rain':
         return <Image 
           source={require('../../assets/images/rain.png')}
-          style={styles.icon}
+          style={styles.currentIcon}
         />
+      case 'cloudy':
+          return <Image 
+          source={require('../../assets/images/cloudy.png')}
+          style={styles.currentIcon}
+        />
+      case 'clear-day':
+          return <Image 
+          source={require('../../assets/images/sunny.png')}
+          style={styles.currentIcon}
+        />
+        case 'snow':
+            return <Image 
+            source={require('../../assets/images/snow.png')}
+            style={styles.currentIcon}
+          />
+        case 'wind':
+            return <Image 
+            source={require('../../assets/images/windy.png')}
+            style={styles.currentIcon}
+          />
+        // case 'partly-cloudy-night':
+        //     return <Image 
+        //     source={require('../../assets/images/.png')}
+        //     style={styles.currentIcon}
+        //   />
+        // case 'clear-night':
+        //     return <Image 
+        //     source={require('../../assets/images/.png')}
+        //     style={styles.currentIcon}
+        //   />
+        // case 'fog':
+        //     return <Image 
+        //     source={require('../../assets/images/.png')}
+        //     style={styles.currentIcon}
+        //   />
       default:
         return;
     }
@@ -30,6 +65,7 @@ export class index extends Component {
   render() {
     const { navigation } = this.props;
     const currentWeather = navigation.getParam('foreCast').currently
+    console.log(currentWeather.icon)
     const weatherIcon = this.getWeatherIcon(currentWeather.icon)
     return (
       <View style={styles.container}>
@@ -46,9 +82,7 @@ export class index extends Component {
           </View>
           </View>
           <TouchableOpacity onPress={this.onPress}>
-            <Text>
-              7-day Forecast
-            </Text>
+            <Button title={'7-day forecast'} onPress={this.onPress} />
           </TouchableOpacity>
       </View>
     )
