@@ -23,7 +23,6 @@ export default class Splash extends Component {
   getGarden = async () => {
     await fetchGarden()
     .then(gardenData => this.setState({garden: gardenData}))
-    console.log(this.state.garden)
   };
 
   getEnv = async () => {

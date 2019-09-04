@@ -29,10 +29,12 @@ export class index extends Component {
               {weatherIcon}
             </View>
             <View>
-            <Text>Temperature: {currentWeather.temperature}°F</Text>
-            <Text>Precipitation: {currentWeather.precipProbability}%</Text>
+            <Text style={styles.currentWeatherTemp}> {Math.round(currentWeather.temperature)}°F</Text>
+            </View>
+            <View>
+            <Text>Chance of Rain: {currentWeather.precipProbability}%</Text>
             <Text>Humidity: {currentWeather.humidity * 100}%</Text>
-            <Text>Wind: {currentWeather.windSpeed}mph</Text>
+            <Text>Wind: {Math.round(currentWeather.windSpeed)} mph</Text>
           </View>
           </View>
           <TouchableOpacity onPress={this.onPress}>
