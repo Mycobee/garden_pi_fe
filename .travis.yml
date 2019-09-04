@@ -1,6 +1,6 @@
 language: node_js
 node_js:
 - node
-deploy:
-  ApiKey:
-    secure: mz2LXlhpN2Kwl0jRdSYz/MOyJK//H8+8d6P/2zNkwHw0AHaeNV71sAWeqb1WR9g69BFqG/t2O7khKc92Rd8O8WWAriy+EAcyNuqAY2lEg1owFJ5u5FUT7nPU1vvLx5QyKyxxXZzlMUdRFcYN0ir0DeVtX2z9ie1BTMYe0YfVqZeLEfidH/j61LBWRzjtA+LaZW+ns14Sffkwv6KQnGAqDEOmd+qjWm12yvaYEYXMI9TUA/oAMa3K2yCbkJKXTBG/q/Pxv9gaIz24BlAA4SmC7dU/m6VhjdVM6siSgEhU+ia/7Wv9n+goDjQlBiE/nLEZTcnxV8DTXzboGVSVU68KaNUK0UFHlaw7+dPvTmvvObq8e+vPQFZqCSWNaAZmiSK9Nj6XUKqbqBpHjKKacsEmSAzEPhtBuhVSSev95fzj7rplOHtTauaiPHPM/7P8/QMPUyoEPe715wakgdtAD8374w3NlSWw6mkbF1H66kBNSh7RpIdMmm0DxssmmnjNfXesTOC8LXL9xjl80X4SRWEiKNNm3fVjpIMhViIqKoxQPxg3HN/NWjE3xFU7JAtCqfxft3TH3Qggsr0TILfdrLxW1jaYNMQ/jhIaQ00I5U5RmWXdHawgNmcRo+sAmgICU9B40UnSaO8eX7xnRvw8ct+DbAPpC5b1LbEnWWK3FqbCbqA=
+before_install:
+- openssl aes-256-cbc -K $encrypted_90e1f43d1e1a_key -iv $encrypted_90e1f43d1e1a_iv
+  -in .env.enc -out .env -d
