@@ -1,4 +1,4 @@
-import { fetchWeather, fetchGarden } from './ApiCalls';
+import { fetchWeather, fetchGarden, fetchGardenEnv } from './ApiCalls';
 import React from 'react';
 import { ApiKey } from './ApiKey'
 
@@ -97,6 +97,38 @@ describe('apiCalls', () => {
         return Promise.reject('Error fetching garden')
       });
       await expect(window.fetch()).rejects.toEqual('Error fetching garden');;
+    })
+  })
+  describe('fetchGardenEnv', () => {
+    let mockResponse;
+
+    beforeEach(() => {
+      mockResponse = {
+        data: [
+          {
+            attributes: {
+              created_at: "2019-09-03T14:19:19.907Z",
+              soil_moisture: 85.33,
+              soil_temperature: 55.52,
+            },
+            id: "1",
+            type: "env_measurement",
+          },
+        ],
+      }
+
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+         ok: true,
+          json: () => Promise.resolve(mockResponse)
+        });
+      })
+    })
+    it('should be able to return the garden env with a given url', () => {
+      const expected = 'http://garden-pi-be.herokuapp.com/api/v1/gardens/1/env_measurements'
+
+      fetchGardenEnv()
+      expect(window.fetch).toHaveBeenCalledWith(expected)
     })
   })
 })

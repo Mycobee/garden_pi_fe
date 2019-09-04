@@ -28,6 +28,7 @@ export default class Splash extends Component {
   getEnv = async () => {
     await fetchGardenEnv()
     .then(envData => this.setState({env: envData}))
+    console.log(this.state.env)
   };
 
   onEnterPress = () => {
