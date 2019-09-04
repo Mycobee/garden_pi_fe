@@ -1,25 +1,15 @@
 import React, { Component } from 'react';
-import { View, ScrollView, Image, Text, TouchableOpacity } from 'react-native';
+import { 
+  View,
+  Image, 
+  Text, 
+  TouchableOpacity,
+  Button } from 'react-native';
 import { Header, WeatherBox } from '../../components';
+import { getWeatherIcon } from '../../utilities';
 import styles from './styles';
 
 export class index extends Component {
-  getWeatherIcon = condition => {
-    switch(condition) {
-      case 'partly-cloudy-day':
-        return <Image 
-          source={require('../../assets/images/partly-cloudy.png')}
-          style={styles.icon}
-        />
-      case 'rain':
-        return <Image 
-          source={require('../../assets/images/rain.png')}
-          style={styles.icon}
-        />
-      default:
-        return;
-    }
-  };
   onPress = () => {
     const { navigation } = this.props;
     const currentWeather = navigation.getParam('foreCast')
@@ -30,7 +20,7 @@ export class index extends Component {
   render() {
     const { navigation } = this.props;
     const currentWeather = navigation.getParam('foreCast').currently
-    const weatherIcon = this.getWeatherIcon(currentWeather.icon)
+    const weatherIcon = getWeatherIcon(currentWeather.icon)
     return (
       <View style={styles.container}>
         <Header style={styles.header}/>
@@ -39,16 +29,16 @@ export class index extends Component {
               {weatherIcon}
             </View>
             <View>
-            <Text>Temperature: {currentWeather.temperature}°F</Text>
-            <Text>Precipitation: {currentWeather.precipProbability}%</Text>
+            <Text style={styles.currentWeatherTemp}> {Math.round(currentWeather.temperature)}°F</Text>
+            </View>
+            <View>
+            <Text>Chance of Rain: {currentWeather.precipProbability}%</Text>
             <Text>Humidity: {currentWeather.humidity * 100}%</Text>
-            <Text>Wind: {currentWeather.windSpeed}mph</Text>
+            <Text>Wind: {Math.round(currentWeather.windSpeed)} mph</Text>
           </View>
           </View>
           <TouchableOpacity onPress={this.onPress}>
-            <Text>
-              7-day Forecast
-            </Text>
+            <Button title={'7-day forecast'} onPress={this.onPress} />
           </TouchableOpacity>
       </View>
     )

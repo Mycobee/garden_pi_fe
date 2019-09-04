@@ -19,18 +19,26 @@ export default StyleSheet.create({
     flexDirection: 'row',
     width: Dimensions.get('window').width * .95,
     paddingTop: 5,
-    paddingLeft: 20,
-    paddingRight: 20
+    paddingLeft: 15,
+    paddingRight: 15
   },
   currentIcon: {
-    height: 65,
-    width: 65,
+    height: 100,
+    width: 100,
   },
   currentWeatherContainer: {
+    backgroundColor: '#ffffff',
+    borderRadius: 30,
+    padding: 20,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    width: 320,
-    alignItems: 'center'
+    width: Dimensions.get('window').width * .95,
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  currentWeatherTemp: {
+    fontWeight: 'bold',
+    fontSize: 40,
   }
 })

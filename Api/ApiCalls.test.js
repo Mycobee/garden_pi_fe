@@ -1,4 +1,4 @@
-import { fetchWeather } from './ApiCalls';
+import { fetchWeather, fetchGarden } from './ApiCalls';
 import React from 'react';
 import { ApiKey } from './ApiKey'
 
@@ -39,7 +39,7 @@ describe('apiCalls', () => {
       })
     })
     it('should be able to return the weather given a url', () => {
-      const expected = `https://api.darksky.net/forecast/${ApiKey}/39.751048,-104.996659`
+      const expected = `https://api.darksky.net/forecast/${ApiKey}/39.73915,-104.9847`
 
       fetchWeather()
       expect(window.fetch).toHaveBeenCalledWith(expected)
@@ -54,6 +54,37 @@ describe('apiCalls', () => {
         return Promise.reject('Error fetching weather')
       });
       await expect(window.fetch()).rejects.toEqual('Error fetching weather');;
+    })
+  })
+  describe('fetchGarden', () => {
+    let mockResponse;
+
+    beforeEach(() => {
+      mockResponse = {
+        data: {
+          attributes: {
+            id: 1,
+            latitude: 42.3601,
+            longitude: -71.0589,
+            name: "Backyard Raised Bed",
+          },
+          id: "1",
+          type: "garden",
+        },
+      }
+
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(mockResponse)
+        });
+      })
+    })
+    it('should be able to return the garden given a url', () => {
+      const expected = 'https://garden-pi-be.herokuapp.com/api/v1/gardens/1'
+
+      fetchGarden()
+      expect(window.fetch).toHaveBeenCalledWith(expected)
     })
   })
 })
