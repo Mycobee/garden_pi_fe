@@ -124,11 +124,16 @@ describe('apiCalls', () => {
         });
       })
     })
+
     it('should be able to return the garden env with a given url', () => {
       const expected = 'http://garden-pi-be.herokuapp.com/api/v1/gardens/1/env_measurements'
 
       fetchGardenEnv()
       expect(window.fetch).toHaveBeenCalledWith(expected)
     })
+
+    it('should return parsed response if ok', async () => {
+      await expect(fetchGardenEnv()).resolves.toEqual(mockResponse)
+    });
   })
 })
