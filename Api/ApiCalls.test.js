@@ -1,6 +1,8 @@
 import { fetchWeather, fetchGarden, fetchGardenEnv } from './ApiCalls';
 import React from 'react';
-import { ApiKey } from './ApiKey'
+// import { ApiKey } from './ApiKey'
+import {API_KEY} from 'react-native-dotenv'
+
 
 describe('apiCalls', () => {
   describe('fetchWeather', () => {
@@ -39,7 +41,7 @@ describe('apiCalls', () => {
       })
     })
     it.skip('should be able to return the weather given a url', () => {
-      const expected = `https://api.darksky.net/forecast/${ApiKey}/39.73915,-104.9847`
+      const expected = `https://api.darksky.net/forecast/${API_KEY}/39.73915,-104.9847`
 
       fetchWeather()
       expect(window.fetch).toHaveBeenCalledWith(expected)
