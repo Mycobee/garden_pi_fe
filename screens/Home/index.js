@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
-import { 
-  View,
-  Image, 
-  Text, 
-  TouchableOpacity,
-  Button } from 'react-native';
+import { View, Image, Text, TouchableOpacity, Button, Dimensions } from 'react-native';
 import { Header, WeatherBox } from '../../components';
 import { getWeatherIcon } from '../../utilities';
+import { LineChart } from 'react-native-chart-kit';
 import styles from './styles';
 
 export class index extends Component {
@@ -21,6 +17,12 @@ export class index extends Component {
     const { navigation } = this.props;
     const currentWeather = navigation.getParam('foreCast').currently
     const weatherIcon = getWeatherIcon(currentWeather.icon)
+    const line = {
+      labels: ['Sun', 'Mon', 'Tues', 'Weds', 'Thurs', 'Fri', 'Sat'],
+      datasets: [{
+          data: [72, 82, 95, 82, 88, 89, 94],
+        }],
+    };
     return (
       <View style={styles.container}>
         <Header style={styles.header}/>
@@ -52,6 +54,33 @@ export class index extends Component {
           <TouchableOpacity onPress={this.onPress}>
             <Button title={'7-day forecast'} onPress={this.onPress} />
           </TouchableOpacity>
+          <View>
+            <LineChart
+              data={line}
+              width={Dimensions.get('window').width * .95}
+              height={220}
+              withInnerLines={false}
+              // yAxisLabel={'°F'}
+              chartConfig={{
+                backgroundColor: '#d5fdd5',
+                backgroundGradientFrom: '#d5fdd5',
+                backgroundGradientTo: '#d5fdd5',
+                decimalPlaces: 0,
+                color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+                style: {
+                  borderRadius: 16,
+                }
+              }}
+              bezier
+              style={{
+                marginVertical: 8,
+                borderRadius: 30,
+                borderWidth: 2,
+                borderColor: '#A14550'
+              }}
+            />
+            <Text style={styles.graphLabel}>7-Day Soil Moisture</Text>
+          </View>
       </View>
     )
   }

@@ -37,7 +37,7 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     marginTop: 10,
     padding: 20,
-    width: Dimensions.get('window').width * .80,
+    width: Dimensions.get('window').width * .95,
   },
   currentWeatherTemp: {
     fontSize: 30,
@@ -49,5 +49,8 @@ export default StyleSheet.create({
   bold: {
     fontSize: 15,
     fontWeight: 'bold'
+  },
+  graphLabel: {
+    textAlign: 'center',
   }
 })
