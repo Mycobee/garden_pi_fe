@@ -26,14 +26,15 @@ export class index extends Component {
     return (
       <View style={styles.container}>
         <Header style={styles.header}/>
+          <View style={styles.forecastContainer}>
           <View style={styles.currentWeatherContainer}>
             <View>
               {weatherIcon}
             </View>
             <View>
               <Text style={styles.currentWeatherTemp}> {Math.round(currentWeather.temperature)}°F</Text>
-              </View>
-              <View>
+            </View>
+            <View>
               <Text style={styles.label}>Chance of Rain: 
                   <Text style={styles.bold}>
                       {currentWeather.precipProbability}%
@@ -52,15 +53,17 @@ export class index extends Component {
             </View>
           </View>
           <TouchableOpacity onPress={this.onPress}>
-            <Button title={'7-day forecast'} onPress={this.onPress} />
+            <Button title={'View 7-day forecast'} onPress={this.onPress} />
           </TouchableOpacity>
+          </View>
           <View>
-            <LineChart
+            <Text style={styles.graphLabel}>Last Week Soil Moisture</Text>
+            <LineChart 
               data={line}
               width={Dimensions.get('window').width * .95}
               height={220}
               withInnerLines={false}
-              // yAxisLabel={'°F'}
+              yAxisLabel={'% '}
               chartConfig={{
                 backgroundColor: '#d5fdd5',
                 backgroundGradientFrom: '#d5fdd5',
@@ -76,10 +79,11 @@ export class index extends Component {
                 marginVertical: 8,
                 borderRadius: 30,
                 borderWidth: 2,
-                borderColor: '#A14550'
+                borderColor: '#A14550',
+                color: '#fff',
+                fontSize: 20
               }}
             />
-            <Text style={styles.graphLabel}>7-Day Soil Moisture</Text>
           </View>
       </View>
     )

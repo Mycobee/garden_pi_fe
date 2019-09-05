@@ -15,12 +15,11 @@ export default StyleSheet.create({
     height: 200
   },
   forecastContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    paddingLeft: 15,
-    paddingRight: 15,
-    paddingTop: 5,
-    width: Dimensions.get('window').width * .95
+    flexDirection: 'column',
+    backgroundColor: '#d5fdd5',
+    borderColor: '#A14550',
+    borderRadius: 30,
+    borderWidth: 2,
   },
   currentIcon: {
     height: 100,
@@ -29,14 +28,10 @@ export default StyleSheet.create({
   currentWeatherContainer: {
     alignItems: 'center',
     alignItems: 'center',
-    backgroundColor: '#d5fdd5',
-    borderColor: '#A14550',
-    borderRadius: 30,
-    borderWidth: 2,
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: 10,
-    padding: 20,
+    padding: 10,
     width: Dimensions.get('window').width * .95,
   },
   currentWeatherTemp: {
@@ -51,6 +46,7 @@ export default StyleSheet.create({
     fontWeight: 'bold'
   },
   graphLabel: {
+    marginTop: 30,
     textAlign: 'center',
   }
 })
