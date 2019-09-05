@@ -46,7 +46,18 @@ export default StyleSheet.create({
     fontWeight: 'bold'
   },
   graphLabel: {
-    marginTop: 30,
-    textAlign: 'center',
+    height: 25,
+    marginTop: 25,
+    padding: 2,
+    backgroundColor: '#d5fdd5',
+    alignItems: 'center',
+    width: Dimensions.get('window').width * .55,
+    marginLeft: 88,
+    borderColor: '#A14550',
+    borderTopWidth: 2,
+    borderLeftWidth: 2,
+    borderRightWidth: 2,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20
   }
 })

@@ -57,7 +57,9 @@ export class index extends Component {
           </TouchableOpacity>
           </View>
           <View>
-            <Text style={styles.graphLabel}>Last Week Soil Moisture</Text>
+            <View style={styles.graphLabel}>
+            <Text>Previous Week Soil Moisture</Text>
+            </View>
             <LineChart 
               data={line}
               width={Dimensions.get('window').width * .95}
@@ -76,6 +78,7 @@ export class index extends Component {
               }}
               bezier
               style={{
+                marginTop: 0,
                 marginVertical: 8,
                 borderRadius: 30,
                 borderWidth: 2,
