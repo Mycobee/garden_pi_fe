@@ -15,12 +15,11 @@ export default StyleSheet.create({
     height: 200
   },
   forecastContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    paddingLeft: 15,
-    paddingRight: 15,
-    paddingTop: 5,
-    width: Dimensions.get('window').width * .95
+    flexDirection: 'column',
+    backgroundColor: '#d5fdd5',
+    borderColor: '#A14550',
+    borderRadius: 30,
+    borderWidth: 2,
   },
   currentIcon: {
     height: 100,
@@ -29,15 +28,11 @@ export default StyleSheet.create({
   currentWeatherContainer: {
     alignItems: 'center',
     alignItems: 'center',
-    backgroundColor: '#d5fdd5',
-    borderColor: '#A14550',
-    borderRadius: 30,
-    borderWidth: 2,
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: 10,
-    padding: 20,
-    width: Dimensions.get('window').width * .80,
+    padding: 10,
+    width: Dimensions.get('window').width * .95,
   },
   currentWeatherTemp: {
     fontSize: 30,
@@ -49,5 +44,20 @@ export default StyleSheet.create({
   bold: {
     fontSize: 15,
     fontWeight: 'bold'
+  },
+  graphLabel: {
+    height: 25,
+    marginTop: 25,
+    padding: 2,
+    backgroundColor: '#d5fdd5',
+    alignItems: 'center',
+    width: Dimensions.get('window').width * .55,
+    marginLeft: 88,
+    borderColor: '#A14550',
+    borderTopWidth: 2,
+    borderLeftWidth: 2,
+    borderRightWidth: 2,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20
   }
 })
