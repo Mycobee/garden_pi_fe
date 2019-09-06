@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { View, Image, Text, TouchableOpacity, Button, Dimensions } from 'react-native';
 import { Header, WeatherBox } from '../../components';
 import { getWeatherIcon } from '../../utilities';
-import { LineChart, ProgressChart } from 'react-native-chart-kit';
+import { LineChart } from 'react-native-chart-kit';
+import ProgressCircle from 'react-native-progress-circle';
 import styles from './styles';
 
 export class index extends Component {
@@ -22,8 +23,7 @@ export class index extends Component {
     const currentWeather = navigation.getParam('foreCast').currently
     const envData = navigation.getParam('env').data
     const mostRecentEnvDatum = envData[envData.length - 1];
-    const soilMoisture = mostRecentEnvDatum['attributes'].soil_moisture
-    const soilTemperature = mostRecentEnvDatum['attributes'].soil_temperature
+    const soilData = mostRecentEnvDatum['attributes']
     const weatherIcon = getWeatherIcon(currentWeather.icon)
     const line = {
       labels: ['Sun', 'Mon', 'Tues', 'Weds', 'Thurs', 'Fri', 'Sat'],
@@ -93,16 +93,33 @@ export class index extends Component {
           </View>
           <View style={styles.currentWidgets}>
           <View style={styles.currentSoilStatContainer}>
-            <Text>
-              Soil Moisture: <Text style={styles.bold}>{Math.round(soilMoisture)}%</Text>
-            </Text>
+          <Text>Soil Moisture:</Text>
+            <ProgressCircle
+              percent={soilData.soil_moisture}
+              radius={50}
+              borderWidth={8}
+              color="#228b22"
+              shadowColor="#000"
+              bgColor="#fff"
+          >
+              <Text>{soilData.soil_moisture}%</Text>
+            </ProgressCircle>
           </View>
           <View style={styles.currentSoilStatContainer}>
-            <Text>
-              Soil Temperature: <Text style={styles.bold}>{Math.round(soilTemperature)}°F</Text>
-            </Text>
+          <Text>Soil Temperature:</Text>
+            <ProgressCircle
+              percent={soilData.soil_temperature}
+              radius={50}
+              borderWidth={8}
+              color="#228b22"
+              shadowColor="#000"
+              bgColor="#fff"
+          >
+              <Text>{soilData.soil_temperature}°F</Text>
+            </ProgressCircle>
           </View>
         </View>
+            <Text>Recorded at: {soilData.created_at}</Text>
       </View>
     )
   }
