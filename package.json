@@ -10,7 +10,6 @@
     "test:watch": "jest --watchAll"
   },
   "dependencies": {
-    "enzyme": "^3.10.0",
     "expo": "^34.0.1",
     "expo-cli": "^3.0.10",
     "jest": "^24.9.0",
@@ -28,14 +27,78 @@
     "react-navigation-stack": "^1.5.1"
   },
   "devDependencies": {
+    "babel-jest": "^24.9.0",
     "babel-preset-expo": "^6.0.0",
+    "babel-preset-react-native": "^4.0.1",
+    "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
-    "enzyme-to-json": "^3.4.0"
+    "enzyme-to-json": "^3.4.0",
+    "jest": "^24.9.0",
+    "jest-react-native": "^18.0.0",
+    "react-test-renderer": "^16.8.6"
   },
   "jest": {
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ]
+    "preset": "jest-react-native",
+    "transf": "<rootDir>/node_modules/babel-jest",
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "moduleNameMapper": {
+      "/^[.\/a-zA-Z0-9$_-]+.jpg$/": "RelativeImageStub"
+    },
+    "resolver": null
   },
+    "testFileExtensions": [
+      "es6",
+      "js"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "es6"
+    ],
+    "unmockedModulePathPatterns": [
+      "react",
+      "react-addons-test-utils",
+      "react-native-router-flux",
+      "promise",
+      "source-map",
+      "key-mirror",
+      "immutable",
+      "fetch",
+      "redux",
+      "redux-thunk",
+      "fbjs"
+    ],
+    "collectCoverage": true,
+    "verbose": true,
+      "/^[./a-zA-Z0-9$_-]+.jpg$/": "RelativeImageStub"
+    },
+    "resolver": null
+  },
+  "testFileExtensions": [
+    "es6",
+    "js"
+  ],
+  "moduleFileExtensions": [
+    "js",
+    "json",
+    "es6"
+  ],
+  "unmockedModulePathPatterns": [
+    "react",
+    "react-addons-test-utils",
+    "react-native-router-flux",
+    "promise",
+    "source-map",
+    "key-mirror",
+    "immutable",
+    "fetch",
+    "redux",
+    "redux-thunk",
+    "fbjs"
+  ],
+  "collectCoverage": true,
+  "verbose": true,
   "private": true
 }

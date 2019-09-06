@@ -33,7 +33,7 @@ describe('apiCalls', () => {
         }
       }
 
-      window.fetch = jest.fn().mockImplementation(() => {
+      global.fetch = jest.fn().mockImplementation(() => {
         return Promise.resolve({
           ok: true,
           json: () => Promise.resolve(mockResponse)
@@ -44,7 +44,7 @@ describe('apiCalls', () => {
       const expected = `https://api.darksky.net/forecast/${API_KEY}/39.73915,-104.9847`
 
       fetchWeather()
-      expect(window.fetch).toHaveBeenCalledWith(expected)
+      expect(global.fetch).toHaveBeenCalledWith(expected)
     });
 
     it('should return parsed response if ok', async () => {
@@ -52,10 +52,10 @@ describe('apiCalls', () => {
     });
 
     it('should return an error response', async () => {
-      window.fetch = jest.fn().mockImplementation(() => {
+      global.fetch = jest.fn().mockImplementation(() => {
         return Promise.reject('Error fetching weather')
       });
-      await expect(window.fetch()).rejects.toEqual('Error fetching weather');;
+      await expect(global.fetch()).rejects.toEqual('Error fetching weather');;
     })
   })
   describe('fetchGarden', () => {
@@ -75,7 +75,7 @@ describe('apiCalls', () => {
         },
       }
 
-      window.fetch = jest.fn().mockImplementation(() => {
+      global.fetch = jest.fn().mockImplementation(() => {
         return Promise.resolve({
           ok: true,
           json: () => Promise.resolve(mockResponse)
@@ -87,7 +87,7 @@ describe('apiCalls', () => {
       const expected = 'https://garden-pi-be.herokuapp.com/api/v1/gardens/1'
 
       fetchGarden()
-      expect(window.fetch).toHaveBeenCalledWith(expected)
+      expect(global.fetch).toHaveBeenCalledWith(expected)
     })
 
     it('should return parsed response if ok', async () => {
@@ -95,10 +95,10 @@ describe('apiCalls', () => {
     });
 
     it('should return an error response', async () => {
-      window.fetch = jest.fn().mockImplementation(() => {
+      global.fetch = jest.fn().mockImplementation(() => {
         return Promise.reject('Error fetching garden')
       });
-      await expect(window.fetch()).rejects.toEqual('Error fetching garden');;
+      await expect(global.fetch()).rejects.toEqual('Error fetching garden');;
     })
   })
   describe('fetchGardenEnv', () => {
@@ -119,7 +119,7 @@ describe('apiCalls', () => {
         ],
       }
 
-      window.fetch = jest.fn().mockImplementation(() => {
+      global.fetch = jest.fn().mockImplementation(() => {
         return Promise.resolve({
          ok: true,
           json: () => Promise.resolve(mockResponse)
@@ -131,7 +131,7 @@ describe('apiCalls', () => {
       const expected = 'http://garden-pi-be.herokuapp.com/api/v1/gardens/1/env_measurements'
 
       fetchGardenEnv()
-      expect(window.fetch).toHaveBeenCalledWith(expected)
+      expect(global.fetch).toHaveBeenCalledWith(expected)
     })
 
     it('should return parsed response if ok', async () => {
@@ -139,10 +139,10 @@ describe('apiCalls', () => {
     });
 
     it('should return an error response', async () => {
-      window.fetch = jest.fn().mockImplementation(() => {
+      global.fetch = jest.fn().mockImplementation(() => {
         return Promise.reject('Error fetching garden environment')
       });
-      await expect(window.fetch()).rejects.toEqual('Error fetching garden environment');;
+      await expect(global.fetch()).rejects.toEqual('Error fetching garden environment');;
     })
   })
 })
