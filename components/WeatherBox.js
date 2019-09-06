@@ -31,9 +31,10 @@ const styles = StyleSheet.create({
   },
   summary: {
     width: 90,
+    marginLeft: 10,
   },
   icon: {
-    width: 180,
+    width: 200,
     height: 80,
     flexDirection: 'row',
     justifyContent: 'center',
