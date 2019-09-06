@@ -18,9 +18,7 @@ export default StyleSheet.create({
   forecastContainer: {
     display: 'flex',
     flexDirection: 'row',
-    paddingLeft: 20,
-    paddingRight: 20,
     paddingTop: 5,
-    width: Dimensions.get('window').width * .95
+    width: Dimensions.get('window').width 
   }
 })
