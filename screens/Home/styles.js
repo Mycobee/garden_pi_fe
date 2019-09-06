@@ -31,8 +31,8 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: 10,
-    padding: 10,
-    width: Dimensions.get('window').width * .95,
+    padding: 20,
+    width: Dimensions.get('window').width * .90,
   },
   currentWeatherTemp: {
     fontSize: 30,
