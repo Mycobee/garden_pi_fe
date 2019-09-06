@@ -23,7 +23,7 @@ export class index extends Component {
     const envData = navigation.getParam('env').data
     const mostRecentEnvDatum = envData[envData.length - 1];
     const soilMoisture = mostRecentEnvDatum['attributes'].soil_moisture
-    // const soilTemperature = mostRecentEnvDatum['attributes'].soil_temperature
+    const soilTemperature = mostRecentEnvDatum['attributes'].soil_temperature
     const weatherIcon = getWeatherIcon(currentWeather.icon)
     const line = {
       labels: ['Sun', 'Mon', 'Tues', 'Weds', 'Thurs', 'Fri', 'Sat'],
@@ -31,11 +31,6 @@ export class index extends Component {
           data: [72, 82, 95, 82, 88, 89, 94],
         }],
     };
-    const bar1 = {
-      labels: ['0', 'Today', '100'],
-        data: [0, soilMoisture, 100]
-    };
-    console.log(soilMoisture)
     return (
       <View style={styles.container}>
         <Header style={styles.header}/>
@@ -53,12 +48,12 @@ export class index extends Component {
                       {currentWeather.precipProbability}%
                   </Text>
               </Text>
-              <Text>Humidity: 
+              <Text style={styles.label}>Humidity: 
                 <Text style={styles.bold}>
                   {Math.round(currentWeather.humidity * 100)}%
                 </Text>
                 </Text>
-              <Text>Wind: 
+              <Text style={styles.label}>Wind: 
                 <Text style={styles.bold}>
                   {Math.round(currentWeather.windSpeed)} mph
                 </Text>
@@ -96,33 +91,18 @@ export class index extends Component {
               }}
             />
           </View>
-          <View>
-            <Text>Soil Moisture:</Text>
-            <ProgressChart 
-              data={bar1}
-              width={Dimensions.get('window').width * .5}
-              height={220}
-              chartConfig={{
-                backgroundColor: '#73A686',
-                backgroundGradientFrom: '#73A686',
-                backgroundGradientTo: '#73A686',
-                decimalPlaces: 0,
-                color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
-                style: {
-                  borderRadius: 30,
-                }
-              }}
-              style={{
-                marginTop: 0,
-                marginVertical: 8,
-              }}
-            />
-          </View>
-          <View>
+          <View style={styles.currentWidgets}>
+          <View style={styles.currentSoilStatContainer}>
             <Text>
-              Soil Temperature:
+              Soil Moisture: <Text style={styles.bold}>{Math.round(soilMoisture)}%</Text>
             </Text>
           </View>
+          <View style={styles.currentSoilStatContainer}>
+            <Text>
+              Soil Temperature: <Text style={styles.bold}>{Math.round(soilTemperature)}°F</Text>
+            </Text>
+          </View>
+        </View>
       </View>
     )
   }

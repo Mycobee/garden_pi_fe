@@ -21,10 +21,6 @@ export default StyleSheet.create({
     borderRadius: 30,
     borderWidth: 2,
   },
-  currentIcon: {
-    height: 100,
-    width: 100,
-  },
   currentWeatherContainer: {
     alignItems: 'center',
     alignItems: 'center',
@@ -35,11 +31,12 @@ export default StyleSheet.create({
     width: Dimensions.get('window').width * .90,
   },
   currentWeatherTemp: {
-    fontSize: 30,
+    fontSize: 35,
     fontWeight: 'bold'
   },
   label: {
-    fontSize: 13
+    fontSize: 13,
+    marginTop: 5,
   },
   bold: {
     fontSize: 15,
@@ -49,15 +46,23 @@ export default StyleSheet.create({
     height: 25,
     marginTop: 25,
     padding: 2,
-    backgroundColor: '#d5fdd5',
     alignItems: 'center',
     width: Dimensions.get('window').width * .55,
-    marginLeft: 88,
+    marginLeft: 88
+  },
+  currentWidgets: {
+    flexDirection: 'row'
+  },
+  currentSoilStatContainer: {
+    alignItems: 'center',
+    alignItems: 'center',
+    backgroundColor: '#d5fdd5',
     borderColor: '#A14550',
-    borderTopWidth: 2,
-    borderLeftWidth: 2,
-    borderRightWidth: 2,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20
+    borderRadius: 30,
+    borderWidth: 2,
+    justifyContent: 'space-between',
+    margin: 3,
+    padding: 10,
+    width: 200
   }
 })
