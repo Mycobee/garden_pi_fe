@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Image, Text, TouchableOpacity, Button, Dimensions } from 'react-native';
-import { Header, WeatherBox } from '../../components';
+import { Header } from '../../components';
 import { getWeatherIcon } from '../../utilities';
 import { LineChart } from 'react-native-chart-kit';
 import ProgressCircle from 'react-native-progress-circle';

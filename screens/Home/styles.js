@@ -63,6 +63,6 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     margin: 3,
     padding: 10,
-    width: 200
+    width: 170
   }
 })
