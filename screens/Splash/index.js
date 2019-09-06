@@ -15,6 +15,7 @@ export default class Splash extends Component {
     this.getWeather()
     this.getGarden()
     this.getEnv()
+
   };
   getWeather = async () => {
     await fetchWeather() 
@@ -28,11 +29,13 @@ export default class Splash extends Component {
   getEnv = async () => {
     await fetchGardenEnv()
     .then(envData => this.setState({env: envData}))
+
   };
 
   onEnterPress = () => {
     this.props.navigation.navigate('Home', {
-      foreCast: this.state.foreCast
+      foreCast: this.state.foreCast,
+      env: this.state.env
     })
   };
 
