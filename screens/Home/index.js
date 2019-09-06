@@ -42,7 +42,7 @@ export class index extends Component {
               </Text>
               <Text>Humidity: 
                 <Text style={styles.bold}>
-                  {currentWeather.humidity * 100}%
+                  {Math.round(currentWeather.humidity * 100)}%
                 </Text>
                 </Text>
               <Text>Wind: 
@@ -67,24 +67,24 @@ export class index extends Component {
               withInnerLines={false}
               yAxisLabel={'% '}
               chartConfig={{
-                backgroundColor: '#d5fdd5',
-                backgroundGradientFrom: '#d5fdd5',
-                backgroundGradientTo: '#d5fdd5',
+                backgroundColor: '#73A686',
+                backgroundGradientFrom: '#73A686',
+                backgroundGradientTo: '#73A686',
                 decimalPlaces: 0,
                 color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
                 style: {
-                  borderRadius: 16,
+                  borderRadius: 30,
                 }
               }}
               bezier
               style={{
                 marginTop: 0,
                 marginVertical: 8,
-                borderRadius: 30,
-                borderWidth: 2,
-                borderColor: '#A14550',
-                color: '#fff',
-                fontSize: 20
+                // borderRadius: 30,
+                // borderWidth: 2,
+                // borderColor: '#A14550',
+                // color: '#fff',
+                // fontSize: 25
               }}
             />
           </View>
