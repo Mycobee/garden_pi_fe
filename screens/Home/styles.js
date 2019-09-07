@@ -1,12 +1,20 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
 export default StyleSheet.create({
-  container: {
+  screenContainer: {
     alignItems: 'center',
-    backgroundColor: '#73A686',
     height: Dimensions.get('window').height,
     paddingTop: 50,
     width: Dimensions.get('window').width,
+  },
+  infoContainer: {
+    alignItems: 'center',
+    backgroundColor: 'rgba(115, 166, 134, .7)',
+    padding: 10,
+    width: Dimensions.get('window').width * .9,
+    borderColor: '#A14550',
+    borderRadius: 30,
+    borderWidth: 2,
   },
   header: {
     paddingTop: 200
@@ -28,7 +36,7 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     marginTop: 10,
     padding: 20,
-    width: Dimensions.get('window').width * .90,
+    width: Dimensions.get('window').width * .85,
   },
   currentWeatherTemp: {
     fontSize: 35,
