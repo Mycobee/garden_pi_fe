@@ -7,17 +7,29 @@ import ProgressCircle from 'react-native-progress-circle';
 import styles from './styles';
 
 export class index extends Component {
-  componentDidMount() {
-    const { navigation } = this.props;
-    const env = navigation.getParam('env')
+  constructor() {
+    super()
+    this.state = {
+      env: {},
+      currentWeather: {}
+    }
   }
-  onPress = () => {
+  async componentDidMount() {
     const { navigation } = this.props;
-    const currentWeather = navigation.getParam('foreCast')
+    const forecast = await navigation.getParam('foreCast')
+    const env = await navigation.getParam('env')
+    this.setState({
+      env: env,
+      currentWeather: forecast.currently
+    })
+  };
+
+  onPress = () => {
     this.props.navigation.navigate('Data', {
       foreCast: currentWeather
     })
   };
+  
   render() {
     const { navigation } = this.props;
     const currentWeather = navigation.getParam('foreCast').currently
@@ -85,14 +97,10 @@ export class index extends Component {
               withInnerLines={false}
               yAxisLabel={'% '}
               chartConfig={{
-                backgroundColor: '#73A686',
-                backgroundGradientFrom: '#73A686',
-                backgroundGradientTo: '#73A686',
-                decimalPlaces: 0,
-                color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
-                style: {
-                  borderRadius: 30,
-                }
+                backgroundGradientFrom: '#1E2923',
+                backgroundGradientTo: '#08130D',
+                color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+                strokeWidth: 2, // optional, default 3
               }}
               bezier
               style={{
