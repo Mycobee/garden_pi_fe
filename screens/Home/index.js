@@ -11,7 +11,7 @@ export class index extends Component {
     super()
     this.state = {
       env: {},
-      currentWeather: {}
+      forecast: {}
     }
   }
   async componentDidMount() {
@@ -20,16 +20,16 @@ export class index extends Component {
     const env = await navigation.getParam('env')
     this.setState({
       env: env,
-      currentWeather: forecast.currently
+      forecast: forecast
     })
   };
 
   onPress = () => {
     this.props.navigation.navigate('Data', {
-      foreCast: currentWeather
+      forecast: this.state.forecast['daily'].data
     })
   };
-  
+
   render() {
     const { navigation } = this.props;
     const currentWeather = navigation.getParam('foreCast').currently
