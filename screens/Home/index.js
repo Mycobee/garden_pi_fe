@@ -26,9 +26,9 @@ export class index extends Component {
     const soilData = mostRecentEnvDatum['attributes']
     const weatherIcon = getWeatherIcon(currentWeather.icon)
     const line = {
-      labels: ['Sun', 'Mon', 'Tues', 'Weds', 'Thurs', 'Fri', 'Sat'],
+      labels: ['One', 'Two', 'Three', 'Four', 'Five', 'Six'],
       datasets: [{
-          data: [72, 82, 95, 82, 88, 89, 94],
+          data: [72, 82, 95, 82, 88, 89],
         }],
     };
     return (
@@ -66,7 +66,7 @@ export class index extends Component {
           </View>
           <View>
             <View style={styles.graphLabel}>
-            <Text>Previous Week Soil Moisture</Text>
+            <Text>Soil Moisture (Last 6 Hours)</Text>
             </View>
             <LineChart 
               data={line}
