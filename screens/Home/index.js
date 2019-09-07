@@ -24,6 +24,16 @@ export class index extends Component {
     const envData = navigation.getParam('env').data
     const mostRecentEnvDatum = envData[envData.length - 1];
     const soilData = mostRecentEnvDatum['attributes']
+    const date = new Date(soilData.created_at)
+    const hourRecorded = date.getHours();
+    const minuteRecorded = date.getMinutes().toString();
+    const formatMinute = () => {
+      return minuteRecorded.length == 1 
+        ? `0${date.getMinutes()}` 
+        : `${date.getMinutes()}`
+    }
+      
+    const timeRecorded = `${hourRecorded}:${formatMinute()}`;
     const weatherIcon = getWeatherIcon(currentWeather.icon)
     const line = {
       labels: ['One', 'Two', 'Three', 'Four', 'Five', 'Six'],
@@ -119,7 +129,7 @@ export class index extends Component {
             </ProgressCircle>
           </View>
         </View>
-            <Text>Recorded at: {soilData.created_at}</Text>
+            <Text>Time Recorded: {timeRecorded}</Text>
       </View>
     )
   }
