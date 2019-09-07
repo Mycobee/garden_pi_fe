@@ -21,6 +21,12 @@ export default StyleSheet.create({
     paddingTop: 5,
     width: Dimensions.get('window').width 
   },
+  moistureGraphs: {
+    height: 200,
+    display: 'flex',
+    flexDirection: 'row',
+    width: Dimensions.get('window').width 
+  },
   graphLabel: {
     height: 25,
     marginTop: 25,
