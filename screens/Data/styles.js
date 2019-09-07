@@ -20,5 +20,13 @@ export default StyleSheet.create({
     flexDirection: 'row',
     paddingTop: 5,
     width: Dimensions.get('window').width 
+  },
+  graphLabel: {
+    height: 25,
+    marginTop: 25,
+    padding: 2,
+    alignItems: 'center',
+    width: Dimensions.get('window').width * .55,
+    marginLeft: 88
   }
 })

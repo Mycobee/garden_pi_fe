@@ -66,7 +66,7 @@ export class index extends Component {
           </View>
           <View>
             <View style={styles.graphLabel}>
-            <Text>Previous Week Soil Moisture</Text>
+            <Text>Soil Moisture (Last 6 Hours)</Text>
             </View>
             <LineChart 
               data={line}
