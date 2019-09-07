@@ -61,7 +61,7 @@ export class Data extends Component {
         </View>
         <ScrollView style={styles.moistureGraphs}
           horizontal 
-          showsHorizontalScrollIndicator={false} 
+          showsHorizontalScrollIndicator={false} d
           scrollEventThrottle={10}
         >
         <View>
