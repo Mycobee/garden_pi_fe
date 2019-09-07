@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Header, WeatherBox } from '../../components';
-import { View, ScrollView } from 'react-native';
+import { View, ScrollView, Text, Dimensions } from 'react-native';
 import { getWeatherIcon } from '../../utilities';
+import { LineChart } from 'react-native-chart-kit';
 import styles from './styles';
 
 export class Data extends Component {
@@ -21,6 +22,12 @@ export class Data extends Component {
         key={i} 
       />
     });
+    const moistureLine = {
+      labels: ['Sun', 'Mon', 'Tues', 'Weds', 'Thurs', 'Fri', 'Sat'],
+      datasets: [{
+        data: [72, 82, 95, 82, 88, 89, 94]
+      }]
+    }
     return (
       <View style={styles.container}>
         <Header />
@@ -34,6 +41,33 @@ export class Data extends Component {
             {forecastBoxes}
           </ScrollView>
         </View>
+        <View>
+        <View style={styles.graphLabel}>
+        <Text>Previous Week Soil Moisture</Text>
+        </View>
+        <LineChart 
+          data={moistureLine}
+          width={Dimensions.get('window').width * .95}
+          height={220}
+          withInnerLines={false}
+          yAxisLabel={'% '}
+          chartConfig={{
+            backgroundColor: '#73A686',
+            backgroundGradientFrom: '#73A686',
+            backgroundGradientTo: '#73A686',
+            decimalPlaces: 0,
+            color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+            style: {
+              borderRadius: 30,
+            }
+          }}
+          bezier
+          style={{
+            marginTop: 0,
+            marginVertical: 8,
+          }}
+        />
+      </View>
       </View>
     )
   }
