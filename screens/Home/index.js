@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Image, Text, TouchableOpacity, Button, Dimensions, ImageBackground } from 'react-native';
-import { Header } from '../../components';
+import { Header, CurrentWeather } from '../../components';
 import { getWeatherIcon } from '../../utilities';
 import { LineChart } from 'react-native-chart-kit';
 import ProgressCircle from 'react-native-progress-circle';
@@ -31,6 +31,7 @@ export class index extends Component {
   };
 
   render() {
+    console.log(this.state.forecast.currently)
     const { navigation } = this.props;
     const currentWeather = navigation.getParam('foreCast').currently
     const envData = navigation.getParam('env').data
@@ -73,31 +74,13 @@ export class index extends Component {
           <View style={styles.infoContainer}>
           <Header style={styles.header}/>
               <View style={styles.forecastContainer}>
-                <View style={styles.currentWeatherContainer}>
-                  <View>
-                    {weatherIcon}
-                  </View>
-                  <View>
-                    <Text style={styles.currentWeatherTemp}> {Math.round(currentWeather.temperature)}°F</Text>
-                  </View>
-                  <View>
-                    <Text style={styles.label}>Chance of Rain: 
-                        <Text style={styles.bold}>
-                            {currentWeather.precipProbability}%
-                        </Text>
-                    </Text>
-                    <Text style={styles.label}>Humidity: 
-                      <Text style={styles.bold}>
-                        {Math.round(currentWeather.humidity * 100)}%
-                      </Text>
-                      </Text>
-                    <Text style={styles.label}>Wind: 
-                      <Text style={styles.bold}>
-                        {Math.round(currentWeather.windSpeed)} mph
-                      </Text>
-                    </Text>
-                  </View>
-                </View>
+                <CurrentWeather 
+                  weatherIcon={weatherIcon} 
+                  temperature={currentWeather.temperature} 
+                  precipitaiton={currentWeather.precipProbability} 
+                  humidity={currentWeather.humidity} 
+                  wind={currentWeather.windSpeed}
+                />
                 <TouchableOpacity onPress={this.onPress}>
                   <Button title={'View 7-day forecast'} onPress={this.onPress} />
                 </TouchableOpacity>

@@ -1,2 +1,3 @@
 export * from './Header';
-export * from './WeatherBox';
+export * from './WeatherBox/WeatherBox';
+export * from './CurrentWeather';

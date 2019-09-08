@@ -30,19 +30,6 @@ export default StyleSheet.create({
     borderRadius: 30,
     borderWidth: 2,
   },
-  currentWeatherContainer: {
-    alignItems: 'center',
-    alignItems: 'center',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 10,
-    padding: 20,
-    width: Dimensions.get('window').width * .85,
-  },
-  currentWeatherTemp: {
-    fontSize: 35,
-    fontWeight: 'bold'
-  },
   label: {
     fontSize: 13,
     marginTop: 5,
