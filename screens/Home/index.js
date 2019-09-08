@@ -11,16 +11,9 @@ export class index extends Component {
     super()
     this.state = {
       env: {},
-      forecast: {},
-      backgroundImage: null,
+      forecast: {}
     }
   };
-  async componentWillMount() {
-    this.setState({
-      backgroundImage: require('../../assets/images/lettuce.jpg')
-    })
-    console.log(this.state.backgroundImage)
-  }
   async componentDidMount() {
     const { navigation } = this.props;
     const forecast = await navigation.getParam('foreCast')
@@ -37,14 +30,7 @@ export class index extends Component {
     })
   };
 
-  toggleBackgroundLoaded = () => {
-    this.setState({
-      backgroundLoaded: !this.state.backgroundLoaded
-    })
-  }
-
   render() {
-    console.log(this.state.backgroundLoaded)
     const { navigation } = this.props;
     const currentWeather = navigation.getParam('foreCast').currently
     const envData = navigation.getParam('env').data
@@ -79,8 +65,6 @@ export class index extends Component {
     )
     return (
       <View>
-        {!this.state.backgroundImage && loadingScreen}
-        {this.state.backgroundImage &&
           <ImageBackground
           source={require('../../assets/images/lettuce.jpg')}
           style={styles.screenContainer}
@@ -175,7 +159,7 @@ export class index extends Component {
                 </View>
               <Text>Time Recorded: {timeRecorded}</Text>
             </View>
-        </ImageBackground>}
+        </ImageBackground>
       </View>
     )
   }
