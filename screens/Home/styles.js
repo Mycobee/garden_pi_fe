@@ -9,8 +9,9 @@ export default StyleSheet.create({
   },
   infoContainer: {
     alignItems: 'center',
-    backgroundColor: 'rgba(115, 166, 134, .7)',
+    backgroundColor: 'rgba(115, 166, 134, .9)',
     padding: 10,
+    margin: 5,
     width: Dimensions.get('window').width * .9,
     borderColor: '#A14550',
     borderRadius: 30,

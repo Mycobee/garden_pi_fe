@@ -91,58 +91,62 @@ export class index extends Component {
               </TouchableOpacity>
               </View>
             </View>
-            <View>
-              <View style={styles.graphLabel}>
-              <Text>Soil Moisture (Last 6 Hours)</Text>
+            <View style={styles.infoContainer}>
+              <View>
+                <View style={styles.graphLabel}>
+                <Text>Soil Moisture (Last 6 Hours)</Text>
+                </View>
+                <LineChart 
+                  data={line}
+                  width={Dimensions.get('window').width * .85}
+                  height={220}
+                  withInnerLines={false}
+                  yAxisLabel={'% '}
+                  chartConfig={{
+                    backgroundGradientFrom: '#1E2923',
+                    backgroundGradientTo: '#08130D',
+                    color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+                    strokeWidth: 2, // optional, default 3
+                  }}
+                  bezier
+                  style={{
+                    marginTop: 0,
+                    marginVertical: 8,
+                  }}
+                />
               </View>
-              <LineChart 
-                data={line}
-                width={Dimensions.get('window').width * .85}
-                height={220}
-                withInnerLines={false}
-                yAxisLabel={'% '}
-                chartConfig={{
-                  backgroundGradientFrom: '#1E2923',
-                  backgroundGradientTo: '#08130D',
-                  color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
-                  strokeWidth: 2, // optional, default 3
-                }}
-                bezier
-                style={{
-                  marginTop: 0,
-                  marginVertical: 8,
-                }}
-              />
             </View>
-            <View style={styles.currentWidgets}>
-            <View style={styles.currentSoilStatContainer}>
-            <Text>Soil Moisture:</Text>
-              <ProgressCircle
-                percent={soilData.soil_moisture}
-                radius={50}
-                borderWidth={8}
-                color="#228b22"
-                shadowColor="#000"
-                bgColor="#fff"
-            >
-                <Text>{soilData.soil_moisture}%</Text>
-              </ProgressCircle>
-            </View>
-            <View style={styles.currentSoilStatContainer}>
-            <Text>Soil Temperature:</Text>
-              <ProgressCircle
-                percent={soilData.soil_temperature}
-                radius={50}
-                borderWidth={8}
-                color="#228b22"
-                shadowColor="#000"
-                bgColor="#fff"
-            >
-                <Text>{soilData.soil_temperature}°F</Text>
-              </ProgressCircle>
-            </View>
-          </View>
+            <View style={styles.infoContainer}>
+              <View style={{ flexDirection: 'row' }}>
+                <View style={styles.currentSoilStatContainer}>
+                <Text>Soil Moisture:</Text>
+                <ProgressCircle
+                  percent={soilData.soil_moisture}
+                  radius={50}
+                  borderWidth={8}
+                  color="#228b22"
+                  shadowColor="#000"
+                  bgColor="#fff"
+              >
+                  <Text>{soilData.soil_moisture}%</Text>
+                </ProgressCircle>
+              </View>
+              <View style={styles.currentSoilStatContainer}>
+              <Text>Soil Temperature:</Text>
+                <ProgressCircle
+                  percent={soilData.soil_temperature}
+                  radius={50}
+                  borderWidth={8}
+                  color="#228b22"
+                  shadowColor="#000"
+                  bgColor="#fff"
+                  >
+                  <Text>{soilData.soil_temperature}°F</Text>
+                </ProgressCircle>
+                </View>
+              </View>
             <Text>Time Recorded: {timeRecorded}</Text>
+          </View>
       </ImageBackground>
     )
   }
