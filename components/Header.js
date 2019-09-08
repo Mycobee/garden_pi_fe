@@ -10,7 +10,7 @@ const Header = () => (
     <Text style={[styles.header, { color: "#187F03"}]}>D</Text>
     <Text style={[styles.header, { color: "#3998DB"}]}>E</Text>
     <Text style={[styles.header, { color: "#4b0082"}]}>N</Text>
-    <Text style={styles.header}>Pi</Text>
+    <Text style={[styles.header, { color: '#7f00ff' }]}>Pi</Text>
   </View>
 );
 
