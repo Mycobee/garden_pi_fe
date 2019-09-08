@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flexDirection": "row",
+      "justifyContent": "space-between",
+      "marginTop": 10,
+      "padding": 20,
+      "width": 637.5,
+    }
+  }
+>
+  <View />
+  <View>
+    <Text
+      style={
+        Object {
+          "fontSize": 35,
+          "fontWeight": "bold",
+        }
+      }
+    >
+       
+      NaN
+      °F
+    </Text>
+  </View>
+  <View>
+    <Text
+      style={
+        Object {
+          "fontSize": 13,
+          "marginTop": 5,
+        }
+      }
+    >
+      Chance of Rain:
+      <Text
+        style={
+          Object {
+            "fontSize": 15,
+            "fontWeight": "bold",
+          }
+        }
+      >
+        %
+      </Text>
+    </Text>
+    <Text
+      style={
+        Object {
+          "fontSize": 13,
+          "marginTop": 5,
+        }
+      }
+    >
+      Humidity:
+      <Text
+        style={
+          Object {
+            "fontSize": 15,
+            "fontWeight": "bold",
+          }
+        }
+      >
+        NaN
+        %
+      </Text>
+    </Text>
+    <Text
+      style={
+        Object {
+          "fontSize": 13,
+          "marginTop": 5,
+        }
+      }
+    >
+      Wind:
+      <Text
+        style={
+          Object {
+            "fontSize": 15,
+            "fontWeight": "bold",
+          }
+        }
+      >
+        NaN
+         mph
+      </Text>
+    </Text>
+  </View>
+</View>
+`;
