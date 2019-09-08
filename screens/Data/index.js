@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { Header, WeatherBox } from '../../components';
-import { View, ScrollView, Text, Dimensions } from 'react-native';
+import { 
+  View, 
+  ScrollView, 
+  Text, 
+  Dimensions, 
+  TouchableOpacity, 
+  Image } from 'react-native';
 import { getWeatherIcon } from '../../utilities';
 import { LineChart } from 'react-native-chart-kit';
 import styles from './styles';
@@ -20,6 +26,10 @@ export class Data extends Component {
       forecast: forecast
     })
   };
+
+  onBackPress = () => {
+    this.props.navigation.navigate('Home');
+  }
 
   render() {
     const forecastBoxes = this.state.forecast.map((datum, i) => {
@@ -61,7 +71,15 @@ export class Data extends Component {
     }
     return (
       <View style={styles.container}>
-      <Header />
+        <View style={styles.headerContainer}>
+          <TouchableOpacity onPress={this.onBackPress}>
+            <Image  
+              source={require('../../assets/images/back.png')}
+              style={styles.backBtn}
+            />
+          </TouchableOpacity>
+          <Header style={styles.header} fontsize={45}/>
+        </View>
       <View style={styles.carouselScroll}>
         <ScrollView 
           style={styles.forecastContainer}
