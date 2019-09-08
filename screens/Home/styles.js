@@ -55,5 +55,17 @@ export default StyleSheet.create({
   },
   currentWidgets: {
     flexDirection: 'row'
+  },
+  waterGardenBtn: {
+    alignItems: 'center',
+    backgroundColor: '#FAF0E6',
+    borderColor: '#A14550',
+    borderRadius: 10,
+    borderWidth: 2,
+    height: 50,
+    justifyContent: 'center',
+    marginTop: 15,
+    overflow: 'hidden',
+    width: 200
   }
 })

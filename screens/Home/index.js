@@ -68,61 +68,67 @@ export class index extends Component {
                 humidity={this.state.currentWeather.humidity} 
                 wind={this.state.currentWeather.windSpeed}
               />
-                <TouchableOpacity onPress={this.onPress}>
-                  <Button title={'View 7-day forecast'} onPress={this.onPress} />
-                </TouchableOpacity>
-              </View>
+              <TouchableOpacity onPress={this.onPress}>
+                <Button title={'View 7-day forecast'} onPress={this.onPress} />
+              </TouchableOpacity>
             </View>
-            <View style={styles.infoContainer}>
-              <View>
-                <View style={styles.graphLabel}>
-                <Text style={styles.text}>Soil Moisture (Last 6 Hours)</Text>
-                </View>
-                <LineChart 
-                  data={line}
-                  width={Dimensions.get('window').width * .85}
-                  height={160}
-                  withInnerLines={false}
-                  yAxisLabel={'% '}
-                  chartConfig={{
-                    backgroundGradientFrom: 'rgba(115, 166, 134, 1)',
-                    backgroundGradientTo: 'rgba(115, 166, 134, 1)',
-                    color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
-                    strokeWidth: 2, // optional, default 3
-                  }}
-                  bezier
-                  style={{
-                    marginTop: 0,
-                    marginVertical: 8,
-                  }}
-                />
-              </View>
-            </View>
-            <View style={styles.infoContainer}>
-              <View style={{ flexDirection: 'row' }}>
-                {
-                  this.state.currentSoilData.soil_moisture &&
-                  <DataCircle 
-                    percent={this.state.currentSoilData.soil_moisture}
-                    title={'Soil Moisture:'}
-                    label={`${this.state.currentSoilData.soil_moisture}%`}
-                  />
-                }
-                {
-                  this.state.currentSoilData.soil_temperature &&
-                  <DataCircle 
-                    percent={this.state.currentSoilData.soil_temperature}
-                    title={'Soil Temperature:'}
-                    label={`${this.state.currentSoilData.soil_temperature}°F`}
-                  />
-                }
-              </View>
-            <Text>Time Recorded: {recordingTime}</Text>
           </View>
-        </ImageBackground>
-      </View>
-    )
-  }
+          <View style={styles.infoContainer}>
+            <View>
+              <View style={styles.graphLabel}>
+              <Text style={styles.text}>Soil Moisture (Last 6 Hours)</Text>
+              </View>
+              <LineChart 
+                data={line}
+                width={Dimensions.get('window').width * .85}
+                height={160}
+                withInnerLines={false}
+                yAxisLabel={'% '}
+                chartConfig={{
+                  backgroundGradientFrom: 'rgba(115, 166, 134, 1)',
+                  backgroundGradientTo: 'rgba(115, 166, 134, 1)',
+                  color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+                  strokeWidth: 2, // optional, default 3
+                }}
+                bezier
+                style={{
+                  marginTop: 0,
+                  marginVertical: 8,
+                }}
+              />
+            </View>
+          </View>
+          <View style={styles.infoContainer}>
+            <View style={{ flexDirection: 'row' }}>
+              {
+                this.state.currentSoilData.soil_moisture &&
+                <DataCircle 
+                  percent={this.state.currentSoilData.soil_moisture}
+                  title={'Soil Moisture:'}
+                  label={`${this.state.currentSoilData.soil_moisture}%`}
+                />
+              }
+              {
+                this.state.currentSoilData.soil_temperature &&
+                <DataCircle 
+                  percent={this.state.currentSoilData.soil_temperature}
+                  title={'Soil Temperature:'}
+                  label={`${this.state.currentSoilData.soil_temperature}°F`}
+                />
+              }
+            </View>
+          <Text>Time Recorded: {recordingTime}</Text>
+        </View>
+        <TouchableOpacity 
+          style={styles.waterGardenBtn}
+        >
+          <Text>
+            Water your Garden
+          </Text>
+        </TouchableOpacity>
+      </ImageBackground>
+    </View>
+  )}
 };
 
 export default index
