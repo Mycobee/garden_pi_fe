@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import { View, Image, Text, TouchableOpacity, Button, Dimensions, ImageBackground } from 'react-native';
+import { 
+  View, 
+  Text, 
+  TouchableOpacity, 
+  Button, 
+  Dimensions, 
+  ImageBackground } from 'react-native';
 import { Header, CurrentWeather, DataCircle } from '../../components';
 import { getWeatherIcon } from '../../utilities';
 import { LineChart } from 'react-native-chart-kit';
@@ -10,33 +16,34 @@ export class index extends Component {
     super()
     this.state = {
       env: {},
-      forecast: {}
+      currentWeather: {},
+      forecast: {},
+      currentSoilData: {}
     }
   };
+
   async componentDidMount() {
     const { navigation } = this.props;
     const forecast = await navigation.getParam('foreCast')
-    const env = await navigation.getParam('env')
+    const env = await navigation.getParam('env').data
+    const mostRecentEnvData = env[env.length - 1];
+    const currentSoilData = mostRecentEnvData['attributes'];
     this.setState({
       env: env,
-      forecast: forecast
+      forecast: forecast['daily'].data,
+      currentWeather: forecast.currently,
+      currentSoilData: currentSoilData
     })
   };
 
   onPress = () => {
     this.props.navigation.navigate('Data', {
-      forecast: this.state.forecast['daily'].data
+      forecast: this.state.forecast
     })
   };
 
   render() {
-    console.log(this.state.forecast.currently)
-    const { navigation } = this.props;
-    const currentWeather = navigation.getParam('foreCast').currently
-    const envData = navigation.getParam('env').data
-    const mostRecentEnvDatum = envData[envData.length - 1];
-    const soilData = mostRecentEnvDatum['attributes']
-    const date = new Date(soilData.created_at)
+    const date = new Date(this.state.currentSoilData.created_at)
     const hourRecorded = date.getHours();
     const minuteRecorded = date.getMinutes().toString();
     const formatMinute = () => {
@@ -46,7 +53,7 @@ export class index extends Component {
     }
       
     const timeRecorded = `${hourRecorded}:${formatMinute()}`;
-    const weatherIcon = getWeatherIcon(currentWeather.icon)
+    const weatherIcon = getWeatherIcon(this.state.currentWeather.icon)
     const line = {
       labels: ['One', 'Two', 'Three', 'Four', 'Five', 'Six'],
       datasets: [{
@@ -72,59 +79,59 @@ export class index extends Component {
           >
           <View style={styles.infoContainer}>
           <Header style={styles.header}/>
-              <View style={styles.forecastContainer}>
-                <CurrentWeather 
-                  weatherIcon={weatherIcon} 
-                  temperature={currentWeather.temperature} 
-                  precipitaiton={currentWeather.precipProbability} 
-                  humidity={currentWeather.humidity} 
-                  wind={currentWeather.windSpeed}
-                />
+            <View style={styles.forecastContainer}>
+              <CurrentWeather 
+                weatherIcon={weatherIcon} 
+                temperature={this.state.currentWeather.temperature} 
+                precipitaiton={this.state.currentWeather.precipProbability} 
+                humidity={this.state.currentWeather.humidity} 
+                wind={this.state.currentWeather.windSpeed}
+              />
                 <TouchableOpacity onPress={this.onPress}>
                   <Button title={'View 7-day forecast'} onPress={this.onPress} />
                 </TouchableOpacity>
-                </View>
               </View>
-              <View style={styles.infoContainer}>
-                <View>
-                  <View style={styles.graphLabel}>
-                  <Text>Soil Moisture (Last 6 Hours)</Text>
-                  </View>
-                  <LineChart 
-                    data={line}
-                    width={Dimensions.get('window').width * .85}
-                    height={220}
-                    withInnerLines={false}
-                    yAxisLabel={'% '}
-                    chartConfig={{
-                      backgroundGradientFrom: '#1E2923',
-                      backgroundGradientTo: '#08130D',
-                      color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
-                      strokeWidth: 2, // optional, default 3
-                    }}
-                    bezier
-                    style={{
-                      marginTop: 0,
-                      marginVertical: 8,
-                    }}
-                  />
-                </View>
-              </View>
-              <View style={styles.infoContainer}>
-                <View style={{ flexDirection: 'row' }}>
-                  <DataCircle 
-                    data={soilData.soil_moisture}
-                    title={'Soil Moisture:'}
-                    label={`${soilData.soil_moisture}%`}
-                  />
-                  <DataCircle 
-                    data={soilData.soil_temperature}
-                    title={'Soil Temperature:'}
-                    label={`${soilData.soil_temperature}°F`}
-                  />
-                </View>
-              <Text>Time Recorded: {timeRecorded}</Text>
             </View>
+            <View style={styles.infoContainer}>
+              <View>
+                <View style={styles.graphLabel}>
+                <Text>Soil Moisture (Last 6 Hours)</Text>
+                </View>
+                <LineChart 
+                  data={line}
+                  width={Dimensions.get('window').width * .85}
+                  height={220}
+                  withInnerLines={false}
+                  yAxisLabel={'% '}
+                  chartConfig={{
+                    backgroundGradientFrom: '#1E2923',
+                    backgroundGradientTo: '#08130D',
+                    color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+                    strokeWidth: 2, // optional, default 3
+                  }}
+                  bezier
+                  style={{
+                    marginTop: 0,
+                    marginVertical: 8,
+                  }}
+                />
+              </View>
+            </View>
+            <View style={styles.infoContainer}>
+              <View style={{ flexDirection: 'row' }}>
+                <DataCircle 
+                  data={this.state.currentSoilData.soil_moisture}
+                  title={'Soil Moisture:'}
+                  label={`${this.state.currentSoilData.soil_moisture}%`}
+                />
+                <DataCircle 
+                  data={this.state.currentSoilData.soil_temperature}
+                  title={'Soil Temperature:'}
+                  label={`${this.state.currentSoilData.soil_temperature}°F`}
+                />
+              </View>
+            <Text>Time Recorded: {timeRecorded}</Text>
+          </View>
         </ImageBackground>
       </View>
     )
