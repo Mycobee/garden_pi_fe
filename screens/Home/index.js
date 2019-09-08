@@ -7,7 +7,7 @@ import {
   Dimensions, 
   ImageBackground } from 'react-native';
 import { Header, CurrentWeather, DataCircle } from '../../components';
-import { getWeatherIcon } from '../../utilities';
+import { getWeatherIcon, getRecordingTime } from '../../utilities';
 import { LineChart } from 'react-native-chart-kit';
 import styles from './styles';
 
@@ -43,16 +43,7 @@ export class index extends Component {
   };
 
   render() {
-    const date = new Date(this.state.currentSoilData.created_at)
-    const hourRecorded = date.getHours();
-    const minuteRecorded = date.getMinutes().toString();
-    const formatMinute = () => {
-      return minuteRecorded.length == 1 
-        ? `0${date.getMinutes()}` 
-        : `${date.getMinutes()}`
-    }
-      
-    const timeRecorded = `${hourRecorded}:${formatMinute()}`;
+    const recordingTime = getRecordingTime(this.state.currentSoilData.created_at)
     const weatherIcon = getWeatherIcon(this.state.currentWeather.icon)
     const line = {
       labels: ['One', 'Two', 'Three', 'Four', 'Five', 'Six'],
@@ -60,16 +51,6 @@ export class index extends Component {
           data: [72, 82, 95, 82, 88, 89],
         }],
     };
-    const loadingScreen = (
-      <View style={{ 
-          alignItems: 'center', 
-          justifyContent: 'center',
-          height: Dimensions.get('window').height
-        }}
-      >
-        <Text style={{ margin: 'auto' }}>Aye</Text>
-      </View>
-    )
     return (
       <View>
           <ImageBackground
@@ -120,17 +101,17 @@ export class index extends Component {
             <View style={styles.infoContainer}>
               <View style={{ flexDirection: 'row' }}>
                 <DataCircle 
-                  data={this.state.currentSoilData.soil_moisture}
+                  percent={this.state.currentSoilData.soil_moisture}
                   title={'Soil Moisture:'}
                   label={`${this.state.currentSoilData.soil_moisture}%`}
                 />
                 <DataCircle 
-                  data={this.state.currentSoilData.soil_temperature}
+                  percent={this.state.currentSoilData.soil_temperature}
                   title={'Soil Temperature:'}
                   label={`${this.state.currentSoilData.soil_temperature}°F`}
                 />
               </View>
-            <Text>Time Recorded: {timeRecorded}</Text>
+            <Text>Time Recorded: {recordingTime}</Text>
           </View>
         </ImageBackground>
       </View>

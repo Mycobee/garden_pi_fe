@@ -3,12 +3,12 @@ import { View, Text } from 'react-native';
 import ProgressCircle from 'react-native-progress-circle';
 import { StyleSheet } from 'react-native';
 
-const DataCircle = ({ data, title, label }) => {
+const DataCircle = ({ percent, title, label }) => {
   return (
     <View style={styles.currentSoilStatContainer}>
       <Text>{title}</Text>
       <ProgressCircle
-        percent={data}
+        percent={percent}
         radius={50}
         borderWidth={8}
         color="#228b22"
