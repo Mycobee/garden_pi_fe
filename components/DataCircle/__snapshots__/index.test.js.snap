@@ -1,0 +1,151 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#d5fdd5",
+      "borderColor": "#A14550",
+      "borderRadius": 30,
+      "borderWidth": 2,
+      "justifyContent": "space-between",
+      "margin": 3,
+      "padding": 10,
+      "width": 170,
+    }
+  }
+>
+  <Text />
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "justifyContent": "center",
+        },
+        Object {
+          "backgroundColor": "#000",
+          "borderRadius": 50,
+          "height": 100,
+          "width": 100,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "left": 0,
+            "position": "absolute",
+            "top": 0,
+          },
+          Object {
+            "height": 100,
+            "width": 50,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "borderBottomRightRadius": 0,
+              "borderTopRightRadius": 0,
+              "left": 0,
+              "position": "absolute",
+              "top": 0,
+            },
+            Object {
+              "backgroundColor": "#228b22",
+              "borderRadius": 50,
+              "height": 100,
+              "overflow": "hidden",
+              "transform": Array [
+                Object {
+                  "translateX": 25,
+                },
+                Object {
+                  "rotate": "NaNdeg",
+                },
+                Object {
+                  "translateX": -25,
+                },
+              ],
+              "width": 50,
+            },
+          ]
+        }
+      />
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "left": 0,
+            "position": "absolute",
+            "top": 0,
+          },
+          Object {
+            "height": 100,
+            "width": 50,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "borderBottomRightRadius": 0,
+              "borderTopRightRadius": 0,
+              "left": 0,
+              "position": "absolute",
+              "top": 0,
+            },
+            Object {
+              "backgroundColor": "#000",
+              "borderRadius": 50,
+              "height": 100,
+              "overflow": "hidden",
+              "transform": Array [
+                Object {
+                  "translateX": 25,
+                },
+                Object {
+                  "rotate": "0deg",
+                },
+                Object {
+                  "translateX": -25,
+                },
+              ],
+              "width": 50,
+            },
+          ]
+        }
+      />
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "justifyContent": "center",
+            "overflow": "hidden",
+          },
+          Object {
+            "backgroundColor": "#fff",
+            "borderRadius": 42,
+            "height": 84,
+            "width": 84,
+          },
+        ]
+      }
+    >
+      <Text />
+    </View>
+  </View>
+</View>
+`;

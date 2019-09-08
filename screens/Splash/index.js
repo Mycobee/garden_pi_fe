@@ -15,7 +15,6 @@ export default class Splash extends Component {
     this.getWeather()
     this.getGarden()
     this.getEnv()
-
   };
   getWeather = async () => {
     await fetchWeather() 
