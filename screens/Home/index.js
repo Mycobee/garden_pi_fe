@@ -76,18 +76,18 @@ export class index extends Component {
             <View style={styles.infoContainer}>
               <View>
                 <View style={styles.graphLabel}>
-                <Text>Soil Moisture (Last 6 Hours)</Text>
+                <Text style={styles.text}>Soil Moisture (Last 6 Hours)</Text>
                 </View>
                 <LineChart 
                   data={line}
                   width={Dimensions.get('window').width * .85}
-                  height={220}
+                  height={160}
                   withInnerLines={false}
                   yAxisLabel={'% '}
                   chartConfig={{
-                    backgroundGradientFrom: '#1E2923',
-                    backgroundGradientTo: '#08130D',
-                    color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+                    backgroundGradientFrom: 'rgba(115, 166, 134, 1)',
+                    backgroundGradientTo: 'rgba(115, 166, 134, 1)',
+                    color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
                     strokeWidth: 2, // optional, default 3
                   }}
                   bezier

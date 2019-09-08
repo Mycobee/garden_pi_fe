@@ -37,6 +37,10 @@ export default StyleSheet.create({
     fontSize: 13,
     marginTop: 5,
   },
+  text: {
+    fontFamily: 'Helvetica',
+    fontWeight: 'bold',
+  },
   bold: {
     fontSize: 15,
     fontWeight: 'bold'

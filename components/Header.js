@@ -16,9 +16,10 @@ const Header = () => (
 
 const styles = StyleSheet.create({
   header: {
-    fontSize: 70,
+    fontSize: 55,
+    fontFamily: 'lemondrop',
     textShadowColor:'black',
-    textShadowOffset:{width: 3, height: 3},
+    textShadowOffset:{width: 2, height: 2},
     textShadowRadius: 5,
   }
 })
