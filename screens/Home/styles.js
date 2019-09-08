@@ -16,6 +16,9 @@ export default StyleSheet.create({
     borderColor: '#A14550',
     borderRadius: 30,
     borderWidth: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 2, height: 2 },
+    shadowOpacity: 1,
   },
   header: {
     paddingTop: 200

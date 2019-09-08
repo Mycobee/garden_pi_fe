@@ -100,16 +100,22 @@ export class index extends Component {
             </View>
             <View style={styles.infoContainer}>
               <View style={{ flexDirection: 'row' }}>
-                <DataCircle 
-                  percent={this.state.currentSoilData.soil_moisture}
-                  title={'Soil Moisture:'}
-                  label={`${this.state.currentSoilData.soil_moisture}%`}
-                />
-                <DataCircle 
-                  percent={this.state.currentSoilData.soil_temperature}
-                  title={'Soil Temperature:'}
-                  label={`${this.state.currentSoilData.soil_temperature}°F`}
-                />
+                {
+                  this.state.currentSoilData.soil_moisture &&
+                  <DataCircle 
+                    percent={this.state.currentSoilData.soil_moisture}
+                    title={'Soil Moisture:'}
+                    label={`${this.state.currentSoilData.soil_moisture}%`}
+                  />
+                }
+                {
+                  this.state.currentSoilData.soil_temperature &&
+                  <DataCircle 
+                    percent={this.state.currentSoilData.soil_temperature}
+                    title={'Soil Temperature:'}
+                    label={`${this.state.currentSoilData.soil_temperature}°F`}
+                  />
+                }
               </View>
             <Text>Time Recorded: {recordingTime}</Text>
           </View>
