@@ -5,7 +5,8 @@ import {
   TouchableOpacity, 
   Button, 
   Dimensions, 
-  ImageBackground } from 'react-native';
+  ImageBackground,
+  Image } from 'react-native';
 import { Header, CurrentWeather, DataCircle } from '../../components';
 import { getWeatherIcon, getRecordingTime } from '../../utilities';
 import { LineChart } from 'react-native-chart-kit';
@@ -42,6 +43,10 @@ export class index extends Component {
     })
   };
 
+  onBackPress = () => {
+    this.props.navigation.navigate('Splash')
+  }
+
   render() {
     const recordingTime = getRecordingTime(this.state.currentSoilData.created_at)
     const weatherIcon = getWeatherIcon(this.state.currentWeather.icon)
@@ -59,7 +64,15 @@ export class index extends Component {
           onLoad={this.toggleBackgroundLoaded}
           >
           <View style={styles.infoContainer}>
-          <Header style={styles.header}/>
+            <View style={styles.headerContainer}>
+              <TouchableOpacity onPress={this.onBackPress}>
+                <Image  
+                  source={require('../../assets/images/back.png')}
+                  style={styles.backBtn}
+                />
+              </TouchableOpacity>
+              <Header style={styles.header} fontsize={45}/>
+            </View>
             <View style={styles.forecastContainer}>
               <CurrentWeather 
                 weatherIcon={weatherIcon} 

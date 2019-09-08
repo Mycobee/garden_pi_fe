@@ -20,9 +20,19 @@ export default StyleSheet.create({
     shadowOffset: { width: 2, height: 2 },
     shadowOpacity: 1,
   },
+  headerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: Dimensions.get('window').width * .8,
+  },
   header: {
     paddingTop: 200
   },
+  backBtn: {
+    width: 35,
+    height: 35
+  },  
   carouselScroll: {
     height: 200
   },
