@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { View, Image, Text, TouchableOpacity, Button, Dimensions, ImageBackground } from 'react-native';
-import { Header, CurrentWeather } from '../../components';
+import { Header, CurrentWeather, DataCircle } from '../../components';
 import { getWeatherIcon } from '../../utilities';
 import { LineChart } from 'react-native-chart-kit';
-import ProgressCircle from 'react-native-progress-circle';
 import styles from './styles';
 
 export class index extends Component {
@@ -113,32 +112,16 @@ export class index extends Component {
               </View>
               <View style={styles.infoContainer}>
                 <View style={{ flexDirection: 'row' }}>
-                  <View style={styles.currentSoilStatContainer}>
-                  <Text>Soil Moisture:</Text>
-                  <ProgressCircle
-                    percent={soilData.soil_moisture}
-                    radius={50}
-                    borderWidth={8}
-                    color="#228b22"
-                    shadowColor="#000"
-                    bgColor="#fff"
-                >
-                    <Text>{soilData.soil_moisture}%</Text>
-                  </ProgressCircle>
-                </View>
-                <View style={styles.currentSoilStatContainer}>
-                <Text>Soil Temperature:</Text>
-                  <ProgressCircle
-                    percent={soilData.soil_temperature}
-                    radius={50}
-                    borderWidth={8}
-                    color="#228b22"
-                    shadowColor="#000"
-                    bgColor="#fff"
-                    >
-                    <Text>{soilData.soil_temperature}°F</Text>
-                  </ProgressCircle>
-                  </View>
+                  <DataCircle 
+                    data={soilData.soil_moisture}
+                    title={'Soil Moisture:'}
+                    label={`${soilData.soil_moisture}%`}
+                  />
+                  <DataCircle 
+                    data={soilData.soil_temperature}
+                    title={'Soil Temperature:'}
+                    label={`${soilData.soil_temperature}°F`}
+                  />
                 </View>
               <Text>Time Recorded: {timeRecorded}</Text>
             </View>
