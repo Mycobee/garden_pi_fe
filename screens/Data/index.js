@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Header, WeatherBox } from '../../components';
 import { 
+  Animated,
   View, 
   ScrollView, 
   Text, 
@@ -70,6 +71,7 @@ export class Data extends Component {
         data: [72, 82, 95, 82, 94]
       }]
     }
+
     return (
       <View>
       <ImageBackground
@@ -91,7 +93,6 @@ export class Data extends Component {
         <ScrollView 
           style={styles.forecastContainer}
           horizontal 
-          showsHorizontalScrollIndicator={false} 
           scrollEventThrottle={10} 
         >
           {forecastBoxes}
@@ -99,9 +100,10 @@ export class Data extends Component {
       </View>
       </View>
       <View style={styles.infoContainer}>
-      <ScrollView style={styles.moistureGraphs}
-        horizontal 
-        showsHorizontalScrollIndicator={false} d
+      <ScrollView 
+        style={styles.moistureGraphs}
+        horizontal
+        showsHorizontalScrollIndicator={true} 
         scrollEventThrottle={10}
       >
       <View>
@@ -110,7 +112,7 @@ export class Data extends Component {
       </View>
         <LineChart 
           data={weekMoistureLine}
-          width={Dimensions.get('window').width * .85}
+          width={Dimensions.get('window').width * .87}
           height={220}
           withInnerLines={false}
           yAxisLabel={'% '}
@@ -140,7 +142,7 @@ export class Data extends Component {
       </View>
         <LineChart 
           data={monthMoistureLine}
-          width={Dimensions.get('window').width * .85}
+          width={Dimensions.get('window').width * .87}
           height={220}
           withInnerLines={false}
           yAxisLabel={'°F '}
@@ -178,7 +180,7 @@ export class Data extends Component {
       </View>
         <LineChart 
           data={weekTempLine}
-          width={Dimensions.get('window').width * .85}
+          width={Dimensions.get('window').width * .87}
           height={220}
           withInnerLines={false}
           yAxisLabel={'% '}
@@ -208,7 +210,7 @@ export class Data extends Component {
       </View>
         <LineChart 
           data={monthTempLine}
-          width={Dimensions.get('window').width * .85}
+          width={Dimensions.get('window').width * .87}
           height={220}
           withInnerLines={false}
           yAxisLabel={'°F '}
