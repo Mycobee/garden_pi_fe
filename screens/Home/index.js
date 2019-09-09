@@ -130,7 +130,11 @@ export class index extends Component {
                 />
               }
             </View>
-          <Text>Time Recorded: {recordingTime}</Text>
+          <Text>Time Recorded:
+            <Text style={styles.bold}>
+              {recordingTime}
+            </Text>
+          </Text>
         </View>
         <TouchableOpacity 
           style={styles.waterGardenBtn}
