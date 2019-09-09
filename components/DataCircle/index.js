@@ -4,7 +4,6 @@ import ProgressCircle from 'react-native-progress-circle';
 import styles from './Style';
 
 const DataCircle = ({ percent, title, label }) => {
-  console.log(percent)
   return (
     <View style={styles.currentSoilStatContainer}>
       <Text>{title}</Text>

@@ -8,7 +8,8 @@ import {
   ImageBackground,
   Image } from 'react-native';
 import { Header, CurrentWeather, DataCircle } from '../../components';
-import { getWeatherIcon, getRecordingTime, triggerWaterJob } from '../../utilities';
+import { getWeatherIcon, getRecordingTime } from '../../utilities';
+import { triggerWaterJob } from '../../Api/ApiCalls';
 import { LineChart } from 'react-native-chart-kit';
 import styles from './styles';
 
@@ -47,8 +48,9 @@ export class index extends Component {
     this.props.navigation.navigate('Splash')
   };
 
-  onWaterPress = () => {
+  onWaterPress = async () => {
     triggerWaterJob()
+    .then(res => console.log(res))
   }
 
   render() {
@@ -142,6 +144,7 @@ export class index extends Component {
         </View>
         <TouchableOpacity 
           style={styles.waterGardenBtn}
+          onPress={this.onWaterPress}
         >
           <Text>
             Water your Garden
