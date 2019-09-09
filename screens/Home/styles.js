@@ -12,7 +12,7 @@ export default StyleSheet.create({
     backgroundColor: 'rgba(115, 166, 134, .7)',
     padding: 10,
     margin: 5,
-    width: Dimensions.get('window').width * .9,
+    width: Dimensions.get('window').width * .95,
     borderColor: '#A14550',
     borderRadius: 30,
     borderWidth: 2,

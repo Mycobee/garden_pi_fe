@@ -11,8 +11,8 @@ exports[`renders correctly 1`] = `
       "borderWidth": 2,
       "justifyContent": "space-between",
       "margin": 3,
-      "padding": 10,
-      "width": 200,
+      "padding": 12,
+      "width": 307.5,
     }
   }
 >
@@ -31,6 +31,7 @@ exports[`renders correctly 1`] = `
         "flexDirection": "row",
         "height": 80,
         "justifyContent": "center",
+        "marginLeft": 5,
         "width": 200,
       }
     }

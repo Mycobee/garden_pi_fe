@@ -1,15 +1,38 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
 export default StyleSheet.create({
-  container: {
+  screenContainer: {
     alignItems: 'center',
-    backgroundColor: '#73A686',
     height: Dimensions.get('window').height,
     paddingTop: 50,
-    width: Dimensions.get('window').width
+    width: Dimensions.get('window').width,
+  },
+  infoContainer: {
+    alignItems: 'center',
+    backgroundColor: 'rgba(115, 166, 134, .7)',
+    padding: 10,
+    margin: 5,
+    width: Dimensions.get('window').width * .95,
+    borderColor: '#A14550',
+    borderRadius: 30,
+    borderWidth: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 2, height: 2 },
+    shadowOpacity: 1,
+  },
+  headerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: Dimensions.get('window').width * .9,
   },
   header: {
     paddingTop: 200
+  },
+  text: {
+    fontFamily: 'Helvetica',
+    fontWeight: 'bold',
+    textAlign: 'center'
   },
   carouselScroll: {
     height: 150,
@@ -19,21 +42,12 @@ export default StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     paddingTop: 5,
-    width: Dimensions.get('window').width 
+    width: Dimensions.get('window').width * .85,
   },
   moistureGraphs: {
-    height: 200,
     display: 'flex',
     flexDirection: 'row',
-    width: Dimensions.get('window').width 
-  },
-  graphLabel: {
-    height: 25,
-    marginTop: 25,
-    padding: 2,
-    alignItems: 'center',
-    width: Dimensions.get('window').width * .55,
-    marginLeft: 88
+    width: Dimensions.get('window').width * .88,
   },
   headerContainer: {
     flexDirection: 'row',

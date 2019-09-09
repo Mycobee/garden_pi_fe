@@ -10,8 +10,8 @@ export default StyleSheet.create({
     borderWidth: 2,
     justifyContent: 'space-between',
     margin: 3,
-    padding: 10,
-    width: 200
+    padding: 12,
+    width: Dimensions.get('window').width * .41
   },
   summary: {
     width: 90,
@@ -20,6 +20,7 @@ export default StyleSheet.create({
   icon: {
     width: 200,
     height: 80,
+    marginLeft: 5,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center'

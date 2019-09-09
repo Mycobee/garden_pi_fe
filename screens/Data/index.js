@@ -6,7 +6,8 @@ import {
   Text, 
   Dimensions, 
   TouchableOpacity, 
-  Image } from 'react-native';
+  Image,
+  ImageBackground } from 'react-native';
 import { getWeatherIcon } from '../../utilities';
 import { LineChart } from 'react-native-chart-kit';
 import styles from './styles';
@@ -70,7 +71,13 @@ export class Data extends Component {
       }]
     }
     return (
-      <View style={styles.container}>
+      <View>
+      <ImageBackground
+        source={require('../../assets/images/pottedPlants.jpg')}
+        style={styles.screenContainer}
+        onLoad={this.toggleBackgroundLoaded}
+      >
+      <View style={styles.infoContainer}>
         <View style={styles.headerContainer}>
           <TouchableOpacity onPress={this.onBackPress}>
             <Image  
@@ -90,18 +97,20 @@ export class Data extends Component {
           {forecastBoxes}
         </ScrollView>
       </View>
+      </View>
+      <View style={styles.infoContainer}>
       <ScrollView style={styles.moistureGraphs}
         horizontal 
         showsHorizontalScrollIndicator={false} d
         scrollEventThrottle={10}
       >
       <View>
-      <View style={styles.graphLabel}>
-      <Text>Soil Moisture Weekly</Text>
+      <View>
+      <Text style={styles.text}>Soil Moisture Weekly</Text>
       </View>
         <LineChart 
           data={weekMoistureLine}
-          width={Dimensions.get('window').width * .95}
+          width={Dimensions.get('window').width * .85}
           height={220}
           withInnerLines={false}
           yAxisLabel={'% '}
@@ -119,23 +128,26 @@ export class Data extends Component {
           style={{
             marginTop: 0,
             marginVertical: 8,
+            borderColor: '#A14550',
+            borderRadius: 30,
+            borderWidth: 2,
           }}
         />
       </View>
       <View>
-      <View style={styles.graphLabel}>
-      <Text>Soil Moisture Monthly</Text>
+      <View>
+      <Text style={styles.text}>Soil Moisture Monthly</Text>
       </View>
         <LineChart 
           data={monthMoistureLine}
-          width={Dimensions.get('window').width * .95}
+          width={Dimensions.get('window').width * .85}
           height={220}
           withInnerLines={false}
           yAxisLabel={'°F '}
           chartConfig={{
-            backgroundColor: '#73A686',
-            backgroundGradientFrom: '#73A686',
-            backgroundGradientTo: '#73A686',
+            backgroundColor: '#d5fdd5',
+            backgroundGradientFrom: '#d5fdd5',
+            backgroundGradientTo: '#d5fdd5',
             decimalPlaces: 0,
             color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
             style: {
@@ -146,29 +158,34 @@ export class Data extends Component {
           style={{
             marginTop: 0,
             marginVertical: 8,
+            borderColor: '#A14550',
+            borderRadius: 30,
+            borderWidth: 2,
           }}
         />
       </View>
       </ScrollView>
+      </View>
+      <View style={styles.infoContainer}>
       <ScrollView style={styles.moistureGraphs}
         horizontal 
         showsHorizontalScrollIndicator={false} 
         scrollEventThrottle={10}
       >
       <View>
-      <View style={styles.graphLabel}>
-      <Text>Soil Temp Weekly</Text>
+      <View>
+      <Text style={styles.text}>Soil Temp Weekly</Text>
       </View>
         <LineChart 
           data={weekTempLine}
-          width={Dimensions.get('window').width * .95}
+          width={Dimensions.get('window').width * .85}
           height={220}
           withInnerLines={false}
           yAxisLabel={'% '}
           chartConfig={{
-            backgroundColor: '#73A686',
-            backgroundGradientFrom: '#73A686',
-            backgroundGradientTo: '#73A686',
+            backgroundColor: '#d5fdd5',
+            backgroundGradientFrom: '#d5fdd5',
+            backgroundGradientTo: '#d5fdd5',
             decimalPlaces: 0,
             color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
             style: {
@@ -179,23 +196,26 @@ export class Data extends Component {
           style={{
             marginTop: 0,
             marginVertical: 8,
+            borderColor: '#A14550',
+            borderRadius: 30,
+            borderWidth: 2,
           }}
         />
       </View>
       <View>
-      <View style={styles.graphLabel}>
-      <Text>Soil Temp Monthly</Text>
+      <View>
+      <Text style={styles.text}>Soil Temp Monthly</Text>
       </View>
         <LineChart 
           data={monthTempLine}
-          width={Dimensions.get('window').width * .95}
+          width={Dimensions.get('window').width * .85}
           height={220}
           withInnerLines={false}
           yAxisLabel={'°F '}
           chartConfig={{
-            backgroundColor: '#73A686',
-            backgroundGradientFrom: '#73A686',
-            backgroundGradientTo: '#73A686',
+            backgroundColor: '#d5fdd5',
+            backgroundGradientFrom: '#d5fdd5',
+            backgroundGradientTo: '#d5fdd5',
             decimalPlaces: 0,
             color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
             style: {
@@ -206,10 +226,15 @@ export class Data extends Component {
           style={{
             marginTop: 0,
             marginVertical: 8,
+            borderColor: '#A14550',
+            borderRadius: 30,
+            borderWidth: 2,
           }}
         />
       </View>
       </ScrollView>
+      </View>
+    </ImageBackground>
     </View>
     )
   }
