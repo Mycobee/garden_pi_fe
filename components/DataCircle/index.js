@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import ProgressCircle from 'react-native-progress-circle';
-import { StyleSheet } from 'react-native';
+import styles from './Style';
 
 const DataCircle = ({ percent, title, label }) => {
   console.log(percent)
@@ -21,20 +21,5 @@ const DataCircle = ({ percent, title, label }) => {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  currentSoilStatContainer: {
-    alignItems: 'center',
-    alignItems: 'center',
-    backgroundColor: '#d5fdd5',
-    borderColor: '#A14550',
-    borderRadius: 30,
-    borderWidth: 2,
-    justifyContent: 'space-between',
-    margin: 3,
-    padding: 10,
-    width: 170
-  }
-})
 
 export { DataCircle };
