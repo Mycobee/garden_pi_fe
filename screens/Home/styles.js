@@ -57,7 +57,7 @@ export default StyleSheet.create({
   },
   graphLabel: {
     height: 25,
-    marginTop: 25,
+    marginTop: 5,
     padding: 2,
     alignItems: 'center',
     width: Dimensions.get('window').width * .55,

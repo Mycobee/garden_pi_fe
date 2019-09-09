@@ -100,12 +100,14 @@ export class index extends Component {
               <LineChart 
                 data={line}
                 width={Dimensions.get('window').width * .85}
-                height={160}
+                height={210}
                 withInnerLines={false}
                 yAxisLabel={'% '}
                 chartConfig={{
-                  backgroundGradientFrom: 'rgba(115, 166, 134, 1)',
-                  backgroundGradientTo: 'rgba(115, 166, 134, 1)',
+                  backgroundColor: '#d5fdd5',
+                  backgroundGradientFrom: '#d5fdd5',
+                  backgroundGradientTo: '#d5fdd5',
+                  decimalPlaces: 0,
                   color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
                   strokeWidth: 2, // optional, default 3
                 }}
@@ -113,11 +115,19 @@ export class index extends Component {
                 style={{
                   marginTop: 0,
                   marginVertical: 8,
+                  borderColor: '#A14550',
+                  borderRadius: 30,
+                  borderWidth: 2,
                 }}
               />
             </View>
           </View>
           <View style={styles.infoContainer}>
+          <Text>Time Recorded:
+            <Text style={styles.bold}>
+              {recordingTime}
+            </Text>
+          </Text>
             <View style={{ flexDirection: 'row' }}>
               {
                 this.state.currentSoilData.soil_moisture &&
@@ -136,11 +146,6 @@ export class index extends Component {
                 />
               }
             </View>
-          <Text>Time Recorded:
-            <Text style={styles.bold}>
-              {recordingTime}
-            </Text>
-          </Text>
         </View>
         <TouchableOpacity 
           style={styles.waterGardenBtn}

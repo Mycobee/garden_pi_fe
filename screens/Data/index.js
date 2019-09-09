@@ -106,9 +106,9 @@ export class Data extends Component {
           withInnerLines={false}
           yAxisLabel={'% '}
           chartConfig={{
-            backgroundColor: '#73A686',
-            backgroundGradientFrom: '#73A686',
-            backgroundGradientTo: '#73A686',
+            backgroundColor: '#d5fdd5',
+            backgroundGradientFrom: '#d5fdd5',
+            backgroundGradientTo: '#d5fdd5',
             decimalPlaces: 0,
             color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
             style: {
