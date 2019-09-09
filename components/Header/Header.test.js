@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header } from './Header';
+import { Header } from '.';
 import 'react-native';
 import renderer from 'react-test-renderer';
 

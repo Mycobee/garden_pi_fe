@@ -1,6 +1,6 @@
 import React from 'react';
-import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import PropTypes from 'prop-types';
+import { Text, View } from 'react-native';
+import styles from './styles';
 
 const Header = ({ fontsize }) => (
   <View style={{ flexDirection: "row" }}>
@@ -13,15 +13,5 @@ const Header = ({ fontsize }) => (
     <Text style={[styles.header, { color: '#7f00ff', fontSize: fontsize }]}>Pi</Text>
   </View>
 );
-
-const styles = StyleSheet.create({
-  header: {
-    // fontSize: 50,
-    fontFamily: 'lemondrop',
-    textShadowColor:'black',
-    textShadowOffset:{width: 2, height: 2},
-    textShadowRadius: 5,
-  }
-})
 
 export { Header };
