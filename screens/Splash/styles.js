@@ -19,11 +19,7 @@ export default StyleSheet.create({
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.8,
-    width: Dimensions.get('window').width * 0.875
-  },
-  splashHeader: {
-    fontSize: 24,
-    fontWeight: 'bold'
+    width: Dimensions.get('window').width * 0.875,
   },
   splashEnterBtn: {
     alignItems: 'center',

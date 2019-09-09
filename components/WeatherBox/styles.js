@@ -1,7 +1,7 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
 export default StyleSheet.create({
-  currentSoilStatContainer: {
+  widget: {
     alignItems: 'center',
     alignItems: 'center',
     backgroundColor: '#d5fdd5',
@@ -11,6 +11,21 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     margin: 3,
     padding: 10,
-    width: 170
+    width: 200
+  },
+  summary: {
+    width: 90,
+    marginLeft: 10,
+  },
+  icon: {
+    width: 200,
+    height: 80,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  bold: {
+    fontSize: 15,
+    fontWeight: 'bold'
   }
-})
+});

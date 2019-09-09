@@ -45,7 +45,7 @@ export default class Splash extends Component {
         style={styles.container}
       >
         <View>
-          <Header style={styles.splashHeader} />
+          <Header fontsize={55}/>
           <View style={styles.textContainer}>
             <TouchableOpacity 
               style={styles.splashEnterBtn}

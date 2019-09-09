@@ -5,9 +5,11 @@ import {
   TouchableOpacity, 
   Button, 
   Dimensions, 
-  ImageBackground } from 'react-native';
+  ImageBackground,
+  Image } from 'react-native';
 import { Header, CurrentWeather, DataCircle } from '../../components';
 import { getWeatherIcon, getRecordingTime } from '../../utilities';
+import { triggerWaterJob } from '../../Api/ApiCalls';
 import { LineChart } from 'react-native-chart-kit';
 import styles from './styles';
 
@@ -42,6 +44,15 @@ export class index extends Component {
     })
   };
 
+  onBackPress = () => {
+    this.props.navigation.navigate('Splash')
+  };
+
+  onWaterPress = async () => {
+    triggerWaterJob()
+    .then(res => console.log(res))
+  }
+
   render() {
     const recordingTime = getRecordingTime(this.state.currentSoilData.created_at)
     const weatherIcon = getWeatherIcon(this.state.currentWeather.icon)
@@ -54,12 +65,20 @@ export class index extends Component {
     return (
       <View>
           <ImageBackground
-          source={require('../../assets/images/lettuce.jpg')}
+          source={require('../../assets/images/pottedPlants.jpg')}
           style={styles.screenContainer}
           onLoad={this.toggleBackgroundLoaded}
           >
           <View style={styles.infoContainer}>
-          <Header style={styles.header}/>
+            <View style={styles.headerContainer}>
+              <TouchableOpacity onPress={this.onBackPress}>
+                <Image  
+                  source={require('../../assets/images/back.png')}
+                  style={styles.backBtn}
+                />
+              </TouchableOpacity>
+              <Header style={styles.header} fontsize={45}/>
+            </View>
             <View style={styles.forecastContainer}>
               <CurrentWeather 
                 weatherIcon={weatherIcon} 
@@ -68,55 +87,72 @@ export class index extends Component {
                 humidity={this.state.currentWeather.humidity} 
                 wind={this.state.currentWeather.windSpeed}
               />
-                <TouchableOpacity onPress={this.onPress}>
-                  <Button title={'View 7-day forecast'} onPress={this.onPress} />
-                </TouchableOpacity>
-              </View>
+              <TouchableOpacity onPress={this.onPress}>
+                <Button title={'View 7-day forecast'} onPress={this.onPress} />
+              </TouchableOpacity>
             </View>
-            <View style={styles.infoContainer}>
-              <View>
-                <View style={styles.graphLabel}>
-                <Text>Soil Moisture (Last 6 Hours)</Text>
-                </View>
-                <LineChart 
-                  data={line}
-                  width={Dimensions.get('window').width * .85}
-                  height={220}
-                  withInnerLines={false}
-                  yAxisLabel={'% '}
-                  chartConfig={{
-                    backgroundGradientFrom: '#1E2923',
-                    backgroundGradientTo: '#08130D',
-                    color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
-                    strokeWidth: 2, // optional, default 3
-                  }}
-                  bezier
-                  style={{
-                    marginTop: 0,
-                    marginVertical: 8,
-                  }}
-                />
+          </View>
+          <View style={styles.infoContainer}>
+            <View>
+              <View style={styles.graphLabel}>
+              <Text style={styles.text}>Soil Moisture (Last 6 Hours)</Text>
               </View>
+              <LineChart 
+                data={line}
+                width={Dimensions.get('window').width * .85}
+                height={160}
+                withInnerLines={false}
+                yAxisLabel={'% '}
+                chartConfig={{
+                  backgroundGradientFrom: 'rgba(115, 166, 134, 1)',
+                  backgroundGradientTo: 'rgba(115, 166, 134, 1)',
+                  color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+                  strokeWidth: 2, // optional, default 3
+                }}
+                bezier
+                style={{
+                  marginTop: 0,
+                  marginVertical: 8,
+                }}
+              />
             </View>
-            <View style={styles.infoContainer}>
-              <View style={{ flexDirection: 'row' }}>
+          </View>
+          <View style={styles.infoContainer}>
+            <View style={{ flexDirection: 'row' }}>
+              {
+                this.state.currentSoilData.soil_moisture &&
                 <DataCircle 
                   percent={this.state.currentSoilData.soil_moisture}
                   title={'Soil Moisture:'}
                   label={`${this.state.currentSoilData.soil_moisture}%`}
                 />
+              }
+              {
+                this.state.currentSoilData.soil_temperature &&
                 <DataCircle 
                   percent={this.state.currentSoilData.soil_temperature}
                   title={'Soil Temperature:'}
                   label={`${this.state.currentSoilData.soil_temperature}°F`}
                 />
-              </View>
-            <Text>Time Recorded: {recordingTime}</Text>
-          </View>
-        </ImageBackground>
-      </View>
-    )
-  }
+              }
+            </View>
+          <Text>Time Recorded:
+            <Text style={styles.bold}>
+              {recordingTime}
+            </Text>
+          </Text>
+        </View>
+        <TouchableOpacity 
+          style={styles.waterGardenBtn}
+          onPress={this.onWaterPress}
+        >
+          <Text>
+            Water your Garden
+          </Text>
+        </TouchableOpacity>
+      </ImageBackground>
+    </View>
+  )}
 };
 
 export default index

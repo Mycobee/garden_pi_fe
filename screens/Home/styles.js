@@ -9,17 +9,30 @@ export default StyleSheet.create({
   },
   infoContainer: {
     alignItems: 'center',
-    backgroundColor: 'rgba(115, 166, 134, .9)',
+    backgroundColor: 'rgba(115, 166, 134, .8)',
     padding: 10,
     margin: 5,
     width: Dimensions.get('window').width * .9,
     borderColor: '#A14550',
     borderRadius: 30,
     borderWidth: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 2, height: 2 },
+    shadowOpacity: 1,
+  },
+  headerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: Dimensions.get('window').width * .8,
   },
   header: {
     paddingTop: 200
   },
+  backBtn: {
+    width: 35,
+    height: 35
+  },  
   carouselScroll: {
     height: 200
   },
@@ -33,6 +46,10 @@ export default StyleSheet.create({
   label: {
     fontSize: 13,
     marginTop: 5,
+  },
+  text: {
+    fontFamily: 'Helvetica',
+    fontWeight: 'bold',
   },
   bold: {
     fontSize: 15,
@@ -48,5 +65,17 @@ export default StyleSheet.create({
   },
   currentWidgets: {
     flexDirection: 'row'
+  },
+  waterGardenBtn: {
+    alignItems: 'center',
+    backgroundColor: '#FAF0E6',
+    borderColor: '#A14550',
+    borderRadius: 10,
+    borderWidth: 2,
+    height: 50,
+    justifyContent: 'center',
+    marginTop: 15,
+    overflow: 'hidden',
+    width: 200
   }
 })

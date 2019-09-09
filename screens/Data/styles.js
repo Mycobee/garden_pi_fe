@@ -34,5 +34,15 @@ export default StyleSheet.create({
     alignItems: 'center',
     width: Dimensions.get('window').width * .55,
     marginLeft: 88
-  }
+  },
+  headerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: Dimensions.get('window').width * .8,
+  },
+  backBtn: {
+    width: 35,
+    height: 35
+  }, 
 })
