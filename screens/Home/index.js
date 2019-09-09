@@ -20,7 +20,8 @@ export class index extends Component {
       env: {},
       currentWeather: {},
       forecast: {},
-      currentSoilData: {}
+      currentSoilData: {},
+      recentSoilData: []
     }
   };
 
@@ -29,14 +30,31 @@ export class index extends Component {
     const forecast = await navigation.getParam('foreCast')
     const env = await navigation.getParam('env').data
     const mostRecentEnvData = env[env.length - 1];
+    const moistureData = env.map(soil => {
+      return soil['attributes']
+    })
     const currentSoilData = mostRecentEnvData['attributes'];
     this.setState({
       env: env,
       forecast: forecast['daily'].data,
       currentWeather: forecast.currently,
-      currentSoilData: currentSoilData
+      currentSoilData: currentSoilData,
+      recentSoilData: this.getRecentMoisture(moistureData)
     })
   };
+
+  getRecentMoisture = (moistureData) => {
+    let recentMoisture = []
+    for(i = moistureData.length -5; i < moistureData.length; i++){
+      let moistureTime = {
+        created_at: getRecordingTime(moistureData[i].created_at),
+        soil_moisture: moistureData[i].soil_moisture,
+        soil_temperature: moistureData[i].soil_temperature
+      }
+      recentMoisture.push(moistureTime)
+    }
+    return recentMoisture 
+  }
 
   onPress = () => {
     this.props.navigation.navigate('Data', {
@@ -57,9 +75,9 @@ export class index extends Component {
     const recordingTime = getRecordingTime(this.state.currentSoilData.created_at)
     const weatherIcon = getWeatherIcon(this.state.currentWeather.icon)
     const line = {
-      labels: ['One', 'Two', 'Three', 'Four', 'Five', 'Six'],
+      labels: this.state.recentSoilData.map(time => time.created_at),
       datasets: [{
-          data: [72, 82, 95, 82, 88, 89],
+          data: this.state.recentSoilData.map(moisture => moisture.soil_moisture)
         }],
     };
     return (
@@ -94,8 +112,8 @@ export class index extends Component {
           </View>
           <View style={styles.infoContainer}>
             <View>
-              <View style={styles.graphLabel}>
-              <Text style={styles.text}>Soil Moisture (Last 6 Hours)</Text>
+              <View>
+              <Text style={styles.text}>Soil Moisture</Text>
               </View>
               <LineChart 
                 data={line}
