@@ -22,3 +22,15 @@ export const fetchGardenEnv = () => {
   .then(res => res)
   .catch(error => error.message)
 }
+
+export const triggerWaterJob = () => {
+  console.log('watered')
+  return fetch('https://garden-pi-be.herokuapp.com/api/v1/gardens/1/jobs?name=relay', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+  })
+  .then(res => console.log(res))
+}

@@ -8,7 +8,7 @@ import {
   ImageBackground,
   Image } from 'react-native';
 import { Header, CurrentWeather, DataCircle } from '../../components';
-import { getWeatherIcon, getRecordingTime } from '../../utilities';
+import { getWeatherIcon, getRecordingTime, triggerWaterJob } from '../../utilities';
 import { LineChart } from 'react-native-chart-kit';
 import styles from './styles';
 
@@ -45,6 +45,10 @@ export class index extends Component {
 
   onBackPress = () => {
     this.props.navigation.navigate('Splash')
+  };
+
+  onWaterPress = () => {
+    triggerWaterJob()
   }
 
   render() {
