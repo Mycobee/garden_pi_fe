@@ -9,7 +9,7 @@ export default StyleSheet.create({
   },
   infoContainer: {
     alignItems: 'center',
-    backgroundColor: 'rgba(115, 166, 134, .8)',
+    backgroundColor: 'rgba(115, 166, 134, .7)',
     padding: 10,
     margin: 5,
     width: Dimensions.get('window').width * .9,
@@ -50,18 +50,11 @@ export default StyleSheet.create({
   text: {
     fontFamily: 'Helvetica',
     fontWeight: 'bold',
+    textAlign: 'center'
   },
   bold: {
     fontSize: 15,
     fontWeight: 'bold'
-  },
-  graphLabel: {
-    height: 25,
-    marginTop: 5,
-    padding: 2,
-    alignItems: 'center',
-    width: Dimensions.get('window').width * .55,
-    marginLeft: 88
   },
   currentWidgets: {
     flexDirection: 'row'

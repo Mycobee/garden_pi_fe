@@ -20,7 +20,8 @@ export class index extends Component {
       env: {},
       currentWeather: {},
       forecast: {},
-      currentSoilData: {}
+      currentSoilData: {},
+      recentSoilData: []
     }
   };
 
@@ -29,14 +30,28 @@ export class index extends Component {
     const forecast = await navigation.getParam('foreCast')
     const env = await navigation.getParam('env').data
     const mostRecentEnvData = env[env.length - 1];
+    const moistureData = env.map(soil => {
+      return soil['attributes'].soil_moisture
+    })
+    console.log(moistureData)
     const currentSoilData = mostRecentEnvData['attributes'];
     this.setState({
       env: env,
       forecast: forecast['daily'].data,
       currentWeather: forecast.currently,
-      currentSoilData: currentSoilData
+      currentSoilData: currentSoilData,
+      recentSoilData: this.getRecentMoisture(moistureData)
     })
+    console.log(this.state.recentSoilData)
   };
+
+  getRecentMoisture = (moistureData) => {
+    let recentMoisture = []
+    for(i = moistureData.length -11; i < moistureData.length; i++){
+      recentMoisture.push(moistureData[i])
+    }
+    return recentMoisture 
+  }
 
   onPress = () => {
     this.props.navigation.navigate('Data', {
@@ -57,9 +72,9 @@ export class index extends Component {
     const recordingTime = getRecordingTime(this.state.currentSoilData.created_at)
     const weatherIcon = getWeatherIcon(this.state.currentWeather.icon)
     const line = {
-      labels: ['One', 'Two', 'Three', 'Four', 'Five', 'Six'],
+      labels: ['10', '9', '8', '7', '6', '5', '4', '3', '2', '1'],
       datasets: [{
-          data: [72, 82, 95, 82, 88, 89],
+          data: this.state.recentSoilData
         }],
     };
     return (
@@ -94,8 +109,8 @@ export class index extends Component {
           </View>
           <View style={styles.infoContainer}>
             <View>
-              <View style={styles.graphLabel}>
-              <Text style={styles.text}>Soil Moisture (Last 6 Hours)</Text>
+              <View>
+              <Text style={styles.text}>Soil Moisture</Text>
               </View>
               <LineChart 
                 data={line}
@@ -120,6 +135,7 @@ export class index extends Component {
                   borderWidth: 2,
                 }}
               />
+              <Text style={styles.text}>Last 10 Readings</Text>
             </View>
           </View>
           <View style={styles.infoContainer}>
