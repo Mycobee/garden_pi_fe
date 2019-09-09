@@ -59,7 +59,7 @@ export class index extends Component {
     return (
       <View>
           <ImageBackground
-          source={require('../../assets/images/lettuce.jpg')}
+          source={require('../../assets/images/pottedPlants.jpg')}
           style={styles.screenContainer}
           onLoad={this.toggleBackgroundLoaded}
           >
