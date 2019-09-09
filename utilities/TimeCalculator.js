@@ -10,9 +10,15 @@ export const getRecordingTime = complexTime => {
       ? `0${date.getMinutes()}` 
       : `${date.getMinutes()}`
   }
-  const timeRecorded = `${hourRecorded}:${formatMinute()}`;
+  const finalTimeRecorded = () => {
+    if (hourRecorded >= 12) {
+      return `${hourRecorded - 12}:${formatMinute()}PM`
+    } else {
+      return `${hourRecorded}:${formatMinute()}AM`
+    }
+  }
   return (
-    timeRecorded
+    finalTimeRecorded()
   )
 };
 
