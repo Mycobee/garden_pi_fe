@@ -11,7 +11,7 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     margin: 3,
     padding: 12,
-    width: Dimensions.get('window').width * .41
+    width: Dimensions.get('window').width * .85
   },
   summary: {
     width: 90,

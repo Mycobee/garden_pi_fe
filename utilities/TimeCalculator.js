@@ -1,6 +1,3 @@
-import React, { Component } from 'react';
-import { Image, StyleSheet } from 'react-native';
-
 export const getRecordingTime = complexTime => {
   const date = new Date(complexTime)
   const hourRecorded = date.getHours();
@@ -21,4 +18,28 @@ export const getRecordingTime = complexTime => {
     finalTimeRecorded()
   )
 };
+
+export const getRecordingDay = complexTime => {
+  const date = new Date(complexTime)
+  const dayUnitRecorded = date.getDay();
+  const dayRecorded = () => {
+    switch(dayUnitRecorded) {
+      case 0:
+        return 'Sun';
+      case 1:
+        return 'Mon';
+      case 2:
+        return 'Tues';
+      case 3:
+        return 'Wed';
+      case 4:
+        return 'Thur';
+      case 5: 
+        return 'Fri';
+      case 6:
+        return 'Sat';
+    }
+  }
+  return dayRecorded();
+}
 

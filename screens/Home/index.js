@@ -12,7 +12,6 @@ import { getWeatherIcon, getRecordingTime } from '../../utilities';
 import { triggerWaterJob } from '../../Api/ApiCalls';
 import { LineChart } from 'react-native-chart-kit';
 import styles from './styles';
-import { ScrollView } from 'react-native-gesture-handler';
 
 export class index extends Component {
   constructor() {
@@ -33,7 +32,7 @@ export class index extends Component {
     const mostRecentEnvData = env[env.length - 1];
     const moistureData = env.map(soil => {
       return soil['attributes']
-    })
+    });
     const currentSoilData = mostRecentEnvData['attributes'];
     this.setState({
       env: env,
@@ -41,10 +40,10 @@ export class index extends Component {
       currentWeather: forecast.currently,
       currentSoilData: currentSoilData,
       recentSoilData: this.getRecentMoisture(moistureData)
-    })
+    });
   };
 
-  getRecentMoisture = (moistureData) => {
+  getRecentMoisture = moistureData => {
     let recentMoisture = []
     for(i = moistureData.length -5; i < moistureData.length; i++){
       let moistureTime = {
@@ -55,11 +54,12 @@ export class index extends Component {
       recentMoisture.push(moistureTime)
     }
     return recentMoisture 
-  }
+  };
 
   onPress = () => {
     this.props.navigation.navigate('Data', {
-      forecast: this.state.forecast
+      forecast: this.state.forecast,
+      env: this.state.env
     })
   };
 
