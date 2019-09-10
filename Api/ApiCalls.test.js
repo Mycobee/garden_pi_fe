@@ -161,7 +161,7 @@ describe('apiCalls', () => {
       global.fetch = jest.fn().mockImplementation(() => {
         return Promise.resolve({
           ok: true,
-          json: () => Promise.resolve(mockPalette)
+          json: () => Promise.resolve()
         });
       });
     });
