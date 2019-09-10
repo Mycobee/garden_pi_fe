@@ -16,3 +16,9 @@ test('getWeather should fetch current weather', async () => {
   expect(constants.fetchWeather).toHaveBeenCalled()
 })
 
+test('getGarden should fetch current garden', async () => {
+  constants.fetchGarden = jest.fn()
+  constants.fetchGarden()
+  expect(constants.fetchGarden).toHaveBeenCalled()
+})
+
