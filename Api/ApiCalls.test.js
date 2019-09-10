@@ -181,5 +181,9 @@ describe('apiCalls', () => {
       triggerWaterJob();
       expect(global.fetch).toHaveBeenCalledWith(url, options);
     })
+
+    it('should return job was created if response is okay', async () => {
+      await expect(triggerWaterJob()).resolves.toEqual(mockResponse.data);
+    })
   })
 })
