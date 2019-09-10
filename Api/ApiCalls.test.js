@@ -1,4 +1,4 @@
-import { fetchWeather, fetchGarden, fetchGardenEnv } from './ApiCalls';
+import { fetchWeather, fetchGarden, fetchGardenEnv, triggerWaterJob } from './ApiCalls';
 import React from 'react';
 // import { ApiKey } from './ApiKey'
 import {API_KEY} from 'react-native-dotenv'
@@ -143,6 +143,43 @@ describe('apiCalls', () => {
         return Promise.reject('Error fetching garden environment')
       });
       await expect(global.fetch()).rejects.toEqual('Error fetching garden environment');;
+    })
+  })
+  describe('post water job', () => {
+    let mockResponse;
+
+    beforeEach(() => {
+      mockResponse = {
+        id: "130",
+        type: "job",
+        attributes: {
+            id: 130,
+            name: "relay",
+            created_at: "2019-09-10T02:36:29.277Z"
+        }
+      }
+      global.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(mockPalette)
+        });
+      });
+    });
+
+    it('should be able to post a job to a garden env', () => {
+      const url = 'https://garden-pi-be.herokuapp.com/api/v1/gardens/1/jobs?name=relay'
+
+      const options = {
+        method: 'POST',
+        body: JSON.stringify(),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      };
+
+      triggerWaterJob();
+      expect(global.fetch).toHaveBeenCalledWith(url, options);
     })
   })
 })
