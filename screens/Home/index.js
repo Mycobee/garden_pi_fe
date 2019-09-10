@@ -12,6 +12,7 @@ import { getWeatherIcon, getRecordingTime } from '../../utilities';
 import { triggerWaterJob } from '../../Api/ApiCalls';
 import { LineChart } from 'react-native-chart-kit';
 import styles from './styles';
+import { ScrollView } from 'react-native-gesture-handler';
 
 export class index extends Component {
   constructor() {
@@ -68,7 +69,7 @@ export class index extends Component {
 
   onWaterPress = async () => {
     triggerWaterJob()
-    .then(res => console.log(res))
+    .then(res => res.json())
   }
 
   render() {
@@ -87,6 +88,7 @@ export class index extends Component {
           style={styles.screenContainer}
           onLoad={this.toggleBackgroundLoaded}
           >
+          {/* <ScrollView> */}
           <View style={styles.infoContainer}>
             <View style={styles.headerContainer}>
               <TouchableOpacity onPress={this.onBackPress}>
@@ -173,6 +175,7 @@ export class index extends Component {
             Water your Garden
           </Text>
         </TouchableOpacity>
+        {/* </ScrollView> */}
       </ImageBackground>
     </View>
   )}

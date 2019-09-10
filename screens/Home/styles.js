@@ -68,6 +68,8 @@ export default StyleSheet.create({
     height: 50,
     justifyContent: 'center',
     marginTop: 15,
+    marginLeft: 'auto',
+    marginRight: 'auto',
     overflow: 'hidden',
     width: 200
   }

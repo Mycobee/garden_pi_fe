@@ -31,6 +31,6 @@ export const triggerWaterJob = () => {
       'Content-Type': 'application/json',
     },
   })
-  .then(res => console.log(res))
+  .then(res => res.json())
   .catch(error => console.log(error.message))
 }
