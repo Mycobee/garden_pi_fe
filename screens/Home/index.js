@@ -88,7 +88,7 @@ export class index extends Component {
           style={styles.screenContainer}
           onLoad={this.toggleBackgroundLoaded}
           >
-          <ScrollView>
+          {/* <ScrollView> */}
           <View style={styles.infoContainer}>
             <View style={styles.headerContainer}>
               <TouchableOpacity onPress={this.onBackPress}>
@@ -175,7 +175,7 @@ export class index extends Component {
             Water your Garden
           </Text>
         </TouchableOpacity>
-        </ScrollView>
+        {/* </ScrollView> */}
       </ImageBackground>
     </View>
   )}
