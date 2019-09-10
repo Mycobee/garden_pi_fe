@@ -14,7 +14,6 @@ import { LineChart } from 'react-native-chart-kit';
 import styles from './styles';
 
 export class Data extends Component {
-  scrollX = new Animated.Value(0)
   constructor() {
     super()
     this.state = {
