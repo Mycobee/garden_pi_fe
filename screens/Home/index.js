@@ -8,7 +8,7 @@ import {
   ImageBackground,
   Image } from 'react-native';
 import { Header, CurrentWeather, DataCircle } from '../../components';
-import { getWeatherIcon, getRecordingTime, getRecordingDay } from '../../utilities';
+import { getWeatherIcon, getRecordingTime } from '../../utilities';
 import { triggerWaterJob } from '../../Api/ApiCalls';
 import { LineChart } from 'react-native-chart-kit';
 import styles from './styles';
@@ -58,7 +58,8 @@ export class index extends Component {
 
   onPress = () => {
     this.props.navigation.navigate('Data', {
-      forecast: this.state.forecast
+      forecast: this.state.forecast,
+      env: this.state.env
     })
   };
 

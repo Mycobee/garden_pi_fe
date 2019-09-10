@@ -7,15 +7,20 @@ import {
   Dimensions, 
   TouchableOpacity, 
   Image,
-  ImageBackground } from 'react-native';
-import { getWeatherIcon } from '../../utilities';
+  ImageBackground,
+  Animated } from 'react-native';
+import { getWeatherIcon, getDailyAverages } from '../../utilities';
 import { LineChart } from 'react-native-chart-kit';
 import styles from './styles';
 
+const { width } = Dimensions.get('window').width * .8;
+
 export class Data extends Component {
+  scrollX = new Animated.Value(0)
   constructor() {
     super()
     this.state = {
+      env: {},
       forecast: []
     }
   };
@@ -23,9 +28,12 @@ export class Data extends Component {
   async componentDidMount() {
     const { navigation } = this.props;
     const forecast = await navigation.getParam('forecast');
+    const env = await navigation.getParam('env')
     this.setState({
-      forecast: forecast
+      forecast: forecast,
+      env: env
     })
+    getDailyAverages(this.state.env)
   };
 
   onBackPress = () => {
@@ -33,6 +41,7 @@ export class Data extends Component {
   };
 
   render() {
+    let position = Animated.divide(this.scrollX, width)
     const forecastBoxes = this.state.forecast.map((datum, i) => {
       const dt = new Date(datum.time * 1000 - 6000)
       const shortenedTime = (dt.getMonth() + 1) + "/" + dt.getDate() + '/' + dt.getFullYear();
@@ -46,28 +55,23 @@ export class Data extends Component {
         key={i} 
       />
     });
+    const forecastDots = this.state.forecast.map((_, i) => {
+      let opacity = position.interpolate({
+        inputRange: [i - 1, i, i + 1], 
+        outputRange: [0.3, 1, 0.3],
+        extrapolate: 'clamp'
+      })
+      return (
+        <View 
+          key={i}
+          style={{ opacity, height: 10, width: 10, backgroundColor: 'red', margin: 8, borderRadius: 5 }}
+        />
+      )
+    })
     const weekMoistureLine = {
       labels: ['Sun', 'Mon', 'Tues', 'Weds', 'Thurs', 'Fri', 'Sat'],
       datasets: [{
         data: [72, 82, 95, 82, 88, 89, 94]
-      }]
-    };
-    const monthMoistureLine = {
-      labels: ['Apr', 'May', 'Jun', 'Jul', 'Aug'],
-      datasets: [{
-        data: [72, 82, 95, 82, 94]
-      }]
-    };
-    const weekTempLine = {
-      labels: ['Sun', 'Mon', 'Tues', 'Weds', 'Thurs', 'Fri', 'Sat'],
-      datasets: [{
-        data: [72, 82, 95, 82, 88, 89, 94]
-      }]
-    };
-    const monthTempLine = {
-      labels: ['Apr', 'May', 'Jun', 'Jul', 'Aug'],
-      datasets: [{
-        data: [72, 82, 95, 82, 94]
       }]
     };
 
@@ -93,22 +97,20 @@ export class Data extends Component {
           style={styles.forecastContainer}
           horizontal 
           scrollEventThrottle={10} 
+          showsHorizontalScrollIndicator={false}
+          onScroll={Animated.event(
+            [{ nativeEvent: { contentOffset: { x: this.scrollX } } }]
+          )}
         >
           {forecastBoxes}
         </ScrollView>
+          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
+            {forecastDots}
+          </View>
       </View>
       </View>
       <View style={styles.infoContainer}>
-      <ScrollView 
-        style={styles.moistureGraphs}
-        horizontal
-        showsHorizontalScrollIndicator={true} 
-        scrollEventThrottle={10}
-      >
-      <View>
-      <View>
       <Text style={styles.text}>Soil Moisture Weekly</Text>
-      </View>
         <LineChart 
           data={weekMoistureLine}
           width={Dimensions.get('window').width * .87}
@@ -133,112 +135,12 @@ export class Data extends Component {
             borderRadius: 30,
             borderWidth: 2,
           }}
-        />
-      </View>
-      <View>
-      <View>
-      <Text style={styles.text}>Soil Moisture Monthly</Text>
-      </View>
-        <LineChart 
-          data={monthMoistureLine}
-          width={Dimensions.get('window').width * .87}
-          height={220}
-          withInnerLines={false}
-          yAxisLabel={'°F '}
-          chartConfig={{
-            backgroundColor: '#d5fdd5',
-            backgroundGradientFrom: '#d5fdd5',
-            backgroundGradientTo: '#d5fdd5',
-            decimalPlaces: 0,
-            color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
-            style: {
-              borderRadius: 30,
-            }
-          }}
-          bezier
-          style={{
-            marginTop: 0,
-            marginVertical: 8,
-            borderColor: '#A14550',
-            borderRadius: 30,
-            borderWidth: 2,
-          }}
-        />
-      </View>
-      </ScrollView>
-      </View>
-      <View style={styles.infoContainer}>
-      <ScrollView style={styles.moistureGraphs}
-        horizontal 
-        showsHorizontalScrollIndicator={false} 
-        scrollEventThrottle={10}
-      >
-      <View>
-      <View>
-      <Text style={styles.text}>Soil Temp Weekly</Text>
-      </View>
-        <LineChart 
-          data={weekTempLine}
-          width={Dimensions.get('window').width * .87}
-          height={220}
-          withInnerLines={false}
-          yAxisLabel={'% '}
-          chartConfig={{
-            backgroundColor: '#d5fdd5',
-            backgroundGradientFrom: '#d5fdd5',
-            backgroundGradientTo: '#d5fdd5',
-            decimalPlaces: 0,
-            color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
-            style: {
-              borderRadius: 30,
-            }
-          }}
-          bezier
-          style={{
-            marginTop: 0,
-            marginVertical: 8,
-            borderColor: '#A14550',
-            borderRadius: 30,
-            borderWidth: 2,
-          }}
-        />
-      </View>
-      <View>
-      <View>
-      <Text style={styles.text}>Soil Temp Monthly</Text>
-      </View>
-        <LineChart 
-          data={monthTempLine}
-          width={Dimensions.get('window').width * .87}
-          height={220}
-          withInnerLines={false}
-          yAxisLabel={'°F '}
-          chartConfig={{
-            backgroundColor: '#d5fdd5',
-            backgroundGradientFrom: '#d5fdd5',
-            backgroundGradientTo: '#d5fdd5',
-            decimalPlaces: 0,
-            color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
-            style: {
-              borderRadius: 30,
-            }
-          }}
-          bezier
-          style={{
-            marginTop: 0,
-            marginVertical: 8,
-            borderColor: '#A14550',
-            borderRadius: 30,
-            borderWidth: 2,
-          }}
-        />
-      </View>
-      </ScrollView>
-      </View>
+          />
+        </View>
     </ImageBackground>
     </View>
     )
   }
 }
 
-export default Data
+export default Data;
