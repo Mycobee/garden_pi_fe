@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Header, WeatherBox } from '../../components';
 import { 
-  Animated,
   View, 
   ScrollView, 
   Text, 
@@ -31,7 +30,7 @@ export class Data extends Component {
 
   onBackPress = () => {
     this.props.navigation.navigate('Home');
-  }
+  };
 
   render() {
     const forecastBoxes = this.state.forecast.map((datum, i) => {
@@ -52,25 +51,25 @@ export class Data extends Component {
       datasets: [{
         data: [72, 82, 95, 82, 88, 89, 94]
       }]
-    }
+    };
     const monthMoistureLine = {
       labels: ['Apr', 'May', 'Jun', 'Jul', 'Aug'],
       datasets: [{
         data: [72, 82, 95, 82, 94]
       }]
-    }
+    };
     const weekTempLine = {
       labels: ['Sun', 'Mon', 'Tues', 'Weds', 'Thurs', 'Fri', 'Sat'],
       datasets: [{
         data: [72, 82, 95, 82, 88, 89, 94]
       }]
-    }
+    };
     const monthTempLine = {
       labels: ['Apr', 'May', 'Jun', 'Jul', 'Aug'],
       datasets: [{
         data: [72, 82, 95, 82, 94]
       }]
-    }
+    };
 
     return (
       <View>
