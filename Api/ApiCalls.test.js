@@ -185,5 +185,12 @@ describe('apiCalls', () => {
     it('should return job was created if response is okay', async () => {
       await expect(triggerWaterJob()).resolves.toEqual(mockResponse.data);
     })
+
+    it('should return an error response', async () => {
+      global.fetch = jest.fn().mockImplementation(() => {
+        return Promise.reject('Error posting job')
+      });
+      await expect(global.fetch()).rejects.toEqual('Error posting job');;
+    })
   })
 })

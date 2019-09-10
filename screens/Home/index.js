@@ -69,7 +69,7 @@ export class index extends Component {
 
   onWaterPress = async () => {
     triggerWaterJob()
-    .then(res => console.log(res))
+    .then(res => res.json())
   }
 
   render() {
