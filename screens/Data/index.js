@@ -12,7 +12,7 @@ import {
 import { getWeatherIcon, getDailyAverages } from '../../utilities';
 import { LineChart } from 'react-native-chart-kit';
 import styles from './styles';
-import { fetchGraphData } from '../../Api/ApiCalls';
+import { fetchGraphData, fetchPhotos } from '../../Api/ApiCalls';
 import {TimeCalculator} from '../../utilities'
 
 const { width } = Dimensions.get('window');
@@ -26,7 +26,8 @@ export class Data extends Component {
       forecast: [],
       recentAvgDays: [],
       recentAvg: [],
-      finalDays: []
+      finalDays: [],
+      photoUrl: ''
     }
   };
 
@@ -43,14 +44,15 @@ export class Data extends Component {
       return ave.split('-').reverse().splice(0,2).reverse().join('/')
       })
     const averageData = Object.values(averages.data.attributes)
+    const photo = await fetchPhotos()
     this.setState({
       forecast: forecast,
       env: env,
       recentAvgDays: days,
-      recentAvg: averageData
+      recentAvg: averageData,
+      photoUrl: photo
     })
     getDailyAverages(this.state.env)
-    this.setDays()
   };
   
   onBackPress = () => {
@@ -174,6 +176,10 @@ export class Data extends Component {
           }}
           />
         </View>
+      <View style={styles.infoContainer}>
+        <Text style={styles.text}>Most Recent Garden Photo</Text>
+          <Image source={{url: this.state.photoUrl}} style={{height: Dimensions.get('window').height * .2, width: Dimensions.get('window').width * .9, resizeMode: 'contain'}}/>
+      </View>
     </ImageBackground>
     </View>
     )
