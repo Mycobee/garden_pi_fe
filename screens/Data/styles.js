@@ -32,7 +32,13 @@ export default StyleSheet.create({
   text: {
     fontFamily: 'Helvetica',
     fontWeight: 'bold',
-    textAlign: 'center'
+    fontSize: 20,
+    textShadowColor:'black',
+    textShadowOffset:{width: 2, height: 2},
+    textShadowRadius: 5,
+    textAlign: 'center',
+    color: '#d5fdd5',
+    marginBottom: 8
   },
   carouselScroll: {
     height: 150,

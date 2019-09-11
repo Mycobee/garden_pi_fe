@@ -120,7 +120,7 @@ export class Data extends Component {
       </View>
       </View>
       <View style={styles.infoContainer}>
-      <Text style={styles.text}>Soil Moisture Weekly</Text>
+      <Text style={styles.text}>Weekly Soil Moisture</Text>
         <LineChart 
           data={weekMoistureLine}
           width={Dimensions.get('window').width * .87}
