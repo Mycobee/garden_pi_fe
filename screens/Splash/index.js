@@ -60,7 +60,7 @@ export default class Splash extends Component {
             {!this.state.appLoaded &&
             <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 'auto', marginBottom: 'auto' }}>
               <Image  
-                style={{ height: 150, width: 150 }}
+                style={{ height: 200, width: 200 }}
                 source={require('../../assets/images/beeBoi.gif')}
               />
             </View>
