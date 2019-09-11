@@ -12,6 +12,7 @@
   "dependencies": {
     "enzyme": "^3.10.0",
     "expo": "^34.0.1",
+    "expo-camera": "^6.0.0",
     "expo-cli": "^3.0.10",
     "jest": "^24.9.0",
     "path": "^0.12.7",
