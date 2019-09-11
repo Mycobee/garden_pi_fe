@@ -13,6 +13,9 @@ import { getWeatherIcon, getDailyAverages } from '../../utilities';
 import { LineChart } from 'react-native-chart-kit';
 import styles from './styles';
 
+const { width } = Dimensions.get('window');
+
+
 export class Data extends Component {
   constructor() {
     super()
@@ -21,6 +24,8 @@ export class Data extends Component {
       forecast: []
     }
   };
+
+  scrollX = new Animated.Value(0)
 
   async componentDidMount() {
     const { navigation } = this.props;
@@ -38,6 +43,8 @@ export class Data extends Component {
   };
 
   render() {
+    let position = Animated.divide(this.scrollX, width);
+    
     const forecastBoxes = this.state.forecast.map((datum, i) => {
       const dt = new Date(datum.time * 1000 - 6000)
       const shortenedTime = (dt.getMonth() + 1) + "/" + dt.getDate() + '/' + dt.getFullYear();
@@ -51,6 +58,19 @@ export class Data extends Component {
         key={i} 
       />
     });
+    const dots = this.state.forecast.map((_, i) => {
+      let opacity = position.interpolate({
+        inputRange: [i - 0.50000000001, i - 0.5, i, i + 0.5, i + 0.50000000001],
+        outputRange: [0.3, 1, 1, 1, 0.3],
+        extrapolate: 'clamp'
+      });
+      return (
+        <Animated.View
+          key={i}
+          style={{ opacity, height: 10, width: 10, backgroundColor: 'black', margin: 8, borderRadius: 5 }}
+        />
+      )
+    })
     const weekMoistureLine = {
       labels: ['Sun', 'Mon', 'Tues', 'Weds', 'Thurs', 'Fri', 'Sat'],
       datasets: [{
@@ -78,8 +98,10 @@ export class Data extends Component {
       <View style={styles.carouselScroll}>
         <ScrollView 
           style={styles.forecastContainer}
+          pagingEnabled={true}
+          showsHorizontalScrollIndicator={false}
           horizontal 
-          scrollEventThrottle={10} 
+          scrollEventThrottle={16} 
           showsHorizontalScrollIndicator={false}
           onScroll={Animated.event(
             [{ nativeEvent: { contentOffset: { x: this.scrollX } } }]
@@ -87,6 +109,9 @@ export class Data extends Component {
         >
           {forecastBoxes}
         </ScrollView>
+      </View>
+      <View style={{ flexDirection: 'row' }}>
+        {dots}
       </View>
       </View>
       <View style={styles.infoContainer}>
