@@ -12,6 +12,7 @@ import {
 import { getWeatherIcon, getDailyAverages } from '../../utilities';
 import { LineChart } from 'react-native-chart-kit';
 import styles from './styles';
+import { fetchGraphData } from '../../Api/ApiCalls';
 
 const { width } = Dimensions.get('window');
 
@@ -21,7 +22,8 @@ export class Data extends Component {
     super()
     this.state = {
       env: {},
-      forecast: []
+      forecast: [],
+      recentAvg: []
     }
   };
 
@@ -30,10 +32,12 @@ export class Data extends Component {
   async componentDidMount() {
     const { navigation } = this.props;
     const forecast = await navigation.getParam('forecast');
-    const env = await navigation.getParam('env')
+    const env = await navigation.getParam('env');
+    const averages = await fetchGraphData(8)
     this.setState({
       forecast: forecast,
-      env: env
+      env: env,
+      recentAvg: averages
     })
     getDailyAverages(this.state.env)
   };
