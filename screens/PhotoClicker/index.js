@@ -1,12 +1,14 @@
 import React from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity, CameraRoll } from 'react-native';
+import { takeSnapshotAsync } from 'expo';
 import * as Permissions from 'expo-permissions';
 import { Camera } from 'expo-camera';
 
 export default class PhotoClicker extends React.Component {
   state = {
+    cameraRollUri: null,
     hasCameraPermission: null,
-    type: Camera.Constants.Type.back,
+    type: Camera.Constants.Type.back
   };
 
   async componentDidMount() {
@@ -17,7 +19,8 @@ export default class PhotoClicker extends React.Component {
   snapPhoto = async () => {
     if (this.camera) {
       let photo = await this.camera.takePictureAsync();
-      console.log(photo)
+      console.log(photo.uri)
+      CameraRoll.saveToCameraRoll(photo.uri)
     }
   };
 

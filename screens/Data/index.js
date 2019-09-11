@@ -44,7 +44,11 @@ export class Data extends Component {
   
   openCamera = () => {
     this.props.navigation.navigate('PhotoClicker')
-  }
+  };
+
+  openCameraRoll = () => {
+    this.props.navigation.navigate('PhotoPicker')
+  };
 
   render() {
     let position = Animated.divide(this.scrollX, width);
@@ -149,6 +153,9 @@ export class Data extends Component {
         </View>
         <TouchableOpacity style={styles.cameraBtn} onPress={this.openCamera}>
           <Text>Camera</Text>    
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.cameraBtn} onPress={this.openCameraRoll}>
+          <Text>Open Camera Roll</Text>    
         </TouchableOpacity>
     </ImageBackground>
     </View>

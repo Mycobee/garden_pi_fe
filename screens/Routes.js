@@ -4,6 +4,7 @@ import Splash from './Splash/';
 import Home from './Home/';
 import Data from './Data';
 import PhotoClicker from './PhotoClicker';
+import PhotoPicker from './PhotoPicker';
 
 const AppNavigator = createStackNavigator(
   {
@@ -19,6 +20,9 @@ const AppNavigator = createStackNavigator(
     PhotoClicker: {
       screen: PhotoClicker
     },
+    PhotoPicker: {
+      screen: PhotoPicker
+    }
   },
   {
   initialRouteName: "Splash",
