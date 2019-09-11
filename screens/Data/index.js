@@ -13,6 +13,7 @@ import { getWeatherIcon, getDailyAverages } from '../../utilities';
 import { LineChart } from 'react-native-chart-kit';
 import styles from './styles';
 import { fetchGraphData } from '../../Api/ApiCalls';
+import {TimeCalculator} from '../../utilities'
 
 const { width } = Dimensions.get('window');
 
@@ -23,7 +24,9 @@ export class Data extends Component {
     this.state = {
       env: {},
       forecast: [],
-      recentAvg: []
+      recentAvgDays: [],
+      recentAvg: [],
+      finalDays: []
     }
   };
 
@@ -33,13 +36,21 @@ export class Data extends Component {
     const { navigation } = this.props;
     const forecast = await navigation.getParam('forecast');
     const env = await navigation.getParam('env');
-    const averages = await fetchGraphData(8)
+    const averages = await fetchGraphData(6)
+    const averageDays = Object.keys(averages.data.attributes)
+    const days = averageDays.map((day) => {
+      let ave = day.split(' ')[0]     
+      return ave.split('-').reverse().splice(0,2).reverse().join('/')
+      })
+    const averageData = Object.values(averages.data.attributes)
     this.setState({
       forecast: forecast,
       env: env,
-      recentAvg: averages
+      recentAvgDays: days,
+      recentAvg: averageData
     })
     getDailyAverages(this.state.env)
+    this.setDays()
   };
   
   onBackPress = () => {
@@ -70,12 +81,14 @@ export class Data extends Component {
         key={i} 
       />
     });
+
     const dots = this.state.forecast.map((_, i) => {
       let opacity = position.interpolate({
         inputRange: [i - 0.50000000001, i - 0.5, i, i + 0.5, i + 0.50000000001],
         outputRange: [0.3, 1, 1, 1, 0.3],
         extrapolate: 'clamp'
       });
+
       return (
         <Animated.View
           key={i}
@@ -84,9 +97,9 @@ export class Data extends Component {
       )
     })
     const weekMoistureLine = {
-      labels: ['Sun', 'Mon', 'Tues', 'Weds', 'Thurs', 'Fri', 'Sat'],
+      labels: this.state.recentAvgDays.map(day => day),
       datasets: [{
-        data: [72, 82, 95, 82, 88, 89, 94]
+        data: this.state.recentAvg
       }]
     };
 
@@ -128,7 +141,7 @@ export class Data extends Component {
       </View>
       </View>
       <View style={styles.infoContainer}>
-      <Text style={styles.text}>Weekly Soil Moisture</Text>
+      <Text style={styles.text}>Soil Moisture Avg By Day</Text>
         <LineChart 
           data={weekMoistureLine}
           width={Dimensions.get('window').width * .87}
