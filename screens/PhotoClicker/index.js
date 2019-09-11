@@ -22,7 +22,6 @@ export default class PhotoClicker extends React.Component {
       return <Text>No access to camera</Text>;
     } else {
       return (
-        <View style={{ height: 1000 }}>
         <View style={{ flex: 1 }}>
           <Camera style={{ flex: 1 }} type={this.state.type}>
             <View
@@ -36,6 +35,9 @@ export default class PhotoClicker extends React.Component {
                   flex: 0.1,
                   alignSelf: 'flex-end',
                   alignItems: 'center',
+                  marginLeft: 'auto',
+                  marginRight: 'auto',
+                  marginBottom: 25
                 }}
                 onPress={() => {
                   this.setState({
@@ -49,7 +51,6 @@ export default class PhotoClicker extends React.Component {
               </TouchableOpacity>
             </View>
           </Camera>
-        </View>
         </View>
       );
     }
