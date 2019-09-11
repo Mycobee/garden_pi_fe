@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
-import { View, Dimensions, TouchableOpacity, Text, Image, ImageBackground } from 'react-native';
+import { 
+  View, 
+  TouchableOpacity, 
+  Text, 
+  ImageBackground, 
+  ActivityIndicator, 
+  Dimensions } from 'react-native';
 import { fetchWeather, fetchGarden, fetchGardenEnv } from '../../Api/ApiCalls';
 import { Header } from '../../components';
 import styles from './styles';
 
 export default class Splash extends Component {
   state = {
-    foreCast: {},
-    garden: {},
-    env: {}
+    foreCast: null,
+    garden: null,
+    env: null,
   };
 
   async componentDidMount() {
@@ -47,14 +53,25 @@ export default class Splash extends Component {
         <View>
           <Header fontsize={55}/>
           <View style={styles.textContainer}>
-            <TouchableOpacity 
+
+            {!this.state.foreCast && !this.state.env && !this.state.garden && <ActivityIndicator 
+              size='large' 
+              // color='#00ff00' 
+              // hidesWhenStopped={false}
+              />
+            }
+            {
+              this.state.foreCast && this.state.env && this.state.garden && 
+              <TouchableOpacity 
               style={styles.splashEnterBtn}
               onPress={this.onEnterPress}
-            >
+              >
               <Text>
                 Enter your Garden...
               </Text>
             </TouchableOpacity>
+            }
+
           </View>
         </View>
       </ImageBackground>

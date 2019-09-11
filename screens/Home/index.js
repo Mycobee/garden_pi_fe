@@ -136,22 +136,16 @@ export class index extends Component {
           <Text style={styles.timeText}>Last Recording  {recordingTime}
           </Text>
             <View style={{ flexDirection: 'row' }}>
-              {
-                this.state.currentSoilData.soil_moisture &&
                 <DataCircle 
                   percent={this.state.currentSoilData.soil_moisture}
                   title={'Soil Moisture:'}
                   label={`${this.state.currentSoilData.soil_moisture}%`}
                 />
-              }
-              {
-                this.state.currentSoilData.soil_temperature &&
                 <DataCircle 
                   percent={this.state.currentSoilData.soil_temperature}
                   title={'Soil Temperature:'}
                   label={`${this.state.currentSoilData.soil_temperature}°F`}
                 />
-              }
             </View>
         </View>
         <View style={{ flexDirection: 'row', width: Dimensions.get('window') * .9, justifyContent: 'space-between'}}>
