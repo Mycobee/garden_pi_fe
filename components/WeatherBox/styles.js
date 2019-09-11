@@ -25,9 +25,5 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center'
-  },
-  bold: {
-    fontSize: 15,
-    fontWeight: 'bold'
   }
 });

@@ -59,4 +59,7 @@ export default StyleSheet.create({
     width: 35,
     height: 35
   }, 
+  moreDataBtn: {
+    
+  }
 })

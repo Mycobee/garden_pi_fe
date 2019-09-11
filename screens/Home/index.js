@@ -88,16 +88,22 @@ export class index extends Component {
           style={styles.screenContainer}
           onLoad={this.toggleBackgroundLoaded}
           >
-          {/* <ScrollView> */}
           <View style={styles.infoContainer}>
             <View style={styles.headerContainer}>
-              <TouchableOpacity onPress={this.onBackPress}>
-                <Image  
-                  source={require('../../assets/images/back.png')}
-                  style={styles.backBtn}
-                />
-              </TouchableOpacity>
               <Header style={styles.header} fontsize={45}/>
+            </View>
+            <View style={{ flexDirection: 'row' }}>
+              <TouchableOpacity 
+                style={styles.moreDataBtn} 
+                onPress={this.onPress}
+              >
+                <Text>View More Data</Text>
+              </TouchableOpacity>
+              <TouchableOpacity 
+                style={styles.moreDataBtn} 
+              >
+                <Text>Make New Note</Text>
+              </TouchableOpacity>
             </View>
             <View style={styles.forecastContainer}>
               <CurrentWeather 
@@ -107,9 +113,6 @@ export class index extends Component {
                 humidity={this.state.currentWeather.humidity} 
                 wind={this.state.currentWeather.windSpeed}
               />
-              <TouchableOpacity onPress={this.onPress}>
-                <Button title={'View 7-day forecast'} onPress={this.onPress} />
-              </TouchableOpacity>
             </View>
           </View>
           <View style={styles.infoContainer}>
