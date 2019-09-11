@@ -9,10 +9,14 @@ exports[`renders correctly 1`] = `
       "borderColor": "#A14550",
       "borderRadius": 30,
       "borderWidth": 2,
+      "height": 226.78000000000003,
       "justifyContent": "space-between",
-      "margin": 3,
+      "marginBottom": 3,
+      "marginLeft": 10,
+      "marginRight": 10,
+      "marginTop": 3,
       "padding": 10,
-      "width": 170,
+      "width": 300,
     }
   }
 >
