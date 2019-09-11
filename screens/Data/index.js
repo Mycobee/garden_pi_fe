@@ -148,7 +148,7 @@ export class Data extends Component {
           }}
           />
         </View>
-        <TouchableOpacity onPress={this.openCamera}>
+        <TouchableOpacity style={styles.cameraBtn} onPress={this.openCamera}>
           <Text>Camera</Text>    
         </TouchableOpacity>
     </ImageBackground>
