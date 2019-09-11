@@ -1,7 +1,8 @@
 import React from 'react';
-import { Text, View, TouchableOpacity, CameraRoll, ImageBackground, Dimensions } from 'react-native';
+import { Text, View, TouchableOpacity, CameraRoll, ImageBackground, Image } from 'react-native';
 import * as Permissions from 'expo-permissions';
 import { Camera } from 'expo-camera';
+import styles from './styles';
 
 export default class PhotoClicker extends React.Component {
   state = {
@@ -29,6 +30,10 @@ export default class PhotoClicker extends React.Component {
     this.setState({ imageUri: null })
   };
 
+  onBackBtnPress = () => {
+    this.props.navigation.navigate('Data')
+  }
+
   onTakeNewPhotoPress = () => {
     this.setState({ imageUri: null })
   };
@@ -44,41 +49,49 @@ export default class PhotoClicker extends React.Component {
         <View style={{ alignItems: 'center', justifyContent: 'center' }}>
           <ImageBackground 
           source={this.state.imageUri} 
-          style={{ 
-            width: Dimensions.get('window').width,
-            height: Dimensions.get('window').height }}
+          style={styles.previewImage}
           >
-          <View style={{ marginTop: Dimensions.get('window').height * .85, marginLeft: 'auto', marginRight: 'auto', flexDirection: 'row' }}>
-            <TouchableOpacity style={{ margin: 5, height: 50, width: 120, borderColor: '#a14550', borderWidth: 2, borderRadius: 30, fontSize: 30, backgroundColor: '#d5fdd5', color: 'black', fontSize: 25, fontWeight: 'bold', justifyContent: 'center', alignItems: 'center' }}onPress={this.onSavePhotoPress}><Text>Save Photo</Text></TouchableOpacity>
-            <TouchableOpacity style={{ margin: 5, height: 50, width: 120, borderColor: '#a14550', borderWidth: 2, borderRadius: 30, fontSize: 30,fontWeight: 'bold', backgroundColor: '#d5fdd5', color: 'black', fontSize: 25, justifyContent: 'center', alignItems: 'center' }}onPress={this.onTakeNewPhotoPress}><Text>Take New Photo</Text></TouchableOpacity>
-          </View>
+          <View style={styles.cameraBtnContainer}>
+            <TouchableOpacity 
+              style={styles.cameraBtn} 
+              onPress={this.onSavePhotoPress}>
+              <Text style={{ fontWeight: 'bold', fontSize: 18 }}>
+                Save Photo
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity 
+            style={styles.cameraBtn}
+            onPress={this.onTakeNewPhotoPress}
+          >
+            <Text 
+            style={{ fontWeight: 'bold', fontSize: 18 }}
+          >
+            Re-take Photo
+            </Text>
+          </TouchableOpacity>
+        </View>
       </ImageBackground>
         </View>
       )
     } else {
       return (
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           <Camera 
             ref={ref => {
               this.camera = ref;
             }}
-            style={{ flex: 1 }} type={this.state.type}
+            style={styles.cameraScreen} type={this.state.type}
           >
+          <TouchableOpacity onPress={this.onBackBtnPress} style={{ marginTop: 70, marginLeft: 30, position: 'absolute' }}>
+            <Image  
+              source={require('../../assets/images/back.png')}
+              style={styles.backBtn}
+            />
+          </TouchableOpacity>
             <View
-              style={{
-                flex: 1,
-                backgroundColor: 'transparent',
-                flexDirection: 'row',
-              }}>
+              style={styles.cameraBtnContainer}>
               <TouchableOpacity
-                style={{
-                  flex: 0.1,
-                  alignSelf: 'flex-end',
-                  alignItems: 'center',
-                  marginLeft: 'auto',
-                  marginRight: 'auto',
-                  marginBottom: 25
-                }}
+                style={styles.cameraBtn}
                 onPress={() => {
                   this.setState({
                     type:
@@ -90,28 +103,20 @@ export default class PhotoClicker extends React.Component {
                 <Text 
                   style={{ 
                     fontSize: 18, 
-                    marginBottom: 10, 
-                    color: 'white' 
+                    fontWeight: 'bold',
+
                   }}
                 > 
                   Flip 
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
-                style={{
-                  flex: 0.1,
-                  alignSelf: 'flex-end',
-                  alignItems: 'center',
-                  marginLeft: 'auto',
-                  marginRight: 'auto',
-                  marginBottom: 25
-                }}
+                style={styles.cameraBtn}
                 onPress={this.snapPhoto}>
                 <Text 
                   style={{ 
                     fontSize: 18, 
-                    marginBottom: 10, 
-                    color: 'white' 
+                    fontWeight: 'bold'
                   }}
                 > 
                   Snap 
