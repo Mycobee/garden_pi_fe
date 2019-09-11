@@ -88,22 +88,9 @@ export class index extends Component {
           style={styles.screenContainer}
           onLoad={this.toggleBackgroundLoaded}
           >
-          <View style={styles.infoContainer}>
+          <View style={[styles.infoContainer, {height: Dimensions.get('window').height * .28}]}>
             <View style={styles.headerContainer}>
               <Header style={styles.header} fontsize={45}/>
-            </View>
-            <View style={{ flexDirection: 'row' }}>
-              <TouchableOpacity 
-                style={styles.moreDataBtn} 
-                onPress={this.onPress}
-              >
-                <Text>View More Data</Text>
-              </TouchableOpacity>
-              <TouchableOpacity 
-                style={styles.moreDataBtn} 
-              >
-                <Text>Make New Note</Text>
-              </TouchableOpacity>
             </View>
             <View style={styles.forecastContainer}>
               <CurrentWeather 
@@ -115,7 +102,7 @@ export class index extends Component {
               />
             </View>
           </View>
-          <View style={styles.infoContainer}>
+          <View style={[styles.infoContainer, {height: Dimensions.get('window').height * .31}]}>
             <View>
               <View>
               <Text style={styles.text}>Soil Moisture</Text>
@@ -123,7 +110,7 @@ export class index extends Component {
               <LineChart 
                 data={line}
                 width={Dimensions.get('window').width * .85}
-                height={210}
+                height={Dimensions.get('window').height * .25}
                 withInnerLines={false}
                 yAxisLabel={'% '}
                 chartConfig={{
@@ -145,7 +132,7 @@ export class index extends Component {
               />
             </View>
           </View>
-          <View style={styles.infoContainer}>
+          <View style={[styles.infoContainer, {height: Dimensions.get('window').height * .23}]}>
           <Text style={styles.timeText}>Last Recording  {recordingTime}
           </Text>
             <View style={{ flexDirection: 'row' }}>
@@ -167,14 +154,20 @@ export class index extends Component {
               }
             </View>
         </View>
-        <TouchableOpacity 
-          style={styles.waterGardenBtn}
-          onPress={this.onWaterPress}
-        >
-          <Text>
-            Water your Garden
-          </Text>
+        <View style={{ flexDirection: 'row', width: Dimensions.get('window') * .9, justifyContent: 'space-between'}}>
+            <TouchableOpacity 
+                style={styles.moreDataBtn} 
+                onPress={this.onPress}
+            >
+              <Text>More Data</Text>
+            </TouchableOpacity>
+            <TouchableOpacity 
+              style={styles.moreDataBtn}
+              onPress={this.onWaterPress}
+            >
+          <Text>Water Garden</Text>
         </TouchableOpacity>
+        </View>
       </ImageBackground>
     </View>
   )}

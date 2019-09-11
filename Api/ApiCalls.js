@@ -34,3 +34,10 @@ export const triggerWaterJob = () => {
   .then(res => res.json())
   .catch(error => console.log(error.message))
 }
+
+export const fetchGraphData = (length) => {
+  return fetch(`http://garden-pi-be.herokuapp.com/api/v1/gardens/1/daily_avg_moisture?days=${length}`)
+    .then(res => res.json())
+    .then(res => res)
+    .catch(error => error.message)
+}

@@ -43,47 +43,29 @@ export default StyleSheet.create({
     borderRadius: 30,
     borderWidth: 2,
   },
-  label: {
-    fontSize: 13,
-    marginTop: 5,
-  },
   text: {
     fontFamily: 'Helvetica',
     fontWeight: 'bold',
-    fontSize: 20,
+    fontSize: 16,
     textShadowColor:'black',
     textShadowOffset:{width: 2, height: 2},
     textShadowRadius: 5,
     textAlign: 'center',
     color: '#d5fdd5',
-    marginBottom: 8
+    marginBottom: 2
   },
   timeText: {
     fontFamily: 'Helvetica',
-    fontSize: 20,
+    fontSize: 16,
     fontWeight: 'bold',
     textShadowColor:'black',
     textShadowOffset:{width: 2, height: 2},
     textShadowRadius: 5,
     color: '#d5fdd5',
-    marginBottom: 8
+    marginBottom: 2
   },
   currentWidgets: {
     flexDirection: 'row'
-  },
-  waterGardenBtn: {
-    alignItems: 'center',
-    backgroundColor: '#FAF0E6',
-    borderColor: '#A14550',
-    borderRadius: 10,
-    borderWidth: 2,
-    height: 50,
-    justifyContent: 'center',
-    marginTop: 15,
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    overflow: 'hidden',
-    width: 200
   },
   moreDataBtn: {
     alignItems: 'center',
@@ -91,12 +73,13 @@ export default StyleSheet.create({
     borderColor: '#A14550',
     borderRadius: 10,
     borderWidth: 2,
-    height: 25,
+    height: Dimensions.get('window').width * .1,
     justifyContent: 'center',
-    marginBottom: 5,
-    marginLeft: 'auto',
-    marginRight: 'auto',
     overflow: 'hidden',
-    width: 125
+    marginTop: 5,
+    marginBottom: 5,
+    marginRight: 12,
+    marginLeft: 12,
+    width: Dimensions.get('window').width * .4
   }
 })
