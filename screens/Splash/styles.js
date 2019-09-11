@@ -15,7 +15,7 @@ export default StyleSheet.create({
     borderRadius: 10,
     height: Dimensions.get('window').height * 0.50,
     justifyContent: 'space-between',
-    padding: 20,
+    padding: 19.5,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.8,
