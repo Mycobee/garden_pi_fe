@@ -4,6 +4,9 @@ import 'react-native';
 import renderer from 'react-test-renderer';
 import * as constants from '../../Api/ApiCalls'
 
+jest.mock("expo-camera", () => {
+  return {}
+});
 
 test('renders correctly', () => {
   const tree = renderer.create(<Splash />).toJSON();

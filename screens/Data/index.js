@@ -37,10 +37,14 @@ export class Data extends Component {
     })
     getDailyAverages(this.state.env)
   };
-
+  
   onBackPress = () => {
     this.props.navigation.navigate('Home');
   };
+  
+  openCamera = () => {
+    this.props.navigation.navigate('PhotoClicker')
+  }
 
   render() {
     let position = Animated.divide(this.scrollX, width);
@@ -77,6 +81,7 @@ export class Data extends Component {
         data: [72, 82, 95, 82, 88, 89, 94]
       }]
     };
+
 
     return (
       <View>
@@ -142,6 +147,9 @@ export class Data extends Component {
           }}
           />
         </View>
+        <TouchableOpacity style={styles.cameraBtn} onPress={this.openCamera}>
+          <Text>Camera</Text>    
+        </TouchableOpacity>
     </ImageBackground>
     </View>
     )

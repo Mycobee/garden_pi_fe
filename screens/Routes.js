@@ -3,6 +3,7 @@ import { createStackNavigator } from 'react-navigation-stack'
 import Splash from './Splash/';
 import Home from './Home/';
 import Data from './Data';
+import PhotoClicker from './PhotoClicker';
 
 const AppNavigator = createStackNavigator(
   {
@@ -14,7 +15,10 @@ const AppNavigator = createStackNavigator(
     },
     Data: {
       screen: Data
-    }
+    },
+    PhotoClicker: {
+      screen: PhotoClicker
+    },
   },
   {
   initialRouteName: "Splash",
