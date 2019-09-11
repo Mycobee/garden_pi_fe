@@ -44,7 +44,11 @@ export class Data extends Component {
   
   openCamera = () => {
     this.props.navigation.navigate('PhotoClicker')
-  }
+  };
+
+  openCameraRoll = () => {
+    this.props.navigation.navigate('PhotoPicker')
+  };
 
   render() {
     let position = Animated.divide(this.scrollX, width);

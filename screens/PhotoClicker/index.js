@@ -1,12 +1,14 @@
 import React from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity, CameraRoll, ImageBackground, Dimensions } from 'react-native';
 import * as Permissions from 'expo-permissions';
 import { Camera } from 'expo-camera';
 
 export default class PhotoClicker extends React.Component {
   state = {
+    cameraRollUri: null,
     hasCameraPermission: null,
     type: Camera.Constants.Type.back,
+    imageUri: null
   };
 
   async componentDidMount() {
@@ -18,7 +20,17 @@ export default class PhotoClicker extends React.Component {
     if (this.camera) {
       let photo = await this.camera.takePictureAsync();
       console.log(photo)
+      this.setState({ imageUri: photo })
     }
+  };
+
+  onSavePhotoPress = () => {
+    CameraRoll.saveToCameraRoll(this.state.imageUri.uri)
+    this.setState({ imageUri: null })
+  };
+
+  onTakeNewPhotoPress = () => {
+    this.setState({ imageUri: null })
   };
 
   render() {
@@ -27,6 +39,22 @@ export default class PhotoClicker extends React.Component {
       return <View />;
     } else if (hasCameraPermission === false) {
       return <Text>No access to camera</Text>;
+    } else if (this.state.imageUri) {
+      return (
+        <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+          <ImageBackground 
+          source={this.state.imageUri} 
+          style={{ 
+            width: Dimensions.get('window').width,
+            height: Dimensions.get('window').height }}
+          >
+          <View style={{ marginTop: Dimensions.get('window').height * .85, marginLeft: 'auto', marginRight: 'auto', flexDirection: 'row' }}>
+            <TouchableOpacity style={{ margin: 5, height: 50, width: 120, borderColor: '#a14550', borderWidth: 2, borderRadius: 30, fontSize: 30, backgroundColor: '#d5fdd5', color: 'black', fontSize: 25, fontWeight: 'bold', justifyContent: 'center', alignItems: 'center' }}onPress={this.onSavePhotoPress}><Text>Save Photo</Text></TouchableOpacity>
+            <TouchableOpacity style={{ margin: 5, height: 50, width: 120, borderColor: '#a14550', borderWidth: 2, borderRadius: 30, fontSize: 30,fontWeight: 'bold', backgroundColor: '#d5fdd5', color: 'black', fontSize: 25, justifyContent: 'center', alignItems: 'center' }}onPress={this.onTakeNewPhotoPress}><Text>Take New Photo</Text></TouchableOpacity>
+          </View>
+      </ImageBackground>
+        </View>
+      )
     } else {
       return (
         <View style={{ flex: 1 }}>
