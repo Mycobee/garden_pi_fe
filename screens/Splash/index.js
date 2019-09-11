@@ -4,6 +4,7 @@ import {
   TouchableOpacity, 
   Text, 
   ImageBackground, 
+  Image,
   ActivityIndicator, 
   Dimensions } from 'react-native';
 import { fetchWeather, fetchGarden, fetchGardenEnv } from '../../Api/ApiCalls';
@@ -15,12 +16,14 @@ export default class Splash extends Component {
     foreCast: null,
     garden: null,
     env: null,
+    appLoaded: false
   };
 
   async componentDidMount() {
-    this.getWeather()
-    this.getGarden()
-    this.getEnv()
+    await this.getWeather()
+    await this.getGarden()
+    await this.getEnv()
+    this.setState({ appLoaded: true })
   };
   getWeather = async () => {
     await fetchWeather() 
@@ -54,14 +57,16 @@ export default class Splash extends Component {
           <Header fontsize={55}/>
           <View style={styles.textContainer}>
 
-            {!this.state.foreCast && !this.state.env && !this.state.garden && <ActivityIndicator 
-              size='large' 
-              // color='#00ff00' 
-              // hidesWhenStopped={false}
+            {!this.state.appLoaded &&
+            <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 'auto', marginBottom: 'auto' }}>
+              <Image  
+                style={{ height: 150, width: 150 }}
+                source={require('../../assets/images/beeBoi.gif')}
               />
+            </View>
             }
             {
-              this.state.foreCast && this.state.env && this.state.garden && 
+              this.state.appLoaded &&
               <TouchableOpacity 
               style={styles.splashEnterBtn}
               onPress={this.onEnterPress}
