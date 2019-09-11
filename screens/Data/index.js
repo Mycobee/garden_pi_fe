@@ -116,10 +116,16 @@ export class Data extends Component {
           <TouchableOpacity onPress={this.onBackPress}>
             <Image  
               source={require('../../assets/images/back.png')}
-              style={styles.backBtn}
+              style={[styles.backBtn, { marginRight: 10 }]}
             />
           </TouchableOpacity>
-          <Header style={styles.header} fontsize={45}/>
+          <Header style={styles.header} fontsize={40}/>
+          <TouchableOpacity onPress={this.openCamera}>
+            <Image  
+              source={require('../../assets/images/camera.png')}
+              style={[styles.backBtn, { marginLeft: 10 }]}
+            />
+          </TouchableOpacity>
         </View>
       <View style={styles.carouselScroll}>
         <ScrollView 
@@ -168,9 +174,6 @@ export class Data extends Component {
           }}
           />
         </View>
-        <TouchableOpacity style={styles.cameraBtn} onPress={this.openCamera}>
-          <Text>Camera</Text>    
-        </TouchableOpacity>
     </ImageBackground>
     </View>
     )

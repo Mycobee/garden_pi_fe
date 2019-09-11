@@ -1,20 +1,29 @@
 import React, { Component } from 'react';
-import { View, Dimensions, TouchableOpacity, Text, Image, ImageBackground } from 'react-native';
+import { 
+  View, 
+  TouchableOpacity, 
+  Text, 
+  ImageBackground, 
+  Image,
+  ActivityIndicator, 
+  Dimensions } from 'react-native';
 import { fetchWeather, fetchGarden, fetchGardenEnv } from '../../Api/ApiCalls';
 import { Header } from '../../components';
 import styles from './styles';
 
 export default class Splash extends Component {
   state = {
-    foreCast: {},
-    garden: {},
-    env: {}
+    foreCast: null,
+    garden: null,
+    env: null,
+    appLoaded: false
   };
 
   async componentDidMount() {
-    this.getWeather()
-    this.getGarden()
-    this.getEnv()
+    await this.getWeather()
+    await this.getGarden()
+    await this.getEnv()
+    this.setState({ appLoaded: true })
   };
   getWeather = async () => {
     await fetchWeather() 
@@ -47,14 +56,27 @@ export default class Splash extends Component {
         <View>
           <Header fontsize={55}/>
           <View style={styles.textContainer}>
-            <TouchableOpacity 
+
+            {!this.state.appLoaded &&
+            <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 'auto', marginBottom: 'auto' }}>
+              <Image  
+                style={{ height: 200, width: 200 }}
+                source={require('../../assets/images/beeBoi.gif')}
+              />
+            </View>
+            }
+            {
+              this.state.appLoaded &&
+              <TouchableOpacity 
               style={styles.splashEnterBtn}
               onPress={this.onEnterPress}
-            >
+              >
               <Text>
                 Enter your Garden...
               </Text>
             </TouchableOpacity>
+            }
+
           </View>
         </View>
       </ImageBackground>

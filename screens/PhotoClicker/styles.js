@@ -8,21 +8,26 @@ export default StyleSheet.create({
     height: Dimensions.get('window').height
   },
   cameraBtnContainer: {
-    marginTop: Dimensions.get('window').height * .80, 
+    marginTop: Dimensions.get('window').height * .85, 
     marginLeft: 'auto', 
     marginRight: 'auto', 
     marginBottom: 50,
     flexDirection: 'row'
   },
   cameraBtn: {
-    height: 50, 
-    width: 150, 
+    height: 40, 
+    width: 100, 
     borderColor: '#a14550', 
     borderWidth: 2, 
     borderRadius: 30, 
-    backgroundColor: '#d5fdd5', 
+    backgroundColor: '#f1f1f1', 
     justifyContent: 'center', 
     alignItems: 'center',
+    marginLeft: 15,
+    marginRight: 15,
+    shadowColor: '#000',
+    shadowOffset: { width: 3, height: 3 },
+    shadowOpacity: 0.8
   },
   previewImage: {
     width: Dimensions.get('window').width,
@@ -31,8 +36,11 @@ export default StyleSheet.create({
   backBtn: {
     width: 35,
     height: 35,
-    backgroundColor: '#d5fdd5',
+    backgroundColor: '#f1f1f1',
     borderRadius: 17.5,
+    shadowColor: '#000',
+    shadowOffset: { width: 3, height: 3 },
+    shadowOpacity: 0.8
   }, 
 });
 

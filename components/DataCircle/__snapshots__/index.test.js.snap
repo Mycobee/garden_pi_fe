@@ -30,9 +30,9 @@ exports[`renders correctly 1`] = `
         },
         Object {
           "backgroundColor": "#000",
-          "borderRadius": 50,
-          "height": 100,
-          "width": 100,
+          "borderRadius": 97.5,
+          "height": 195,
+          "width": 195,
         },
       ]
     }
@@ -46,8 +46,8 @@ exports[`renders correctly 1`] = `
             "top": 0,
           },
           Object {
-            "height": 100,
-            "width": 50,
+            "height": 195,
+            "width": 97.5,
           },
         ]
       }
@@ -64,21 +64,21 @@ exports[`renders correctly 1`] = `
             },
             Object {
               "backgroundColor": "#228b22",
-              "borderRadius": 50,
-              "height": 100,
+              "borderRadius": 97.5,
+              "height": 195,
               "overflow": "hidden",
               "transform": Array [
                 Object {
-                  "translateX": 25,
+                  "translateX": 48.75,
                 },
                 Object {
                   "rotate": "NaNdeg",
                 },
                 Object {
-                  "translateX": -25,
+                  "translateX": -48.75,
                 },
               ],
-              "width": 50,
+              "width": 97.5,
             },
           ]
         }
@@ -93,8 +93,8 @@ exports[`renders correctly 1`] = `
             "top": 0,
           },
           Object {
-            "height": 100,
-            "width": 50,
+            "height": 195,
+            "width": 97.5,
           },
         ]
       }
@@ -111,21 +111,21 @@ exports[`renders correctly 1`] = `
             },
             Object {
               "backgroundColor": "#000",
-              "borderRadius": 50,
-              "height": 100,
+              "borderRadius": 97.5,
+              "height": 195,
               "overflow": "hidden",
               "transform": Array [
                 Object {
-                  "translateX": 25,
+                  "translateX": 48.75,
                 },
                 Object {
                   "rotate": "0deg",
                 },
                 Object {
-                  "translateX": -25,
+                  "translateX": -48.75,
                 },
               ],
-              "width": 50,
+              "width": 97.5,
             },
           ]
         }
@@ -141,9 +141,9 @@ exports[`renders correctly 1`] = `
           },
           Object {
             "backgroundColor": "#fff",
-            "borderRadius": 42,
-            "height": 84,
-            "width": 84,
+            "borderRadius": 89.5,
+            "height": 179,
+            "width": 179,
           },
         ]
       }

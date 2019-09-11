@@ -207,33 +207,24 @@ exports[`renders correctly 1`] = `
       }
     >
       <View
-        accessible={true}
-        isTVSelectable={true}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
         style={
           Object {
             "alignItems": "center",
-            "backgroundColor": "#FAF0E6",
-            "borderColor": "#A14550",
-            "borderRadius": 10,
-            "borderWidth": 2,
-            "height": 50,
             "justifyContent": "center",
-            "marginTop": 533.6,
-            "opacity": 1,
-            "overflow": "hidden",
-            "width": 200,
+            "marginBottom": "auto",
+            "marginTop": "auto",
           }
         }
       >
-        <Text>
-          Enter your Garden...
-        </Text>
+        <Image
+          source=""
+          style={
+            Object {
+              "height": 200,
+              "width": 200,
+            }
+          }
+        />
       </View>
     </View>
   </View>

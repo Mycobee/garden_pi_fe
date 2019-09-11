@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Dimensions } from 'react-native';
 import ProgressCircle from 'react-native-progress-circle';
 import styles from './Style';
 
@@ -9,7 +9,7 @@ const DataCircle = ({ percent, title, label }) => {
       <Text>{title}</Text>
       <ProgressCircle
         percent={percent}
-        radius={50}
+        radius={Dimensions.get('window').width * .13}
         borderWidth={8}
         color="#228b22"
         shadowColor="#000"

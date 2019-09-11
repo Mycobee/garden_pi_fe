@@ -31,7 +31,7 @@ export default class PhotoClicker extends React.Component {
   };
 
   onBackBtnPress = () => {
-    this.props.navigation.navigate('Data')
+    this.props.navigation.goBack()
   }
 
   onTakeNewPhotoPress = () => {
@@ -56,7 +56,7 @@ export default class PhotoClicker extends React.Component {
               style={styles.cameraBtn} 
               onPress={this.onSavePhotoPress}>
               <Text style={{ fontWeight: 'bold', fontSize: 18 }}>
-                Save Photo
+                Save 
               </Text>
             </TouchableOpacity>
             <TouchableOpacity 
@@ -66,7 +66,7 @@ export default class PhotoClicker extends React.Component {
             <Text 
             style={{ fontWeight: 'bold', fontSize: 18 }}
           >
-            Re-take Photo
+            Re-snap
             </Text>
           </TouchableOpacity>
         </View>

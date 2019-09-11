@@ -67,6 +67,10 @@ export class index extends Component {
     this.props.navigation.navigate('Splash')
   };
 
+  openCamera = () => {
+    this.props.navigation.navigate('PhotoClicker')
+  };
+
   onWaterPress = async () => {
     triggerWaterJob()
     .then(res => res.json())
@@ -88,9 +92,21 @@ export class index extends Component {
           style={styles.screenContainer}
           onLoad={this.toggleBackgroundLoaded}
           >
-          <View style={[styles.infoContainer, {height: Dimensions.get('window').height * .28}]}>
+          <View style={[styles.infoContainer, {height: Dimensions.get('window').height * .25}]}>
             <View style={styles.headerContainer}>
-              <Header style={styles.header} fontsize={45}/>
+              <TouchableOpacity onPress={this.onBackPress}>
+                <Image  
+                source={require('../../assets/images/back.png')}
+                style={[styles.backBtn, { marginRight: 10 }]}
+                />
+              </TouchableOpacity>
+              <Header style={styles.header} fontsize={40}/>
+              <TouchableOpacity onPress={this.openCamera}>
+              <Image  
+                source={require('../../assets/images/camera.png')}
+                style={[styles.backBtn, { marginLeft: 10 }]}
+              />
+          </TouchableOpacity>
             </View>
             <View style={styles.forecastContainer}>
               <CurrentWeather 
@@ -136,22 +152,16 @@ export class index extends Component {
           <Text style={styles.timeText}>Last Recording  {recordingTime}
           </Text>
             <View style={{ flexDirection: 'row' }}>
-              {
-                this.state.currentSoilData.soil_moisture &&
                 <DataCircle 
                   percent={this.state.currentSoilData.soil_moisture}
                   title={'Soil Moisture:'}
                   label={`${this.state.currentSoilData.soil_moisture}%`}
                 />
-              }
-              {
-                this.state.currentSoilData.soil_temperature &&
                 <DataCircle 
                   percent={this.state.currentSoilData.soil_temperature}
                   title={'Soil Temperature:'}
                   label={`${this.state.currentSoilData.soil_temperature}°F`}
                 />
-              }
             </View>
         </View>
         <View style={{ flexDirection: 'row', width: Dimensions.get('window') * .9, justifyContent: 'space-between'}}>
