@@ -43,7 +43,6 @@ export class Data extends Component {
   };
   
   openCamera = () => {
-    console.log('aye')
     this.props.navigation.navigate('PhotoClicker')
   }
 

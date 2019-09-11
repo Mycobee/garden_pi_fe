@@ -17,5 +17,4 @@ export const getDailyAverages = (data) => {
   const yesterdayDay = yesterdayDate.getDate() - 1;
   const yesterdayMonth = yesterdayDate.getMonth() + 1;
   const sortingDate = `${yesterdayMonth}/${yesterdayDay}`
-  console.log(sortingDate);
 };
