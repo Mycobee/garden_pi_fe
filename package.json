@@ -7,9 +7,10 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "test": "jest",
-    "test:watch": "jest --watchAll"
+    "test:update": "jest --verbose --coverage --updateSnapshot"
   },
   "dependencies": {
+    "@unimodules/react-native-adapter": "^3.0.0",
     "enzyme": "^3.10.0",
     "expo": "^34.0.1",
     "expo-camera": "^6.0.0",
@@ -41,12 +42,22 @@
   "jest": {
     "preset": "jest-react-native",
     "transf": "<rootDir>/node_modules/babel-jest",
+    "transformIgnorePatterns": [
+      "node_modules/(?!(react-native",
+      "|expo-permissions",
+      "|react-native-progress-circle",
+      "|react-native-chart-kit",
+      "|react-native-svg",
+      "|@unimodules",
+      "|expo-camera",
+      ")/)"
+    ],
     "testPathIgnorePatterns": [
       "/node_modules/"
     ],
     "moduleNameMapper": {
       "/^[./a-zA-Z0-9$_-]+.jpg$/": "RelativeImageStub",
-      "\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/fileMock.js",
+      "\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga|tsx)$": "<rootDir>/fileMock.js",
       "\\.(css|less)$": "<rootDir>/fileMock.js"
     },
     "resolver": null
