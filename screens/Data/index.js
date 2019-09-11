@@ -23,6 +23,7 @@ export class Data extends Component {
     this.state = {
       env: {},
       forecast: [],
+      recentAvgDays: [],
       recentAvg: []
     }
   };
@@ -34,10 +35,13 @@ export class Data extends Component {
     const forecast = await navigation.getParam('forecast');
     const env = await navigation.getParam('env');
     const averages = await fetchGraphData(8)
+    const averageDays = Object.keys(averages.data.attributes)
+    const averageData = Object.values(averages.data.attributes)
     this.setState({
       forecast: forecast,
       env: env,
-      recentAvg: averages
+      recentAvgDays: averageDays,
+      recentAvg: averageData
     })
     getDailyAverages(this.state.env)
   };
@@ -86,7 +90,7 @@ export class Data extends Component {
     const weekMoistureLine = {
       labels: ['Sun', 'Mon', 'Tues', 'Weds', 'Thurs', 'Fri', 'Sat'],
       datasets: [{
-        data: [72, 82, 95, 82, 88, 89, 94]
+        data: this.state.recentAvg
       }]
     };
 
@@ -128,7 +132,7 @@ export class Data extends Component {
       </View>
       </View>
       <View style={styles.infoContainer}>
-      <Text style={styles.text}>Weekly Soil Moisture</Text>
+      <Text style={styles.text}>Soil Moisture Avg By Day</Text>
         <LineChart 
           data={weekMoistureLine}
           width={Dimensions.get('window').width * .87}
