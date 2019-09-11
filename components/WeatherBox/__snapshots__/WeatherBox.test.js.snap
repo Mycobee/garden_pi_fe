@@ -17,14 +17,7 @@ exports[`renders correctly 1`] = `
     }
   }
 >
-  <Text
-    style={
-      Object {
-        "fontSize": 15,
-        "fontWeight": "bold",
-      }
-    }
-  />
+  <Text />
   <View
     style={
       Object {
@@ -47,14 +40,7 @@ exports[`renders correctly 1`] = `
     />
   </View>
   <View>
-    <Text
-      style={
-        Object {
-          "fontSize": 15,
-          "fontWeight": "bold",
-        }
-      }
-    >
+    <Text>
       NaN
       °F / 
       NaN

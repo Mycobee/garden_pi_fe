@@ -57,36 +57,11 @@ exports[`renders correctly 1`] = `
           Object {
             "alignItems": "center",
             "flexDirection": "row",
-            "justifyContent": "space-between",
+            "justifyContent": "center",
             "width": 600,
           }
         }
       >
-        <View
-          accessible={true}
-          isTVSelectable={true}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "opacity": 1,
-            }
-          }
-        >
-          <Image
-            source=""
-            style={
-              Object {
-                "height": 35,
-                "width": 35,
-              }
-            }
-          />
-        </View>
         <View
           style={
             Object {
@@ -246,6 +221,76 @@ exports[`renders correctly 1`] = `
       <View
         style={
           Object {
+            "flexDirection": "row",
+          }
+        }
+      >
+        <View
+          accessible={true}
+          isTVSelectable={true}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#FAF0E6",
+              "borderColor": "#A14550",
+              "borderRadius": 10,
+              "borderWidth": 2,
+              "height": 25,
+              "justifyContent": "center",
+              "marginBottom": 5,
+              "marginLeft": "auto",
+              "marginRight": "auto",
+              "opacity": 1,
+              "overflow": "hidden",
+              "width": 125,
+            }
+          }
+        >
+          <Text>
+            View More Data
+          </Text>
+        </View>
+        <View
+          accessible={true}
+          isTVSelectable={true}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#FAF0E6",
+              "borderColor": "#A14550",
+              "borderRadius": 10,
+              "borderWidth": 2,
+              "height": 25,
+              "justifyContent": "center",
+              "marginBottom": 5,
+              "marginLeft": "auto",
+              "marginRight": "auto",
+              "opacity": 1,
+              "overflow": "hidden",
+              "width": 125,
+            }
+          }
+        >
+          <Text>
+            Make New Note
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Object {
             "backgroundColor": "#d5fdd5",
             "borderColor": "#A14550",
             "borderRadius": 30,
@@ -354,62 +399,6 @@ exports[`renders correctly 1`] = `
                  mph
               </Text>
             </Text>
-          </View>
-        </View>
-        <View
-          accessible={true}
-          isTVSelectable={true}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "opacity": 1,
-            }
-          }
-        >
-          <View
-            accessibilityRole="button"
-            accessibilityStates={Array []}
-            accessible={true}
-            isTVSelectable={true}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "opacity": 1,
-              }
-            }
-          >
-            <View
-              style={
-                Array [
-                  Object {},
-                ]
-              }
-            >
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "color": "#007AFF",
-                      "fontSize": 18,
-                      "padding": 8,
-                      "textAlign": "center",
-                    },
-                  ]
-                }
-              >
-                View 7-day forecast
-              </Text>
-            </View>
           </View>
         </View>
       </View>
