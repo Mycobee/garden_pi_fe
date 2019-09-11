@@ -300,13 +300,22 @@ exports[`renders correctly 1`] = `
       <Text
         style={
           Object {
+            "color": "#d5fdd5",
             "fontFamily": "Helvetica",
+            "fontSize": 20,
             "fontWeight": "bold",
+            "marginBottom": 8,
             "textAlign": "center",
+            "textShadowColor": "black",
+            "textShadowOffset": Object {
+              "height": 2,
+              "width": 2,
+            },
+            "textShadowRadius": 5,
           }
         }
       >
-        Soil Moisture Weekly
+        Weekly Soil Moisture
       </Text>
       <View
         style={

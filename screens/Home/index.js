@@ -146,10 +146,7 @@ export class index extends Component {
             </View>
           </View>
           <View style={styles.infoContainer}>
-          <Text>Time Recorded:
-            <Text style={styles.bold}>
-              {recordingTime}
-            </Text>
+          <Text style={styles.timeText}>Last Recording  {recordingTime}
           </Text>
             <View style={{ flexDirection: 'row' }}>
               {
@@ -178,7 +175,6 @@ export class index extends Component {
             Water your Garden
           </Text>
         </TouchableOpacity>
-        {/* </ScrollView> */}
       </ImageBackground>
     </View>
   )}
