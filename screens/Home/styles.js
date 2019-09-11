@@ -23,7 +23,7 @@ export default StyleSheet.create({
   headerContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     width: Dimensions.get('window').width * .8,
   },
   header: {
@@ -72,5 +72,19 @@ export default StyleSheet.create({
     marginRight: 'auto',
     overflow: 'hidden',
     width: 200
+  },
+  moreDataBtn: {
+    alignItems: 'center',
+    backgroundColor: '#FAF0E6',
+    borderColor: '#A14550',
+    borderRadius: 10,
+    borderWidth: 2,
+    height: 25,
+    justifyContent: 'center',
+    marginBottom: 5,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    overflow: 'hidden',
+    width: 125
   }
 })
