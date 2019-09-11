@@ -88,7 +88,7 @@ export class index extends Component {
           style={styles.screenContainer}
           onLoad={this.toggleBackgroundLoaded}
           >
-          <View style={[styles.infoContainer, {height: Dimensions.get('window').height * .28}]}>
+          <View style={[styles.infoContainer, {height: Dimensions.get('window').height * .25}]}>
             <View style={styles.headerContainer}>
               <Header style={styles.header} fontsize={45}/>
             </View>
