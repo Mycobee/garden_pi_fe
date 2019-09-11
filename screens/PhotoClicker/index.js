@@ -52,22 +52,37 @@ export default class PhotoClicker extends React.Component {
           style={styles.previewImage}
           >
           <View style={styles.cameraBtnContainer}>
-            <TouchableOpacity style={styles.cameraBtn} onPress={this.onSavePhotoPress}><Text style={{ fontWeight: 'bold' }}>Save Photo</Text></TouchableOpacity>
-            <TouchableOpacity style={styles.cameraBtn}onPress={this.onTakeNewPhotoPress}><Text style={{ fontWeight: 'bold' }}>Take New Photo</Text></TouchableOpacity>
-          </View>
+            <TouchableOpacity 
+              style={styles.cameraBtn} 
+              onPress={this.onSavePhotoPress}>
+              <Text style={{ fontWeight: 'bold', fontSize: 18 }}>
+                Save Photo
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity 
+            style={styles.cameraBtn}
+            onPress={this.onTakeNewPhotoPress}
+          >
+            <Text 
+            style={{ fontWeight: 'bold', fontSize: 18 }}
+          >
+            Re-take Photo
+            </Text>
+          </TouchableOpacity>
+        </View>
       </ImageBackground>
         </View>
       )
     } else {
       return (
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           <Camera 
             ref={ref => {
               this.camera = ref;
             }}
-            style={{ flex: 1 }} type={this.state.type}
+            style={styles.cameraScreen} type={this.state.type}
           >
-          <TouchableOpacity onPress={this.onBackBtnPress} style={{ marginTop: 70, marginLeft: 30 }}>
+          <TouchableOpacity onPress={this.onBackBtnPress} style={{ marginTop: 70, marginLeft: 30, position: 'absolute' }}>
             <Image  
               source={require('../../assets/images/back.png')}
               style={styles.backBtn}
@@ -88,7 +103,8 @@ export default class PhotoClicker extends React.Component {
                 <Text 
                   style={{ 
                     fontSize: 18, 
-                    fontWeight: 'bold'
+                    fontWeight: 'bold',
+
                   }}
                 > 
                   Flip 
