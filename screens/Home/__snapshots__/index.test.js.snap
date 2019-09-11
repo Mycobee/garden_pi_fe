@@ -428,9 +428,18 @@ exports[`renders correctly 1`] = `
           <Text
             style={
               Object {
+                "color": "#d5fdd5",
                 "fontFamily": "Helvetica",
+                "fontSize": 20,
                 "fontWeight": "bold",
+                "marginBottom": 8,
                 "textAlign": "center",
+                "textShadowColor": "black",
+                "textShadowOffset": Object {
+                  "height": 2,
+                  "width": 2,
+                },
+                "textShadowRadius": 5,
               }
             }
           >
@@ -1657,18 +1666,25 @@ exports[`renders correctly 1`] = `
         }
       }
     >
-      <Text>
-        Time Recorded:
-        <Text
-          style={
-            Object {
-              "fontSize": 15,
-              "fontWeight": "bold",
-            }
+      <Text
+        style={
+          Object {
+            "color": "#d5fdd5",
+            "fontFamily": "Helvetica",
+            "fontSize": 20,
+            "fontWeight": "bold",
+            "marginBottom": 8,
+            "textShadowColor": "black",
+            "textShadowOffset": Object {
+              "height": 2,
+              "width": 2,
+            },
+            "textShadowRadius": 5,
           }
-        >
-          NaN:NaNAM
-        </Text>
+        }
+      >
+        Last Recording  
+        NaN:NaNAM
       </Text>
       <View
         style={

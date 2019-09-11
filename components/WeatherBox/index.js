@@ -5,15 +5,15 @@ import styles from './styles';
 const WeatherBox = ({ summary, highTemp, lowTemp, time, icon }) => (
   <View style={styles.widget}>
       <Text style={styles.bold}>{time}</Text>
-    <View style={styles.icon}>
-      {icon}
-      <Text style={styles.summary}>{summary}</Text>
-    </View>
     <View style={styles.statsContainer}>
-      <Text style={styles.bold}>
+      {/* <View style={styles.icon}> */}
+        {icon}
+      {/* </View> */}
+      <Text style={styles.temp}>
         {Math.round(highTemp)}°F / {Math.round(lowTemp)}°F
       </Text>
     </View>
+      <Text style={styles.summary}>{summary}</Text>
   </View>
 );
 

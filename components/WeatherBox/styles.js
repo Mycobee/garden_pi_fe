@@ -8,22 +8,33 @@ export default StyleSheet.create({
     borderColor: '#A14550',
     borderRadius: 30,
     borderWidth: 2,
-    justifyContent: 'space-between',
-    marginLeft: 10,
-    marginRight: 10,
-    padding: 12,
-    width: Dimensions.get('window').width * .8
-  },
-  summary: {
-    width: 90,
-    marginLeft: 10,
+    marginLeft: 0,
+    marginRight: 2,
+    padding: 2,
+    width: Dimensions.get('window').width * .85
   },
   icon: {
-    width: 200,
+    width: 25,
     height: 80,
-    marginLeft: 5,
+  },
+  bold: {
+    fontWeight: 'bold',
+    fontSize: 18,
+    marginTop: 5
+  },
+  temp: {
+    marginLeft: 20,
+    marginTop: 20,
+    fontWeight: 'bold',
+    fontSize: 28,
+  },
+  statsContainer: {
+    display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: "space-evenly",
+    marginBottom: 10
+  },
+  summary: {
+    fontSize: 18,
   }
 });
