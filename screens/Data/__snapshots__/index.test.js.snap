@@ -254,7 +254,8 @@ exports[`renders correctly 1`] = `
         <RCTScrollView
           horizontal={true}
           onScroll={[Function]}
-          scrollEventThrottle={10}
+          pagingEnabled={true}
+          scrollEventThrottle={16}
           showsHorizontalScrollIndicator={false}
           style={
             Object {
@@ -268,6 +269,13 @@ exports[`renders correctly 1`] = `
           <View />
         </RCTScrollView>
       </View>
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+          }
+        }
+      />
     </View>
     <View
       style={

@@ -9,9 +9,10 @@ export default StyleSheet.create({
     borderRadius: 30,
     borderWidth: 2,
     justifyContent: 'space-between',
-    margin: 3,
+    marginLeft: 10,
+    marginRight: 10,
     padding: 12,
-    width: Dimensions.get('window').width * .85
+    width: Dimensions.get('window').width * .8
   },
   summary: {
     width: 90,
