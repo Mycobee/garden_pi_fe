@@ -67,6 +67,10 @@ export class index extends Component {
     this.props.navigation.navigate('Splash')
   };
 
+  openCamera = () => {
+    this.props.navigation.navigate('PhotoClicker')
+  };
+
   onWaterPress = async () => {
     triggerWaterJob()
     .then(res => res.json())
@@ -90,7 +94,19 @@ export class index extends Component {
           >
           <View style={[styles.infoContainer, {height: Dimensions.get('window').height * .25}]}>
             <View style={styles.headerContainer}>
-              <Header style={styles.header} fontsize={45}/>
+              <TouchableOpacity onPress={this.onBackPress}>
+                <Image  
+                source={require('../../assets/images/back.png')}
+                style={[styles.backBtn, { marginRight: 10 }]}
+                />
+              </TouchableOpacity>
+              <Header style={styles.header} fontsize={40}/>
+              <TouchableOpacity onPress={this.openCamera}>
+              <Image  
+                source={require('../../assets/images/camera.png')}
+                style={[styles.backBtn, { marginLeft: 10 }]}
+              />
+          </TouchableOpacity>
             </View>
             <View style={styles.forecastContainer}>
               <CurrentWeather 

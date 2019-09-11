@@ -31,7 +31,7 @@ export default class PhotoClicker extends React.Component {
   };
 
   onBackBtnPress = () => {
-    this.props.navigation.navigate('Data')
+    this.props.navigation.goBack()
   }
 
   onTakeNewPhotoPress = () => {
