@@ -39,7 +39,7 @@ export class Data extends Component {
   };
   
   onBackPress = () => {
-    this.props.navigation.navigate('Splash');
+    this.props.navigation.navigate('Home');
   };
   
   openCamera = () => {
