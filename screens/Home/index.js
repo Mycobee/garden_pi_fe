@@ -100,7 +100,7 @@ export class index extends Component {
                 style={[styles.backBtn, { marginRight: 10 }]}
                 />
               </TouchableOpacity>
-              <Header style={styles.header} fontsize={40}/>
+              <Header style={styles.header} fontsize={35}/>
               <TouchableOpacity onPress={this.openCamera}>
               <Image  
                 source={require('../../assets/images/camera.png')}

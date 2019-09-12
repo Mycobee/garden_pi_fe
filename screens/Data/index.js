@@ -113,7 +113,7 @@ export class Data extends Component {
         style={styles.screenContainer}
         onLoad={this.toggleBackgroundLoaded}
       >
-      <View style={styles.infoContainer}>
+      <View style={[styles.infoContainer, { height: Dimensions.get('window').height * .275 }]}>
         <View style={styles.headerContainer}>
           <TouchableOpacity onPress={this.onBackPress}>
             <Image  
@@ -121,7 +121,7 @@ export class Data extends Component {
               style={[styles.backBtn, { marginRight: 10 }]}
             />
           </TouchableOpacity>
-          <Header style={styles.header} fontsize={40}/>
+          <Header style={styles.header} fontsize={35}/>
           <TouchableOpacity onPress={this.openCamera}>
             <Image  
               source={require('../../assets/images/camera.png')}
@@ -148,12 +148,12 @@ export class Data extends Component {
         {dots}
       </View>
       </View>
-      <View style={styles.infoContainer}>
+      <View style={[styles.infoContainer, { height: Dimensions.get('window').height * .295, padding: 5 }]}>
       <Text style={styles.text}>Soil Moisture Avg By Day</Text>
         <LineChart 
           data={weekMoistureLine}
           width={Dimensions.get('window').width * .87}
-          height={220}
+          height={Dimensions.get('window').height * .24}
           withInnerLines={false}
           yAxisLabel={'% '}
           chartConfig={{
