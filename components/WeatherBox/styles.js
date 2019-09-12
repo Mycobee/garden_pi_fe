@@ -35,6 +35,6 @@ export default StyleSheet.create({
     marginBottom: 10
   },
   summary: {
-    fontSize: 18,
+    fontSize: 14,
   }
 });

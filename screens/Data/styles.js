@@ -32,7 +32,7 @@ export default StyleSheet.create({
   text: {
     fontFamily: 'Helvetica',
     fontWeight: 'bold',
-    fontSize: 20,
+    fontSize: 16,
     textShadowColor:'black',
     textShadowOffset:{width: 2, height: 2},
     textShadowRadius: 5,
@@ -41,7 +41,7 @@ export default StyleSheet.create({
     marginBottom: 8
   },
   carouselScroll: {
-    height: 150,
+    height: Dimensions.get('window').height * .16,
     justifyContent: 'space-around',
   },
   forecastContainer: {
