@@ -224,7 +224,14 @@ describe('apiCalls', () => {
     })
 
     it('should return parsed response if ok', async () => {
-g      await expect(fetchGraphData(mockLength)).resolves.toEqual(mockResponse)
+      await expect(fetchGraphData(mockLength)).resolves.toEqual(mockResponse)
     });
+
+    it('should return an error response', async () => {
+      global.fetch = jest.fn().mockImplementation(() => {
+        return Promise.reject('Error fetching averages')
+      });
+      await expect(global.fetch()).rejects.toEqual('Error fetching averages');;
+    })
   })
 })
