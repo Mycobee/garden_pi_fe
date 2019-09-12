@@ -50,9 +50,9 @@ On the data page the user can find a seven day weather forecast near the top of 
  #### Loaded Splash Page
  ![loadedSplash](https://user-images.githubusercontent.com/46681659/64753190-82dfa080-d4df-11e9-8402-3dac68827c20.PNG)
  #### Home/Current Data Page
-![loadingSplash](https://user-images.githubusercontent.com/46681659/64753222-a4d92300-d4df-11e9-9323-f663f375a1cc.jpg)
+![homePage](https://user-images.githubusercontent.com/46681659/64753232-b1f61200-d4df-11e9-8615-ee7b3ce18e96.PNG)
  #### Extended Data Page
 ![dataPage](https://user-images.githubusercontent.com/46681659/64753231-b15d7b80-d4df-11e9-9fed-88bf285c8ede.PNG)
   #### Camera View
-![homePage](https://user-images.githubusercontent.com/46681659/64753232-b1f61200-d4df-11e9-8615-ee7b3ce18e96.PNG)
+![cameraView](https://user-images.githubusercontent.com/46681659/64753585-f9c96900-d4e0-11e9-8fad-8ef39cb4f82b.PNG)
 
