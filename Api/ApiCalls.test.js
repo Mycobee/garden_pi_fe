@@ -1,6 +1,5 @@
-import { fetchWeather, fetchGarden, fetchGardenEnv, triggerWaterJob } from './ApiCalls';
+import { fetchWeather, fetchGarden, fetchGardenEnv, triggerWaterJob, fetchGraphData } from './ApiCalls';
 import React from 'react';
-// import { ApiKey } from './ApiKey'
 import {API_KEY} from 'react-native-dotenv'
 
 
@@ -191,6 +190,36 @@ describe('apiCalls', () => {
         return Promise.reject('Error posting job')
       });
       await expect(global.fetch()).rejects.toEqual('Error posting job');;
+    })
+  })
+
+  describe('fetchGraphData', () => {
+    let mockResponse;
+
+    beforeEach(() => {
+      mockResponse = {
+        data: {
+          attributes: {
+              "2019-09-11 00:00:00 +0000": "90.9397070281125",
+              "2019-09-11 00:00:00 +0000": "90.9397070281125"
+          }
+        }
+      }
+
+      global.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(mockResponse)
+        });
+      });
+    })
+
+    it('should be able to return a set of averages based on the input length', () => {
+      let mockLength = 3
+      const expected = `http://garden-pi-be.herokuapp.com/api/v1/gardens/1/daily_avg_moisture?days=${mockLength}`
+
+      fetchGraphData(mockLength)
+      expect(global.fetch).toHaveBeenCalledWith(expected)
     })
   })
 })
