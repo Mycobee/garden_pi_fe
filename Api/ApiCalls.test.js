@@ -257,5 +257,11 @@ describe('apiCalls', () => {
       expect(global.fetch).toHaveBeenCalledWith(expected)
     })
 
+    it('should return an error response', async () => {
+      global.fetch = jest.fn().mockImplementation(() => {
+        return Promise.reject('Error fetching photo')
+      });
+      await expect(global.fetch()).rejects.toEqual('Error fetching photo');;
+    })
   })
 })
