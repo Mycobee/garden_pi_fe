@@ -1,4 +1,4 @@
-import { fetchWeather, fetchGarden, fetchGardenEnv, triggerWaterJob, fetchGraphData } from './ApiCalls';
+import { fetchWeather, fetchGarden, fetchGardenEnv, triggerWaterJob, fetchGraphData, fetchPhotos } from './ApiCalls';
 import React from 'react';
 import {API_KEY} from 'react-native-dotenv'
 
@@ -233,5 +233,29 @@ describe('apiCalls', () => {
       });
       await expect(global.fetch()).rejects.toEqual('Error fetching averages');;
     })
+  })
+
+  describe('fetchPhotos', () => {
+    let mockResponse;
+
+    beforeEach(() => {
+      mockResponse =
+        'https://garden-pi-pictures.s3-us-west-2.amazonaws.com/brian'
+
+        global.fetch = jest.fn().mockImplementation(() => {
+          return Promise.resolve({
+            ok: true,
+            json: () => Promise.resolve(mockResponse)
+          });
+        });
+    })
+
+    it('should return a url to the most recently posted picture', () => {
+      const expected = 'https://garden-pi-pictures.s3-us-west-2.amazonaws.com/brian'
+
+      fetchPhotos()
+      expect(global.fetch).toHaveBeenCalledWith(expected)
+    })
+
   })
 })
