@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">43.33% </span>
+        <span class="strong">43.75% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>13/30</span>
+        <span class='fraction'>14/32</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">60% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>3/5</span>
+        <span class='fraction'>1/1</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">33.33% </span>
+        <span class="strong">30.77% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>4/12</span>
+        <span class='fraction'>4/13</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">43.33% </span>
+        <span class="strong">43.75% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>13/30</span>
+        <span class='fraction'>14/32</span>
       </div>
     </div>
     <p class="quiet">
@@ -230,8 +230,9 @@
 <a name='L182'></a><a href='#L182'>182</a>
 <a name='L183'></a><a href='#L183'>183</a>
 <a name='L184'></a><a href='#L184'>184</a>
-<a name='L185'></a><a href='#L185'>185</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -295,6 +296,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -314,6 +320,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -410,10 +418,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component } from 'react';
 import { 
   View, 
@@ -428,7 +432,6 @@ import { getWeatherIcon, getRecordingTime } from '../../utilities';
 import { triggerWaterJob } from '../../Api/ApiCalls';
 import { LineChart } from 'react-native-chart-kit';
 import styles from './styles';
-import { ScrollView } from 'react-native-gesture-handler';
 &nbsp;
 export class index extends Component {
   constructor() {
@@ -449,7 +452,7 @@ export class index extends Component {
     const mostRecentEnvData = <span class="cstat-no" title="statement not covered" >env[env.length - 1];</span>
     const moistureData = <span class="cstat-no" title="statement not covered" >env.map(<span class="fstat-no" title="function not covered" >so</span>il =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >      return soil['attributes']</span>
-    })
+    });
     const currentSoilData = <span class="cstat-no" title="statement not covered" >mostRecentEnvData['attributes'];</span>
 <span class="cstat-no" title="statement not covered" >    this.setState({</span>
       env: env,
@@ -457,10 +460,10 @@ export class index extends Component {
       currentWeather: forecast.currently,
       currentSoilData: currentSoilData,
       recentSoilData: this.getRecentMoisture(moistureData)
-    })
+    });
   };
 &nbsp;
-  getRecentMoisture = <span class="fstat-no" title="function not covered" >(m</span>oistureData) =&gt; {
+  getRecentMoisture = <span class="fstat-no" title="function not covered" >mo</span>istureData =&gt; {
     let recentMoisture = <span class="cstat-no" title="statement not covered" >[]</span>
 <span class="cstat-no" title="statement not covered" >    for(i = moistureData.length -5; i &lt; moistureData.length; i++){</span>
       let moistureTime = <span class="cstat-no" title="statement not covered" >{</span>
@@ -471,16 +474,21 @@ export class index extends Component {
 <span class="cstat-no" title="statement not covered" >      recentMoisture.push(moistureTime)</span>
     }
 <span class="cstat-no" title="statement not covered" >    return recentMoisture </span>
-  }
+  };
 &nbsp;
   onPress = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
 <span class="cstat-no" title="statement not covered" >    this.props.navigation.navigate('Data', {</span>
-      forecast: this.state.forecast
+      forecast: this.state.forecast,
+      env: this.state.env
     })
   };
 &nbsp;
   onBackPress = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
 <span class="cstat-no" title="statement not covered" >    this.props.navigation.navigate('Splash')</span>
+  };
+&nbsp;
+  openCamera = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
+<span class="cstat-no" title="statement not covered" >    this.props.navigation.navigate('PhotoClicker')</span>
   };
 &nbsp;
   onWaterPress = <span class="fstat-no" title="function not covered" >as</span>ync () =&gt; {
@@ -504,16 +512,21 @@ export class index extends Component {
           style={styles.screenContainer}
           onLoad={this.toggleBackgroundLoaded}
           &gt;
-          {/* &lt;ScrollView&gt; */}
-          &lt;View style={styles.infoContainer}&gt;
+          &lt;View style={[styles.infoContainer, {height: Dimensions.get('window').height * .25}]}&gt;
             &lt;View style={styles.headerContainer}&gt;
               &lt;TouchableOpacity onPress={this.onBackPress}&gt;
                 &lt;Image  
-                  source={require('../../assets/images/back.png')}
-                  style={styles.backBtn}
+                source={require('../../assets/images/back.png')}
+                style={[styles.backBtn, { marginRight: 10 }]}
                 /&gt;
               &lt;/TouchableOpacity&gt;
-              &lt;Header style={styles.header} fontsize={45}/&gt;
+              &lt;Header style={styles.header} fontsize={35}/&gt;
+              &lt;TouchableOpacity onPress={this.openCamera}&gt;
+              &lt;Image  
+                source={require('../../assets/images/camera.png')}
+                style={[styles.backBtn, { marginLeft: 10 }]}
+              /&gt;
+          &lt;/TouchableOpacity&gt;
             &lt;/View&gt;
             &lt;View style={styles.forecastContainer}&gt;
               &lt;CurrentWeather 
@@ -523,12 +536,9 @@ export class index extends Component {
                 humidity={this.state.currentWeather.humidity} 
                 wind={this.state.currentWeather.windSpeed}
               /&gt;
-              &lt;TouchableOpacity onPress={this.onPress}&gt;
-                &lt;Button title={'View 7-day forecast'} onPress={this.onPress} /&gt;
-              &lt;/TouchableOpacity&gt;
             &lt;/View&gt;
           &lt;/View&gt;
-          &lt;View style={styles.infoContainer}&gt;
+          &lt;View style={[styles.infoContainer, {height: Dimensions.get('window').height * .31}]}&gt;
             &lt;View&gt;
               &lt;View&gt;
               &lt;Text style={styles.text}&gt;Soil Moisture&lt;/Text&gt;
@@ -536,7 +546,7 @@ export class index extends Component {
               &lt;LineChart 
                 data={line}
                 width={Dimensions.get('window').width * .85}
-                height={210}
+                height={Dimensions.get('window').height * .25}
                 withInnerLines={false}
                 yAxisLabel={'% '}
                 chartConfig={{
@@ -558,40 +568,36 @@ export class index extends Component {
               /&gt;
             &lt;/View&gt;
           &lt;/View&gt;
-          &lt;View style={styles.infoContainer}&gt;
-          &lt;Text&gt;Time Recorded:
-            &lt;Text style={styles.bold}&gt;
-              {recordingTime}
-            &lt;/Text&gt;
+          &lt;View style={[styles.infoContainer, {height: Dimensions.get('window').height * .23}]}&gt;
+          &lt;Text style={styles.timeText}&gt;Last Recording  {recordingTime}
           &lt;/Text&gt;
             &lt;View style={{ flexDirection: 'row' }}&gt;
-              {
-                this.state.currentSoilData.soil_moisture &amp;&amp;
-<span class="branch-1 cbranch-no" title="branch not covered" >                &lt;DataCircle </span>
+                &lt;DataCircle 
                   percent={this.state.currentSoilData.soil_moisture}
                   title={'Soil Moisture:'}
                   label={`${this.state.currentSoilData.soil_moisture}%`}
                 /&gt;
-              }
-              {
-                this.state.currentSoilData.soil_temperature &amp;&amp;
-<span class="branch-1 cbranch-no" title="branch not covered" >                &lt;DataCircle </span>
+                &lt;DataCircle 
                   percent={this.state.currentSoilData.soil_temperature}
                   title={'Soil Temperature:'}
                   label={`${this.state.currentSoilData.soil_temperature}°F`}
                 /&gt;
-              }
             &lt;/View&gt;
         &lt;/View&gt;
-        &lt;TouchableOpacity 
-          style={styles.waterGardenBtn}
-          onPress={this.onWaterPress}
-        &gt;
-          &lt;Text&gt;
-            Water your Garden
-          &lt;/Text&gt;
+        &lt;View style={{ flexDirection: 'row', width: Dimensions.get('window') * .9, justifyContent: 'space-between'}}&gt;
+            &lt;TouchableOpacity 
+                style={styles.moreDataBtn} 
+                onPress={this.onPress}
+            &gt;
+              &lt;Text&gt;More Data&lt;/Text&gt;
+            &lt;/TouchableOpacity&gt;
+            &lt;TouchableOpacity 
+              style={styles.moreDataBtn}
+              onPress={this.onWaterPress}
+            &gt;
+          &lt;Text&gt;Water Garden&lt;/Text&gt;
         &lt;/TouchableOpacity&gt;
-        {/* &lt;/ScrollView&gt; */}
+        &lt;/View&gt;
       &lt;/ImageBackground&gt;
     &lt;/View&gt;
   )}
@@ -604,7 +610,7 @@ export default index
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Sep 10 2019 08:31:38 GMT-0600 (Mountain Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Sep 11 2019 20:40:39 GMT-0600 (Mountain Daylight Time)
 </div>
 </div>
 <script src="../../../prettify.js"></script>
