@@ -1,6 +1,5 @@
-import { fetchWeather, fetchGarden, fetchGardenEnv, triggerWaterJob } from './ApiCalls';
+import { fetchWeather, fetchGarden, fetchGardenEnv, triggerWaterJob, fetchGraphData, fetchPhotos } from './ApiCalls';
 import React from 'react';
-// import { ApiKey } from './ApiKey'
 import {API_KEY} from 'react-native-dotenv'
 
 
@@ -191,6 +190,78 @@ describe('apiCalls', () => {
         return Promise.reject('Error posting job')
       });
       await expect(global.fetch()).rejects.toEqual('Error posting job');;
+    })
+  })
+
+  describe('fetchGraphData', () => {
+    let mockResponse;
+    let mockLength;
+
+    beforeEach(() => {
+      mockLength = 3
+      mockResponse = {
+        data: {
+          attributes: {
+              "2019-09-11 00:00:00 +0000": "90.9397070281125",
+              "2019-09-11 00:00:00 +0000": "90.9397070281125"
+          }
+        }
+      }
+
+      global.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(mockResponse)
+        });
+      });
+    })
+
+    it('should be able to return a set of averages based on the input length', () => {
+      const expected = `http://garden-pi-be.herokuapp.com/api/v1/gardens/1/daily_avg_moisture?days=${mockLength}`
+
+      fetchGraphData(mockLength)
+      expect(global.fetch).toHaveBeenCalledWith(expected)
+    })
+
+    it('should return parsed response if ok', async () => {
+      await expect(fetchGraphData(mockLength)).resolves.toEqual(mockResponse)
+    });
+
+    it('should return an error response', async () => {
+      global.fetch = jest.fn().mockImplementation(() => {
+        return Promise.reject('Error fetching averages')
+      });
+      await expect(global.fetch()).rejects.toEqual('Error fetching averages');;
+    })
+  })
+
+  describe('fetchPhotos', () => {
+    let mockResponse;
+
+    beforeEach(() => {
+      mockResponse =
+        'https://garden-pi-pictures.s3-us-west-2.amazonaws.com/brian'
+
+        global.fetch = jest.fn().mockImplementation(() => {
+          return Promise.resolve({
+            ok: true,
+            json: () => Promise.resolve(mockResponse)
+          });
+        });
+    })
+
+    it('should return a url to the most recently posted picture', () => {
+      const expected = 'https://garden-pi-pictures.s3-us-west-2.amazonaws.com/brian'
+
+      fetchPhotos()
+      expect(global.fetch).toHaveBeenCalledWith(expected)
+    })
+
+    it('should return an error response', async () => {
+      global.fetch = jest.fn().mockImplementation(() => {
+        return Promise.reject('Error fetching photo')
+      });
+      await expect(global.fetch()).rejects.toEqual('Error fetching photo');;
     })
   })
 })
