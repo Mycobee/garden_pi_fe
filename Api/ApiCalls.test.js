@@ -195,8 +195,10 @@ describe('apiCalls', () => {
 
   describe('fetchGraphData', () => {
     let mockResponse;
+    let mockLength;
 
     beforeEach(() => {
+      mockLength = 3
       mockResponse = {
         data: {
           attributes: {
@@ -215,11 +217,14 @@ describe('apiCalls', () => {
     })
 
     it('should be able to return a set of averages based on the input length', () => {
-      let mockLength = 3
       const expected = `http://garden-pi-be.herokuapp.com/api/v1/gardens/1/daily_avg_moisture?days=${mockLength}`
 
       fetchGraphData(mockLength)
       expect(global.fetch).toHaveBeenCalledWith(expected)
     })
+
+    it('should return parsed response if ok', async () => {
+g      await expect(fetchGraphData(mockLength)).resolves.toEqual(mockResponse)
+    });
   })
 })
