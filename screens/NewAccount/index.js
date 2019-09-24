@@ -18,6 +18,10 @@ export default class Splash extends Component {
     passwordConfirmation: '',
   };
 
+  onSubmit = (e) => {
+    // console.log(this.state)
+  }
+
   render() {
     return (
       <ImageBackground 
@@ -30,15 +34,18 @@ export default class Splash extends Component {
             style={styles.formInput}
             placeholder="First Name..."
             maxLength={20}
+            onChangeText={(text) => this.setState({ firstName: text })}
           />
-          <TextInput 
+          <TextInput           
             style={styles.formInput}
             placeholder="Last Name..."
             maxLength={20}
+            onChangeText={(text) => this.setState({ lastName: text })}
           />
           <TextInput 
             style={styles.formInput}
             placeholder="Email Address..."
+            onChangeText={(text) => this.setState({ email: text })}
           />
           <TextInput 
             style={styles.formInput}
@@ -47,6 +54,7 @@ export default class Splash extends Component {
             secureTextEntry={true}
             secureTextEntry
             autoCorrect={false}
+            onChangeText={(text) => this.setState({ password: text })}
           />
           <TextInput 
             style={styles.formInput}
@@ -54,8 +62,9 @@ export default class Splash extends Component {
             maxLength={20}
             secureTextEntry
             autoCorrect={false}
+            onChangeText={(text) => this.setState({ passwordConfirmation: text })}
           />
-          <TouchableOpacity style={styles.formInput}>
+          <TouchableOpacity style={styles.formInput} onPress={this.onSubmit}>
             <Text style={{ fontWeight: 'bold' }}>Create Account!</Text>
           </TouchableOpacity>
         </View>
