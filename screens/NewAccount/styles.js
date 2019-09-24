@@ -25,10 +25,13 @@ export default StyleSheet.create({
   formInput: {
     width: Dimensions.get('window').width * .60,
     backgroundColor: "#fff",
-    marginTop: 5,
+    marginTop: 15,
     borderRadius: 20,
     padding: 5,
     paddingLeft: 10,
-  }
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
 });
 

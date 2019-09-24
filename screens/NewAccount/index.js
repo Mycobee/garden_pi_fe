@@ -44,14 +44,19 @@ export default class Splash extends Component {
             style={styles.formInput}
             placeholder="Password..."
             maxLength={20}
+            secureTextEntry={true}
+            secureTextEntry
+            autoCorrect={false}
           />
           <TextInput 
             style={styles.formInput}
             placeholder="Confirm Password..."
             maxLength={20}
+            secureTextEntry
+            autoCorrect={false}
           />
           <TouchableOpacity style={styles.formInput}>
-            <Text>Create Account!</Text>
+            <Text style={{ fontWeight: 'bold' }}>Create Account!</Text>
           </TouchableOpacity>
         </View>
       </ImageBackground>
