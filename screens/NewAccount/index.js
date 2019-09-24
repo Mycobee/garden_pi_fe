@@ -23,7 +23,7 @@ export default class Splash extends Component {
         source={require('../../assets/images/splash-background.jpg')}
         style={styles.container}
       >
-        <View>
+        <View style={styles.infoContainer}>
           <Header fontsize={55}/>
         </View>
       </ImageBackground>
