@@ -92,7 +92,7 @@ export class index extends Component {
           style={styles.screenContainer}
           onLoad={this.toggleBackgroundLoaded}
           >
-          <View style={[styles.infoContainer, {height: Dimensions.get('window').height * .25}]}>
+          <View style={[styles.infoContainer, {height: Dimensions.get('window').height * .27}]}>
             <View style={styles.headerContainer}>
               <TouchableOpacity onPress={this.onBackPress}>
                 <Image  
@@ -117,6 +117,11 @@ export class index extends Component {
                 wind={this.state.currentWeather.windSpeed}
               />
             </View>
+            <TouchableOpacity 
+              style={styles.moreDataBtn}
+            >
+            <Text>Add New Garden</Text>
+            </TouchableOpacity>
           </View>
           <View style={[styles.infoContainer, {height: Dimensions.get('window').height * .31}]}>
             <View>
