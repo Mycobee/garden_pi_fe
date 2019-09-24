@@ -21,6 +21,14 @@ export default StyleSheet.create({
     shadowColor: '#000',
     shadowOffset: { width: 2, height: 2 },
     shadowOpacity: 1,
+  },
+  formInput: {
+    width: Dimensions.get('window').width * .60,
+    backgroundColor: "#fff",
+    marginTop: 5,
+    borderRadius: 20,
+    padding: 5,
+    paddingLeft: 10,
   }
 });
 

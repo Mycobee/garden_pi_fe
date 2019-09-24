@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { 
   View, 
   TouchableOpacity, 
+  TextInput,
   Text, 
   ImageBackground, 
   Image } from 'react-native';
@@ -24,7 +25,34 @@ export default class Splash extends Component {
         style={styles.container}
       >
         <View style={styles.infoContainer}>
-          <Header fontsize={55}/>
+          <Header fontsize={45}/>
+          <TextInput 
+            style={styles.formInput}
+            placeholder="First Name..."
+            maxLength={20}
+          />
+          <TextInput 
+            style={styles.formInput}
+            placeholder="Last Name..."
+            maxLength={20}
+          />
+          <TextInput 
+            style={styles.formInput}
+            placeholder="Email Address..."
+          />
+          <TextInput 
+            style={styles.formInput}
+            placeholder="Password..."
+            maxLength={20}
+          />
+          <TextInput 
+            style={styles.formInput}
+            placeholder="Confirm Password..."
+            maxLength={20}
+          />
+          <TouchableOpacity style={styles.formInput}>
+            <Text>Create Account!</Text>
+          </TouchableOpacity>
         </View>
       </ImageBackground>
     )
