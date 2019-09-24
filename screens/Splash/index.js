@@ -4,9 +4,7 @@ import {
   TouchableOpacity, 
   Text, 
   ImageBackground, 
-  Image,
-  ActivityIndicator, 
-  Dimensions } from 'react-native';
+  Image } from 'react-native';
 import { fetchWeather, fetchGarden, fetchGardenEnv } from '../../Api/ApiCalls';
 import { Header } from '../../components';
 import styles from './styles';

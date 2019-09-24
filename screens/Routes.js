@@ -5,11 +5,15 @@ import Home from './Home/';
 import Data from './Data';
 import PhotoClicker from './PhotoClicker';
 import PhotoPicker from './PhotoPicker';
+import NewAccount from './NewAccount';
 
 const AppNavigator = createStackNavigator(
   {
     Splash: {
       screen: Splash
+    },
+    NewAccount: {
+      screen: NewAccount
     },
     Home: {
       screen: Home
@@ -25,7 +29,7 @@ const AppNavigator = createStackNavigator(
     }
   },
   {
-  initialRouteName: "Splash",
+  initialRouteName: "NewAccount",
   headerMode: "none"
   }
 );

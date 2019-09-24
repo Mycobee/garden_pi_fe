@@ -8,7 +8,6 @@ export default StyleSheet.create({
     height: Dimensions.get('window').height,
     justifyContent: 'space-evenly',
     width: Dimensions.get('window').width
-    
   },  
   textContainer: {
     alignItems: 'center',
