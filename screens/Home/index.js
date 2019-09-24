@@ -112,6 +112,12 @@ export class index extends Component {
               />
           </TouchableOpacity>
             </View>
+            <TouchableOpacity 
+              style={styles.moreDataBtn}
+              onPress={this.onAddGarden}
+            >
+            <Text>Add New Garden</Text>
+            </TouchableOpacity>
             <View style={styles.forecastContainer}>
               <CurrentWeather 
                 weatherIcon={weatherIcon} 
@@ -121,12 +127,6 @@ export class index extends Component {
                 wind={this.state.currentWeather.windSpeed}
               />
             </View>
-            <TouchableOpacity 
-              style={styles.moreDataBtn}
-              onPress={this.onAddGarden}
-            >
-            <Text>Add New Garden</Text>
-            </TouchableOpacity>
           </View>
           <View style={[styles.infoContainer, {height: Dimensions.get('window').height * .31}]}>
             <View>
