@@ -76,6 +76,10 @@ export class index extends Component {
     .then(res => res.json())
   }
 
+  onAddGarden = () => {
+    this.props.navigation.navigate('AddGarden')
+  };
+
   render() {
     const recordingTime = getRecordingTime(this.state.currentSoilData.created_at)
     const weatherIcon = getWeatherIcon(this.state.currentWeather.icon)
@@ -119,6 +123,7 @@ export class index extends Component {
             </View>
             <TouchableOpacity 
               style={styles.moreDataBtn}
+              onPress={this.onAddGarden}
             >
             <Text>Add New Garden</Text>
             </TouchableOpacity>
