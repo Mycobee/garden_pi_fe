@@ -24,7 +24,7 @@ export default StyleSheet.create({
     width: Dimensions.get('window').width * .95,
   },
   formContainer: {
-    backgroundColor: "#d1d1",
+    backgroundColor: "rgb(192,192,192)",
     borderColor: '#A14550',
     borderRadius: 30,
     borderWidth: 2,
@@ -37,11 +37,14 @@ export default StyleSheet.create({
   formInput: {
     alignItems: 'center',
     backgroundColor: "#fff",
-    borderRadius: 20,
+    borderColor: '#A14550',
+    borderRadius: 30,
+    borderWidth: 1,
     height: 40,
     justifyContent: 'center',
     paddingLeft: 10,
     width: Dimensions.get('window').width * .60,
+    
   },
   errMsgContainer: {
     height: 15
