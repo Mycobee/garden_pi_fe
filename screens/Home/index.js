@@ -28,18 +28,18 @@ export class index extends Component {
   async componentDidMount() {
     const { navigation } = this.props;
     const forecast = await navigation.getParam('foreCast')
-    const env = await navigation.getParam('env').data
-    const mostRecentEnvData = env[env.length - 1];
-    const moistureData = env.map(soil => {
-      return soil['attributes']
-    });
-    const currentSoilData = mostRecentEnvData['attributes'];
+    // const env = await navigation.getParam('env').data
+    // const mostRecentEnvData = env[env.length - 1];
+    // const moistureData = env.map(soil => {
+    //   return soil['attributes']
+    // });
+    // const currentSoilData = mostRecentEnvData['attributes'];
     this.setState({
-      env: env,
+      // env: env,
       forecast: forecast['daily'].data,
-      currentWeather: forecast.currently,
-      currentSoilData: currentSoilData,
-      recentSoilData: this.getRecentMoisture(moistureData)
+      // currentWeather: forecast.currently,
+      // currentSoilData: currentSoilData,
+      // recentSoilData: this.getRecentMoisture(moistureData)
     });
   };
 
@@ -174,7 +174,7 @@ export class index extends Component {
                 />
             </View>
         </View>
-        <View style={{ flexDirection: 'row', width: Dimensions.get('window') * .9, justifyContent: 'space-between'}}>
+        <View style={{ flexDirection: 'row', width: Dimensions.get('window').width * .9, justifyContent: 'space-between'}}>
             <TouchableOpacity 
                 style={styles.moreDataBtn} 
                 onPress={this.onPress}
