@@ -38,7 +38,6 @@ export default class Splash extends Component {
   getEnv = async () => {
     await fetchGardenEnv()
     .then(envData => this.setState({env: envData}))
-
   };
 
   onEnterPress = () => {
@@ -57,24 +56,27 @@ export default class Splash extends Component {
         <View>
           <Header fontsize={55}/>
           <View style={styles.textContainer}>
-            <View style={styles.loginForm}>
-              <TextInput
-                placeholder='E-Mail...' 
-                style={styles.loginInput}
-              />
-              <TextInput
-                placeholder='Password...' 
-                style={styles.loginInput}
-              />
-              <View style={{ flexDirection: 'row' }}>
-                <TouchableOpacity style={styles.loginBtn}>
-                  <Text>Sign In</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.loginBtn}>
-                  <Text>Sign Up!</Text>
-                </TouchableOpacity>
-              </View>
+            {
+              this.state.appLoaded &&
+                <View style={styles.loginForm}>
+                <TextInput
+                  placeholder='E-Mail...' 
+                  style={styles.loginInput}
+                />
+                <TextInput
+                  placeholder='Password...' 
+                  style={styles.loginInput}
+                />
+                <View style={{ flexDirection: 'row' }}>
+                  <TouchableOpacity style={styles.loginBtn}>
+                    <Text>Sign In</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.loginBtn}>
+                    <Text>Sign Up!</Text>
+                  </TouchableOpacity>
+                </View>
             </View>
+            }
             {!this.state.appLoaded &&
             <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 'auto', marginBottom: 'auto' }}>
               <Image  
@@ -83,18 +85,6 @@ export default class Splash extends Component {
               />
             </View>
             }
-            {
-              this.state.appLoaded &&
-              <TouchableOpacity 
-              style={styles.splashEnterBtn}
-              onPress={this.onEnterPress}
-              >
-              <Text>
-                Enter your Garden...
-              </Text>
-            </TouchableOpacity>
-            }
-
           </View>
         </View>
       </ImageBackground>
