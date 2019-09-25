@@ -7,6 +7,7 @@ import {
   ImageBackground, 
   Image } from 'react-native';
 import { Header } from '../../components';
+import { createNewUser } from '../../Api/ApiCalls';
 import styles from './styles';
 
 export default class Splash extends Component {
@@ -19,20 +20,25 @@ export default class Splash extends Component {
     hasErrored: false
   };
 
-  onBackPress = () => {
-    this.props.navigation.navigate('Splash')
-  };
-
-  onSubmit = () => {
-    console.log(this.state)
+  clearState = () => {
     this.setState({
       firstName: '',
       lastName: '',
       email: '',
       password: '',
-      passwordConfirmation: ''
-    })
-  }
+      passwordConfirmation: '',
+    hasErrored: false
+    });
+  };
+
+  onBackPress = () => {
+    this.props.navigation.navigate('Splash')
+  };
+
+  onSubmit = () => {
+    createNewUser(this.state)
+    this.clearState()
+  };
 
   render() {
     return (

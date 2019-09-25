@@ -48,6 +48,7 @@ export default class Splash extends Component {
   };
 
   onCreateNewPress = () => {
+    console.log('enter new acct')
     this.props.navigation.navigate('NewAccount')
   }
 
@@ -75,10 +76,11 @@ export default class Splash extends Component {
                   <TouchableOpacity style={styles.loginBtn}>
                     <Text>Sign In</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity style={styles.loginBtn}>
-                    <Text
-                      onPress={this.onCreateNewPress}
-                    >
+                  <TouchableOpacity 
+                    style={styles.loginBtn}
+                    onPress={this.onCreateNewPress}
+                  >
+                    <Text>
                       Sign Up!
                     </Text>
                   </TouchableOpacity>

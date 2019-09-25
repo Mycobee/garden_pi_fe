@@ -47,3 +47,29 @@ export const fetchPhotos = () => {
     .then(res => res.url)
     .catch(error => error.message)
 }
+
+export const createNewUser = (newUser) => {
+  console.log({
+    first_name: newUser.firstName,
+    last_name: newUser.lastName,
+    email: newUser.email,
+    password: newUser.password,
+    password_confirmation: newUser.passwordConfirmation
+  })
+  return fetch('https://garden-pi-be.herokuapp.com/api/v1/users', {
+    method: 'POST',  
+    // headers: {  
+    //   'auth': '1234'  
+    // },  
+    body: JSON.stringify({
+    first_name: newUser.firstName,
+    last_name: newUser.lastName,
+    email: newUser.email,
+    password: newUser.password,
+    password_confirmation: newUser.passwordConfirmation
+    })
+  })
+    .then(res => res.json())
+    .then(response => console.log(response))
+    .catch(error => error.message)
+}
