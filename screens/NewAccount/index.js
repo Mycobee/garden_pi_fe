@@ -19,8 +19,15 @@ export default class Splash extends Component {
     hasErrored: false
   };
 
-  onSubmit = (e) => {
-    // console.log(this.state)
+  onSubmit = () => {
+    console.log(this.state)
+    this.setState({
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      passwordConfirmation: ''
+    })
   }
 
   render() {
@@ -33,23 +40,27 @@ export default class Splash extends Component {
           <Header fontsize={45}/>
           <View style={styles.formContainer}>
             <TextInput 
+              value={this.state.firstName}
               style={styles.formInput}
               placeholder="First Name..."
               maxLength={20}
               onChangeText={(text) => this.setState({ firstName: text })}
             />
             <TextInput           
+              value={this.state.lastName}
               style={styles.formInput}
               placeholder="Last Name..."
               maxLength={20}
               onChangeText={(text) => this.setState({ lastName: text })}
             />
             <TextInput 
+              value={this.state.email}
               style={styles.formInput}
               placeholder="Email Address..."
               onChangeText={(text) => this.setState({ email: text })}
             />
             <TextInput 
+              value={this.state.password}
               style={styles.formInput}
               placeholder="Password..."
               maxLength={20}
@@ -59,6 +70,7 @@ export default class Splash extends Component {
               onChangeText={(text) => this.setState({ password: text })}
             />
             <TextInput 
+              value={this.state.passwordConfirmation}
               style={styles.formInput}
               placeholder="Confirm Password..."
               maxLength={20}
