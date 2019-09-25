@@ -35,6 +35,22 @@ export default StyleSheet.create({
   plantIcon: {
     height: 200,
     width: 200
+  },
+  loginForm: {
+    backgroundColor: 'rgba(115, 166, 134, .7)',
+    width: Dimensions.get('window').width * .75,
+    height: Dimensions.get('window').height * .25,
+    alignItems: 'center',
+    justifyContent: 'space-evenly'
+    },
+  loginInput: {
+    backgroundColor: '#fff',
+    width: Dimensions.get('window').width * .65,
+    height: 35,
+    paddingLeft: 10,
+    borderColor: '#A14550',
+    borderRadius: 30,
+    borderWidth: 1,
   }
 });
 

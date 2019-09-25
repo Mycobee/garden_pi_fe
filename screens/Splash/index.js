@@ -57,12 +57,14 @@ export default class Splash extends Component {
         <View>
           <Header fontsize={55}/>
           <View style={styles.textContainer}>
-            <View>
+            <View style={styles.loginForm}>
               <TextInput
                 placeholder='E-Mail...' 
+                style={styles.loginInput}
               />
               <TextInput
                 placeholder='Password...' 
+                style={styles.loginInput}
               />
             </View>
             {!this.state.appLoaded &&
