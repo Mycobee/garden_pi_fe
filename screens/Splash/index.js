@@ -4,7 +4,8 @@ import {
   TouchableOpacity, 
   Text, 
   ImageBackground, 
-  Image } from 'react-native';
+  Image,
+  TextInput } from 'react-native';
 import { fetchWeather, fetchGarden, fetchGardenEnv } from '../../Api/ApiCalls';
 import { Header } from '../../components';
 import styles from './styles';
@@ -23,10 +24,12 @@ export default class Splash extends Component {
     await this.getEnv()
     this.setState({ appLoaded: true })
   };
+
   getWeather = async () => {
     await fetchWeather() 
     .then(weatherData => this.setState({foreCast: weatherData}))
   };
+  
   getGarden = async () => {
     await fetchGarden()
     .then(gardenData => this.setState({garden: gardenData}))
@@ -54,7 +57,14 @@ export default class Splash extends Component {
         <View>
           <Header fontsize={55}/>
           <View style={styles.textContainer}>
-
+            <View>
+              <TextInput
+                placeholder='E-Mail...' 
+              />
+              <TextInput
+                placeholder='Password...' 
+              />
+            </View>
             {!this.state.appLoaded &&
             <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 'auto', marginBottom: 'auto' }}>
               <Image  
