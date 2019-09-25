@@ -66,6 +66,14 @@ export default class Splash extends Component {
                 placeholder='Password...' 
                 style={styles.loginInput}
               />
+              <View style={{ flexDirection: 'row' }}>
+                <TouchableOpacity style={styles.loginBtn}>
+                  <Text>Sign In</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.loginBtn}>
+                  <Text>Sign Up!</Text>
+                </TouchableOpacity>
+              </View>
             </View>
             {!this.state.appLoaded &&
             <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 'auto', marginBottom: 'auto' }}>

@@ -39,10 +39,13 @@ export default StyleSheet.create({
   loginForm: {
     backgroundColor: 'rgba(115, 166, 134, .7)',
     width: Dimensions.get('window').width * .75,
-    height: Dimensions.get('window').height * .25,
+    height: Dimensions.get('window').height * .30,
     alignItems: 'center',
-    justifyContent: 'space-evenly'
-    },
+    justifyContent: 'space-evenly',
+    borderColor: '#A14550',
+    borderRadius: 30,
+    borderWidth: 2,
+  },
   loginInput: {
     backgroundColor: '#fff',
     width: Dimensions.get('window').width * .65,
@@ -51,6 +54,19 @@ export default StyleSheet.create({
     borderColor: '#A14550',
     borderRadius: 30,
     borderWidth: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  loginBtn: {
+    backgroundColor: '#fff',
+    width: Dimensions.get('window').width * .28,
+    height: 35,
+    paddingLeft: 10,
+    borderColor: '#A14550',
+    borderRadius: 30,
+    borderWidth: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   }
 });
 
