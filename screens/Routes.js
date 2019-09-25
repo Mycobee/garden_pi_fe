@@ -29,7 +29,7 @@ const AppNavigator = createStackNavigator(
     }
   },
   {
-  initialRouteName: "NewAccount",
+  initialRouteName: "Splash",
   headerMode: "none"
   }
 );

@@ -48,6 +48,10 @@ export default StyleSheet.create({
   },
   errMsgContainer: {
     height: 15
-  }
+  },
+  backBtn: {
+    width: 35,
+    height: 35
+  },  
 });
 

@@ -19,6 +19,10 @@ export default class Splash extends Component {
     hasErrored: false
   };
 
+  onBackPress = () => {
+    this.props.navigation.navigate('Splash')
+  };
+
   onSubmit = () => {
     console.log(this.state)
     this.setState({
@@ -37,7 +41,15 @@ export default class Splash extends Component {
         style={styles.container}
       >
         <View style={styles.infoContainer}>
-          <Header fontsize={45}/>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <TouchableOpacity onPress={this.onBackPress}>
+              <Image  
+              source={require('../../assets/images/back.png')}
+              style={[styles.backBtn, { marginRight: 10 }]}
+              />
+            </TouchableOpacity>
+            <Header style={styles.header} fontsize={35}/>
+          </View>
           <View style={styles.formContainer}>
             <TextInput 
               value={this.state.firstName}
