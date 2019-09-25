@@ -49,7 +49,7 @@ export default StyleSheet.create({
   loginInput: {
     backgroundColor: '#fff',
     width: Dimensions.get('window').width * .65,
-    height: 35,
+    height: 45,
     paddingLeft: 10,
     borderColor: '#A14550',
     borderRadius: 30,
@@ -60,7 +60,7 @@ export default StyleSheet.create({
   loginBtn: {
     backgroundColor: '#fff',
     width: Dimensions.get('window').width * .28,
-    height: 35,
+    height: 45,
     paddingLeft: 10,
     borderColor: '#A14550',
     borderRadius: 30,
