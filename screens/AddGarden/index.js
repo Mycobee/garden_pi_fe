@@ -19,7 +19,8 @@ export class AddGarden extends Component {
       longitude: '',
       max_moisture: '',
       min_moisture: '',
-      auto_water: false
+      auto_water: false,
+      location: null
     }
   }
 
@@ -31,9 +32,17 @@ export class AddGarden extends Component {
     this.props.navigation.navigate('PhotoClicker')
   };
 
-  view = () => {
-    console.log(this.state)
-  }
+  findCoordinates = () => {
+    navigator.geolocation.getCurrentPosition(
+      position => {
+        const location = JSON.stringify(position);
+
+        this.setState({ location });
+      },
+      error => Alert.alert(error.message),
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+    );
+  };
 
   checkTextInput = () => {
     if (this.state.name != '') {
@@ -104,9 +113,10 @@ export class AddGarden extends Component {
           value={this.state.min_moisture}
           keyboardType={'decimal-pad'}
         />
+        <Text>Location: {this.state.location}</Text>
         <TouchableOpacity 
           style={styles.moreDataBtn}
-          onPress={this.checkTextInput}
+          onPress={this.findCoordinates}
         >
           <Text>Submit</Text>
         </TouchableOpacity>

@@ -16,13 +16,14 @@ export default class Splash extends Component {
     foreCast: null,
     garden: null,
     env: null,
-    appLoaded: false
+    appLoaded: false,
+    map: null
   };
 
   async componentDidMount() {
     await this.getWeather()
-    await this.getGarden()
-    await this.getEnv()
+    // await this.getGarden()
+    // await this.getEnv()
     this.setState({ appLoaded: true })
   };
   getWeather = async () => {
@@ -43,7 +44,7 @@ export default class Splash extends Component {
   onEnterPress = () => {
     this.props.navigation.navigate('Home', {
       foreCast: this.state.foreCast,
-      env: this.state.env
+      env: this.state.env,
     })
   };
 

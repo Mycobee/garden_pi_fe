@@ -21,7 +21,7 @@ export class index extends Component {
       currentWeather: {},
       forecast: {},
       currentSoilData: {},
-      recentSoilData: []
+      recentSoilData: [],
     }
   };
 
