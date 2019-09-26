@@ -23,10 +23,10 @@ export default class Splash extends Component {
   };
 
   async componentDidMount() {
-    await this.getWeather()
+    // await this.getWeather()
     // await this.getGarden()
     // await this.getEnv()
-    this.setState({ appLoaded: true })
+    // this.setState({ appLoaded: true })
   };
 
   getWeather = async () => {
@@ -34,21 +34,24 @@ export default class Splash extends Component {
     .then(weatherData => this.setState({foreCast: weatherData}))
   };
   
-  getGarden = async () => {
-    await fetchGarden()
+  getGarden = async (userKey) => {
+    await fetchGarden(userKey)
     .then(gardenData => this.setState({garden: gardenData}))
   };
 
-  getEnv = async () => {
-    await fetchGardenEnv()
+  getEnv = async (userKey) => {
+    await fetchGardenEnv(userKey)
     .then(envData => this.setState({env: envData}))
   };
 
   signIn = async () => {
     const response = await signInUser(this.state)
-    const userkey = await response['api_key']
-
-    this.setState({ email: '', password: '', error: '' })
+    const userKey = response['api_key']
+    await this.getWeather()
+    await this.getGarden(userKey)
+    await this.getEnv(userKey)
+    this.setState({ email: '', password: '', error: '', appLoaded: true })
+    console.log(this.state)
   };
 
   onEnterPress = () => {
@@ -72,8 +75,6 @@ export default class Splash extends Component {
         <View>
           <Header fontsize={55}/>
           <View style={styles.textContainer}>
-            {
-              this.state.appLoaded &&
                 <View style={styles.loginForm}>
                 <TextInput
                   placeholder='E-Mail...' 
@@ -105,15 +106,14 @@ export default class Splash extends Component {
                   </TouchableOpacity>
                 </View>
             </View>
-            }
-            {!this.state.appLoaded &&
+            {/* {!this.state.appLoaded &&
             <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 'auto', marginBottom: 'auto' }}>
               <Image  
                 style={{ height: 200, width: 200 }}
                 source={require('../../assets/images/beeBoi.gif')}
               />
             </View>
-            }
+            } */}
           </View>
         </View>
       </ImageBackground>
