@@ -57,12 +57,17 @@ export default class Splash extends Component {
     this.setState({ loading: true })
     const response = await signInUser(this.state)
     const userKey = response['api_key']
-    this.setState({ email: '', password: '', error: '', appLoaded: true })
-    await this.getWeather()
-    await this.getGarden(userKey)
-    await this.getEnv(userKey)
-    this.setState({ loading: false })
-    await this.onEnterPress()
+    if (userKey) {
+      this.setState({ email: '', password: '', error: '', appLoaded: true })
+      await this.getWeather()
+      await this.getGarden(userKey)
+      await this.getEnv(userKey)
+      this.setState({ loading: false })
+      await this.onEnterPress()
+    }
+    if (!userKey) {
+      this.setState({ loading: false, error: 'Email/password not found' })
+    }
   };
 
   onEnterPress = async () => {
@@ -90,6 +95,7 @@ export default class Splash extends Component {
             {
               !this.state.loading &&
               <View style={styles.loginForm}>
+                <Text>{this.state.error}</Text>
                 <TextInput
                   placeholder='E-Mail...' 
                   style={styles.loginInput}
