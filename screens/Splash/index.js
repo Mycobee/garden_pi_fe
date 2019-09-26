@@ -44,10 +44,10 @@ export default class Splash extends Component {
 
   signIn = async () => {
     await signInUser(this.state)
+    this.setState({ email: '', password: '' })
   };
 
   onCreateNewPress = () => {
-    console.log('enter new acct')
     this.props.navigation.navigate('NewAccount')
   };
 
@@ -67,11 +67,13 @@ export default class Splash extends Component {
                   placeholder='E-Mail...' 
                   style={styles.loginInput}
                   onChangeText={text => this.setState({ email: text })}
+                  value={this.state.email}
                 />
                 <TextInput
                   placeholder='Password...' 
                   style={styles.loginInput}
                   onChangeText={text => this.setState({ password: text })}
+                  value={this.state.password}
                   secureTextEntry
                 />
                 <View style={{ flexDirection: 'row' }}>
