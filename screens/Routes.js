@@ -5,6 +5,7 @@ import Home from './Home/';
 import Data from './Data';
 import PhotoClicker from './PhotoClicker';
 import PhotoPicker from './PhotoPicker';
+import AddGarden from './AddGarden';
 import NewAccount from './NewAccount';
 
 const AppNavigator = createStackNavigator(
@@ -26,6 +27,9 @@ const AppNavigator = createStackNavigator(
     },
     PhotoPicker: {
       screen: PhotoPicker
+    },
+    AddGarden: {
+      screen: AddGarden
     }
   },
   {

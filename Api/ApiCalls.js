@@ -46,7 +46,7 @@ export const fetchPhotos = () => {
   return fetch('https://garden-pi-pictures.s3-us-west-2.amazonaws.com/brian')
     .then(res => res.url)
     .catch(error => error.message)
-};
+}
 
 export const signInUser = (user) => {
   // console.log({

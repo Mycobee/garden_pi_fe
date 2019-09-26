@@ -16,6 +16,7 @@ export default class Splash extends Component {
     garden: null,
     env: null,
     appLoaded: false,
+    map: null,
     error:'',
     email: '',
     password: ''
@@ -23,8 +24,8 @@ export default class Splash extends Component {
 
   async componentDidMount() {
     await this.getWeather()
-    await this.getGarden()
-    await this.getEnv()
+    // await this.getGarden()
+    // await this.getEnv()
     this.setState({ appLoaded: true })
   };
 
@@ -52,8 +53,11 @@ export default class Splash extends Component {
     this.setState({ email: '', password: '', error: '' })
   };
 
-  onCreateNewPress = () => {
-    this.props.navigation.navigate('NewAccount')
+  onEnterPress = () => {
+    this.props.navigation.navigate('Home', {
+      foreCast: this.state.foreCast,
+      env: this.state.env,
+    })
   };
 
   render() {

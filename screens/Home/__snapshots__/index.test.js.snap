@@ -52,7 +52,7 @@ exports[`renders correctly 1`] = `
             "width": 712.5,
           },
           Object {
-            "height": 333.5,
+            "height": 360.18,
           },
         ]
       }
@@ -396,6 +396,38 @@ exports[`renders correctly 1`] = `
             </Text>
           </View>
         </View>
+      </View>
+      <View
+        accessible={true}
+        isTVSelectable={true}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#FAF0E6",
+            "borderColor": "#A14550",
+            "borderRadius": 10,
+            "borderWidth": 2,
+            "height": 75,
+            "justifyContent": "center",
+            "marginBottom": 5,
+            "marginLeft": 12,
+            "marginRight": 12,
+            "marginTop": 5,
+            "opacity": 1,
+            "overflow": "hidden",
+            "width": 300,
+          }
+        }
+      >
+        <Text>
+          Add New Garden
+        </Text>
       </View>
     </View>
     <View

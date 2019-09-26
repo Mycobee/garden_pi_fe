@@ -21,25 +21,25 @@ export class index extends Component {
       currentWeather: {},
       forecast: {},
       currentSoilData: {},
-      recentSoilData: []
+      recentSoilData: [],
     }
   };
 
   async componentDidMount() {
     const { navigation } = this.props;
     const forecast = await navigation.getParam('foreCast')
-    const env = await navigation.getParam('env').data
-    const mostRecentEnvData = env[env.length - 1];
-    const moistureData = env.map(soil => {
-      return soil['attributes']
-    });
-    const currentSoilData = mostRecentEnvData['attributes'];
+    // const env = await navigation.getParam('env').data
+    // const mostRecentEnvData = env[env.length - 1];
+    // const moistureData = env.map(soil => {
+    //   return soil['attributes']
+    // });
+    // const currentSoilData = mostRecentEnvData['attributes'];
     this.setState({
-      env: env,
+      // env: env,
       forecast: forecast['daily'].data,
-      currentWeather: forecast.currently,
-      currentSoilData: currentSoilData,
-      recentSoilData: this.getRecentMoisture(moistureData)
+      // currentWeather: forecast.currently,
+      // currentSoilData: currentSoilData,
+      // recentSoilData: this.getRecentMoisture(moistureData)
     });
   };
 
@@ -76,6 +76,10 @@ export class index extends Component {
     .then(res => res.json())
   }
 
+  onAddGarden = () => {
+    this.props.navigation.navigate('AddGarden')
+  };
+
   render() {
     const recordingTime = getRecordingTime(this.state.currentSoilData.created_at)
     const weatherIcon = getWeatherIcon(this.state.currentWeather.icon)
@@ -92,7 +96,7 @@ export class index extends Component {
           style={styles.screenContainer}
           onLoad={this.toggleBackgroundLoaded}
           >
-          <View style={[styles.infoContainer, {height: Dimensions.get('window').height * .25}]}>
+          <View style={[styles.infoContainer, {height: Dimensions.get('window').height * .27}]}>
             <View style={styles.headerContainer}>
               <TouchableOpacity onPress={this.onBackPress}>
                 <Image  
@@ -108,6 +112,12 @@ export class index extends Component {
               />
           </TouchableOpacity>
             </View>
+            <TouchableOpacity 
+              style={styles.moreDataBtn}
+              onPress={this.onAddGarden}
+            >
+            <Text>Add New Garden</Text>
+            </TouchableOpacity>
             <View style={styles.forecastContainer}>
               <CurrentWeather 
                 weatherIcon={weatherIcon} 
@@ -164,7 +174,7 @@ export class index extends Component {
                 />
             </View>
         </View>
-        <View style={{ flexDirection: 'row', width: Dimensions.get('window') * .9, justifyContent: 'space-between'}}>
+        <View style={{ flexDirection: 'row', width: Dimensions.get('window').width * .9, justifyContent: 'space-between'}}>
             <TouchableOpacity 
                 style={styles.moreDataBtn} 
                 onPress={this.onPress}
