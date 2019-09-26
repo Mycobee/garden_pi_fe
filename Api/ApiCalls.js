@@ -9,15 +9,29 @@ export const fetchWeather = () => {
   .catch(error => error.message)
 }
 
-export const fetchGarden = () => {
-  return fetch('https://garden-pi-be.herokuapp.com/api/v1/gardens/1')
+export const fetchGarden = (userKey) => {
+  return fetch('https://garden-pi-be.herokuapp.com/api/v1/gardens/1', {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': userKey
+    }
+  })
   .then(res => res.json())
   .then(res => res)
   .catch(error => error.message)
 }
 
-export const fetchGardenEnv = () => {
-  return fetch('http://garden-pi-be.herokuapp.com/api/v1/gardens/1/env_measurements')
+export const fetchGardenEnv = (userKey) => {
+  return fetch('http://garden-pi-be.herokuapp.com/api/v1/gardens/1/env_measurements', {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': userKey
+    }
+  })
   .then(res => res.json())
   .then(res => res)
   .catch(error => error.message)
@@ -49,10 +63,6 @@ export const fetchPhotos = () => {
 }
 
 export const signInUser = (user) => {
-  // console.log({
-  //   email: user.email,
-  //   password: user.password
-  // })
   return fetch('https://garden-pi-be.herokuapp.com/api/v1/sessions', {
     method: 'POST',
     headers: {
