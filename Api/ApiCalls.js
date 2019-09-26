@@ -58,9 +58,9 @@ export const createNewUser = (newUser) => {
   })
   return fetch('https://garden-pi-be.herokuapp.com/api/v1/users', {
     method: 'POST',  
-    // headers: {  
-    //   'auth': '1234'  
-    // },  
+    headers: {  
+      'Content-Type': 'application/json'  
+    },  
     body: JSON.stringify({
     first_name: newUser.firstName,
     last_name: newUser.lastName,

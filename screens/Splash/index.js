@@ -5,7 +5,7 @@ import {
   Text, 
   ImageBackground, 
   Image,
-  TextInput } from 'react-native';
+  TextInput, } from 'react-native';
 import { fetchWeather, fetchGarden, fetchGardenEnv } from '../../Api/ApiCalls';
 import { Header } from '../../components';
 import styles from './styles';
