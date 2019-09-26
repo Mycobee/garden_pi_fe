@@ -46,10 +46,8 @@ export default class Splash extends Component {
 
   signIn = async () => {
     const response = await signInUser(this.state)
-    if (response.includes('Please check that the email and password you\'ve entered are correct.')) {
-      this.setState({ error: response })
-      return;
-    }
+    const userkey = await response['api_key']
+    
     this.setState({ email: '', password: '', error: '' })
   };
 
@@ -72,9 +70,6 @@ export default class Splash extends Component {
             {
               this.state.appLoaded &&
                 <View style={styles.loginForm}>
-                  <View style={styles.errorContainer}>
-                    <Text style={styles.errorText}>{this.state.error}</Text>
-                  </View>
                 <TextInput
                   placeholder='E-Mail...' 
                   style={styles.loginInput}

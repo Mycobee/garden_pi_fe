@@ -67,17 +67,6 @@ export default StyleSheet.create({
     borderWidth: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  errorContainer: {
-    height: 40,
-    flexWrap: 'wrap',
-    padding: 5,
-    width: Dimensions.get('window').width * .70,
-    textAlign: 'center'
-  },
-  errorText: {
-    color: 'black',
-    fontSize: 11
   }
 });
 
