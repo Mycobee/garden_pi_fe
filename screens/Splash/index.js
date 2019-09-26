@@ -12,13 +12,14 @@ import styles from './styles';
 
 export default class Splash extends Component {
   state = {
+    appLoaded: false,
+    email: '',
+    env: null,
+    error:'',
     foreCast: null,
     garden: null,
-    env: null,
-    appLoaded: false,
+    loading: false,
     map: null,
-    error:'',
-    email: '',
     password: ''
   };
 
@@ -45,6 +46,7 @@ export default class Splash extends Component {
   };
 
   signIn = async () => {
+    this.setState({ loading: true })
     const response = await signInUser(this.state)
     const userKey = response['api_key']
     await this.getWeather()
@@ -75,7 +77,9 @@ export default class Splash extends Component {
         <View>
           <Header fontsize={55}/>
           <View style={styles.textContainer}>
-                <View style={styles.loginForm}>
+            {
+              !this.state.loading &&
+              <View style={styles.loginForm}>
                 <TextInput
                   placeholder='E-Mail...' 
                   style={styles.loginInput}
@@ -106,14 +110,16 @@ export default class Splash extends Component {
                   </TouchableOpacity>
                 </View>
             </View>
-            {/* {!this.state.appLoaded &&
+            }
+            {
+              this.state.loading &&
             <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 'auto', marginBottom: 'auto' }}>
               <Image  
                 style={{ height: 200, width: 200 }}
                 source={require('../../assets/images/beeBoi.gif')}
               />
             </View>
-            } */}
+            }
           </View>
         </View>
       </ImageBackground>
