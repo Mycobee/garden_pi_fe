@@ -49,14 +49,14 @@ export default class Splash extends Component {
     this.setState({ loading: true })
     const response = await signInUser(this.state)
     const userKey = response['api_key']
+    this.setState({ email: '', password: '', error: '', appLoaded: true })
     await this.getWeather()
     await this.getGarden(userKey)
     await this.getEnv(userKey)
-    this.setState({ email: '', password: '', error: '', appLoaded: true })
-    console.log(this.state)
+    await this.onEnterPress()
   };
 
-  onEnterPress = () => {
+  onEnterPress = async () => {
     this.props.navigation.navigate('Home', {
       foreCast: this.state.foreCast,
       env: this.state.env,
