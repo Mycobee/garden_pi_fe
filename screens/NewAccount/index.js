@@ -84,7 +84,6 @@ export default class Splash extends Component {
                 style={styles.formInput}
                 placeholder="Password..."
                 maxLength={20}
-                secureTextEntry={true}
                 secureTextEntry
                 autoCorrect={false}
                 onChangeText={(text) => this.setState({ password: text })}

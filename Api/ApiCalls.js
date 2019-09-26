@@ -1,6 +1,5 @@
 // import { ApiKey } from './ApiKey'
 import {API_KEY} from 'react-native-dotenv'
-import { userInfo } from 'os'
 // ApiClient.init(API_KEY)
 
 export const fetchWeather = () => {
@@ -50,7 +49,7 @@ export const fetchPhotos = () => {
 };
 
 export const signInUser = (user) => {
-  return fetch('', {
+  return fetch('https://garden-pi-be.herokuapp.com/api/v1/sessions', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

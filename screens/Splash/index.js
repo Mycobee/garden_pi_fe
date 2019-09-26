@@ -6,7 +6,7 @@ import {
   ImageBackground, 
   Image,
   TextInput, } from 'react-native';
-import { fetchWeather, fetchGarden, fetchGardenEnv } from '../../Api/ApiCalls';
+import { fetchWeather, fetchGarden, fetchGardenEnv, signInUser } from '../../Api/ApiCalls';
 import { Header } from '../../components';
 import styles from './styles';
 
@@ -15,7 +15,9 @@ export default class Splash extends Component {
     foreCast: null,
     garden: null,
     env: null,
-    appLoaded: false
+    appLoaded: false,
+    email: '',
+    password: ''
   };
 
   async componentDidMount() {
@@ -40,11 +42,8 @@ export default class Splash extends Component {
     .then(envData => this.setState({env: envData}))
   };
 
-  onEnterPress = () => {
-    this.props.navigation.navigate('Home', {
-      foreCast: this.state.foreCast,
-      env: this.state.env
-    })
+  signIn = async () => {
+    await signInUser(this.state)
   };
 
   onCreateNewPress = () => {
@@ -67,15 +66,18 @@ export default class Splash extends Component {
                 <TextInput
                   placeholder='E-Mail...' 
                   style={styles.loginInput}
+                  onChangeText={text => this.setState({ email: text })}
                 />
                 <TextInput
                   placeholder='Password...' 
                   style={styles.loginInput}
+                  onChangeText={text => this.setState({ password: text })}
+                  secureTextEntry
                 />
                 <View style={{ flexDirection: 'row' }}>
                   <TouchableOpacity 
                     style={styles.loginBtn}
-                    onPress={this.onEnterPress}
+                    onPress={this.signIn}
                   >
                     <Text>Sign In</Text>
                   </TouchableOpacity>
