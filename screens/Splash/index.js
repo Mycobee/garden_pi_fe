@@ -109,16 +109,22 @@ export default class Splash extends Component {
                     </Text>
                   </TouchableOpacity>
                 </View>
-            </View>
+              </View>
             }
             {
               this.state.loading &&
-            <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 'auto', marginBottom: 'auto' }}>
-              <Image  
-                style={{ height: 200, width: 200 }}
-                source={require('../../assets/images/beeBoi.gif')}
-              />
-            </View>
+              <View 
+                style={{ 
+                  alignItems: 'center', 
+                  justifyContent: 'center', 
+                  marginTop: 'auto', 
+                  marginBottom: 'auto' }}
+                >
+                <Image  
+                  style={{ height: 200, width: 200 }}
+                  source={require('../../assets/images/beeBoi.gif')}
+                />
+              </View>
             }
           </View>
         </View>
