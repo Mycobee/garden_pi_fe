@@ -33,17 +33,52 @@ export const triggerWaterJob = () => {
   })
   .then(res => res.json())
   .catch(error => console.log(error.message))
-}
+};
 
 export const fetchGraphData = (length) => {
   return fetch(`http://garden-pi-be.herokuapp.com/api/v1/gardens/1/daily_avg_moisture?days=${length}`)
     .then(res => res.json())
     .then(res => res)
     .catch(error => error.message)
-}
+};
 
 export const fetchPhotos = () => {
   return fetch('https://garden-pi-pictures.s3-us-west-2.amazonaws.com/brian')
     .then(res => res.url)
+    .catch(error => error.message)
+}
+
+export const signInUser = (user) => {
+  return fetch('https://garden-pi-be.herokuapp.com/api/v1/sessions', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      email: user.email,
+      password: user.password
+    })
+  })
+  .then(res => res.json())
+  .then(response => console.log(response))
+  .catch(error => error.message)
+};
+
+export const createNewUser = (newUser) => {
+  return fetch('https://garden-pi-be.herokuapp.com/api/v1/users', {
+    method: 'POST',  
+    headers: {  
+      'Content-Type': 'application/json'  
+    },  
+    body: JSON.stringify({
+    first_name: newUser.firstName,
+    last_name: newUser.lastName,
+    email: newUser.email,
+    password: newUser.password,
+    password_confirmation: newUser.passwordConfirmation
+    })
+  })
+    .then(res => res.json())
+    .then(response => console.log(response))
     .catch(error => error.message)
 }

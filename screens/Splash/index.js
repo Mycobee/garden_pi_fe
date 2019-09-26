@@ -5,9 +5,8 @@ import {
   Text, 
   ImageBackground, 
   Image,
-  ActivityIndicator, 
-  Dimensions } from 'react-native';
-import { fetchWeather, fetchGarden, fetchGardenEnv } from '../../Api/ApiCalls';
+  TextInput, } from 'react-native';
+import { fetchWeather, fetchGarden, fetchGardenEnv, signInUser } from '../../Api/ApiCalls';
 import { Header } from '../../components';
 import styles from './styles';
 
@@ -17,7 +16,9 @@ export default class Splash extends Component {
     garden: null,
     env: null,
     appLoaded: false,
-    map: null
+    map: null,
+    email: '',
+    password: ''
   };
 
   async componentDidMount() {
@@ -26,10 +27,12 @@ export default class Splash extends Component {
     // await this.getEnv()
     this.setState({ appLoaded: true })
   };
+
   getWeather = async () => {
     await fetchWeather() 
     .then(weatherData => this.setState({foreCast: weatherData}))
   };
+  
   getGarden = async () => {
     await fetchGarden()
     .then(gardenData => this.setState({garden: gardenData}))
@@ -38,7 +41,11 @@ export default class Splash extends Component {
   getEnv = async () => {
     await fetchGardenEnv()
     .then(envData => this.setState({env: envData}))
+  };
 
+  signIn = async () => {
+    await signInUser(this.state)
+    this.setState({ email: '', password: '' })
   };
 
   onEnterPress = () => {
@@ -57,7 +64,40 @@ export default class Splash extends Component {
         <View>
           <Header fontsize={55}/>
           <View style={styles.textContainer}>
-
+            {
+              this.state.appLoaded &&
+                <View style={styles.loginForm}>
+                <TextInput
+                  placeholder='E-Mail...' 
+                  style={styles.loginInput}
+                  onChangeText={text => this.setState({ email: text })}
+                  value={this.state.email}
+                />
+                <TextInput
+                  placeholder='Password...' 
+                  style={styles.loginInput}
+                  onChangeText={text => this.setState({ password: text })}
+                  value={this.state.password}
+                  secureTextEntry
+                />
+                <View style={{ flexDirection: 'row' }}>
+                  <TouchableOpacity 
+                    style={styles.loginBtn}
+                    onPress={this.signIn}
+                  >
+                    <Text>Sign In</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity 
+                    style={styles.loginBtn}
+                    onPress={this.onCreateNewPress}
+                  >
+                    <Text>
+                      Sign Up!
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+            </View>
+            }
             {!this.state.appLoaded &&
             <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 'auto', marginBottom: 'auto' }}>
               <Image  
@@ -66,18 +106,6 @@ export default class Splash extends Component {
               />
             </View>
             }
-            {
-              this.state.appLoaded &&
-              <TouchableOpacity 
-              style={styles.splashEnterBtn}
-              onPress={this.onEnterPress}
-              >
-              <Text>
-                Enter your Garden...
-              </Text>
-            </TouchableOpacity>
-            }
-
           </View>
         </View>
       </ImageBackground>

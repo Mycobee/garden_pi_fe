@@ -6,11 +6,15 @@ import Data from './Data';
 import PhotoClicker from './PhotoClicker';
 import PhotoPicker from './PhotoPicker';
 import AddGarden from './AddGarden';
+import NewAccount from './NewAccount';
 
 const AppNavigator = createStackNavigator(
   {
     Splash: {
       screen: Splash
+    },
+    NewAccount: {
+      screen: NewAccount
     },
     Home: {
       screen: Home
