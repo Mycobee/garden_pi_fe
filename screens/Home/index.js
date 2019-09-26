@@ -28,18 +28,18 @@ export class index extends Component {
   async componentDidMount() {
     const { navigation } = this.props;
     const forecast = await navigation.getParam('foreCast')
-    // const env = await navigation.getParam('env').data
-    // const mostRecentEnvData = env[env.length - 1];
-    // const moistureData = env.map(soil => {
-    //   return soil['attributes']
-    // });
-    // const currentSoilData = mostRecentEnvData['attributes'];
+    const env = await navigation.getParam('env').data
+    const mostRecentEnvData = env[env.length - 1];
+    const moistureData = env.map(soil => {
+      return soil['attributes']
+    });
+    const currentSoilData = mostRecentEnvData['attributes'];
     this.setState({
-      // env: env,
+      env: env,
       forecast: forecast['daily'].data,
-      // currentWeather: forecast.currently,
-      // currentSoilData: currentSoilData,
-      // recentSoilData: this.getRecentMoisture(moistureData)
+      currentWeather: forecast.currently,
+      currentSoilData: currentSoilData,
+      recentSoilData: this.getRecentMoisture(moistureData)
     });
   };
 
@@ -96,7 +96,7 @@ export class index extends Component {
           style={styles.screenContainer}
           onLoad={this.toggleBackgroundLoaded}
           >
-          <View style={[styles.infoContainer, {height: Dimensions.get('window').height * .27}]}>
+          <View style={[styles.infoContainer, {height: Dimensions.get('window').height * .23}]}>
             <View style={styles.headerContainer}>
               <TouchableOpacity onPress={this.onBackPress}>
                 <Image  
@@ -112,12 +112,12 @@ export class index extends Component {
               />
           </TouchableOpacity>
             </View>
-            <TouchableOpacity 
+            {/* <TouchableOpacity 
               style={styles.moreDataBtn}
               onPress={this.onAddGarden}
             >
             <Text>Add New Garden</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             <View style={styles.forecastContainer}>
               <CurrentWeather 
                 weatherIcon={weatherIcon} 
