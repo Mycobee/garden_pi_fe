@@ -49,6 +49,10 @@ export const fetchPhotos = () => {
 };
 
 export const signInUser = (user) => {
+  // console.log({
+  //   email: user.email,
+  //   password: user.password
+  // })
   return fetch('https://garden-pi-be.herokuapp.com/api/v1/sessions', {
     method: 'POST',
     headers: {
@@ -60,7 +64,7 @@ export const signInUser = (user) => {
     })
   })
   .then(res => res.json())
-  .then(response => console.log(response))
+  .then(response => response)
   .catch(error => error.message)
 };
 
