@@ -17,6 +17,7 @@ export default class Splash extends Component {
     env: null,
     appLoaded: false,
     map: null,
+    error:'',
     email: '',
     password: ''
   };
@@ -44,8 +45,12 @@ export default class Splash extends Component {
   };
 
   signIn = async () => {
-    await signInUser(this.state)
-    this.setState({ email: '', password: '' })
+    const response = await signInUser(this.state)
+    if (response.includes('Please check that the email and password you\'ve entered are correct.')) {
+      this.setState({ error: response })
+      return;
+    }
+    this.setState({ email: '', password: '', error: '' })
   };
 
   onEnterPress = () => {
@@ -67,6 +72,9 @@ export default class Splash extends Component {
             {
               this.state.appLoaded &&
                 <View style={styles.loginForm}>
+                  <View style={styles.errorContainer}>
+                    <Text style={styles.errorText}>{this.state.error}</Text>
+                  </View>
                 <TextInput
                   placeholder='E-Mail...' 
                   style={styles.loginInput}
