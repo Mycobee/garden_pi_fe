@@ -6,6 +6,7 @@ import {
   ImageBackground, 
   Image,
   TextInput, } from 'react-native';
+import {NavigationEvents} from 'react-navigation';
 import { fetchWeather, fetchGarden, fetchGardenEnv, signInUser } from '../../Api/ApiCalls';
 import { Header } from '../../components';
 import styles from './styles';
@@ -23,11 +24,18 @@ export default class Splash extends Component {
     password: ''
   };
 
-  async componentDidMount() {
-    // await this.getWeather()
-    // await this.getGarden()
-    // await this.getEnv()
-    // this.setState({ appLoaded: true })
+  resetState = async () => {
+    await this.setState({
+      appLoaded: false,
+      email: '',
+      env: null,
+      error:'',
+      foreCast: null,
+      garden: null,
+      loading: false,
+      map: null,
+      password: ''
+    });
   };
 
   getWeather = async () => {
@@ -53,6 +61,7 @@ export default class Splash extends Component {
     await this.getWeather()
     await this.getGarden(userKey)
     await this.getEnv(userKey)
+    this.setState({ loading: false })
     await this.onEnterPress()
   };
 
@@ -74,6 +83,7 @@ export default class Splash extends Component {
         source={require('../../assets/images/splash-background.jpg')}
         style={styles.container}
       >
+        <NavigationEvents onDidFocus={() => this.resetState()} />
         <View>
           <Header fontsize={55}/>
           <View style={styles.textContainer}>
