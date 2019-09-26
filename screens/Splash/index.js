@@ -47,7 +47,7 @@ export default class Splash extends Component {
   signIn = async () => {
     const response = await signInUser(this.state)
     const userkey = await response['api_key']
-    
+
     this.setState({ email: '', password: '', error: '' })
   };
 
@@ -57,6 +57,11 @@ export default class Splash extends Component {
       env: this.state.env,
     })
   };
+
+  onCreateNewPress = () => {
+    this.setState({ email: '', password: '', error: '' })
+    this.props.navigation.navigate('NewAccount')
+  }
 
   render() {
     return (
