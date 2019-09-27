@@ -58,11 +58,11 @@ export default class Splash extends Component {
     const response = await signInUser(this.state)
     const userKey = response['api_key']
     if (userKey) {
-      this.setState({ email: '', password: '', error: '', appLoaded: true })
+      this.setState({ email: '', password: '', error: '' })
       await this.getWeather()
       await this.getGarden(userKey)
       await this.getEnv(userKey)
-      this.setState({ loading: false })
+      this.setState({ loading: false, appLoaded: true })
       await this.onEnterPress()
     }
     if (!userKey) {
