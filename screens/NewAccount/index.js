@@ -28,7 +28,8 @@ export default class Splash extends Component {
       email: '',
       password: '',
       passwordConfirmation: '',
-      hasErrored: false
+      hasErrored: false,
+      error: ''
     });
   };
 
@@ -36,9 +37,16 @@ export default class Splash extends Component {
     this.props.navigation.navigate('Splash')
   };
 
-  onSubmit = () => {
-    createNewUser(this.state)
+  onSubmit = async () => {
+    const response = await createNewUser(this.state)
     this.clearState()
+    const userKey = await response['api_key']
+    if (userKey) {
+      this.props.navigation.navigate('Home')
+    }
+    if (!userKey) {
+      this.setState({ error: 'One or more input not valid' })
+    }
   };
 
   render() {
@@ -59,6 +67,7 @@ export default class Splash extends Component {
               <Header style={styles.header} fontsize={35}/>
             </View>
             <View style={styles.formContainer}>
+              <Text>{this.state.error}</Text>
               <TextInput 
                 value={this.state.firstName}
                 style={styles.formInput}

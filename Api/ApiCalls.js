@@ -93,6 +93,6 @@ export const createNewUser = (newUser) => {
     })
   })
     .then(res => res.json())
-    .then(response => console.log(response))
+    .then(response => response)
     .catch(error => error.message)
 }

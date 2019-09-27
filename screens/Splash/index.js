@@ -6,8 +6,12 @@ import {
   ImageBackground, 
   Image,
   TextInput, } from 'react-native';
-import {NavigationEvents} from 'react-navigation';
-import { fetchWeather, fetchGarden, fetchGardenEnv, signInUser } from '../../Api/ApiCalls';
+  import { 
+    fetchWeather, 
+    fetchGarden, 
+    fetchGardenEnv, 
+    signInUser } from '../../Api/ApiCalls';
+import { NavigationEvents } from 'react-navigation';
 import { Header } from '../../components';
 import styles from './styles';
 
