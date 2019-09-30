@@ -116,14 +116,14 @@ export default class Splash extends Component {
                     style={styles.loginBtn}
                     onPress={this.signIn}
                   >
-                    <Text>Sign In</Text>
+                    <Text style={styles.text}>Sign In</Text>
                   </TouchableOpacity>
                   <TouchableOpacity 
                     style={styles.loginBtn}
                     onPress={this.onCreateNewPress}
                   >
-                    <Text>
-                      Sign Up!
+                    <Text style={styles.text}>
+                      Sign Up
                     </Text>
                   </TouchableOpacity>
                 </View>
