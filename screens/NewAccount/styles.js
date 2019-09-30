@@ -2,50 +2,37 @@ import { StyleSheet, Dimensions } from 'react-native';
 
 export default StyleSheet.create({
   container: {
+    alignItems: 'center',
     backgroundColor: '#73A686',
     height: Dimensions.get('window').height,
-    justifyContent: 'flex-start',
-    paddingTop: 100,
-    width: Dimensions.get('window').width,
-  },
-  infoContainer: {
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    backgroundColor: 'rgba(115, 166, 134, .7)',
-    borderColor: '#A14550',
-    borderRadius: 30,
-    borderWidth: 2,
-    // height: Dimensions.get('window').height * .45,
-    margin: 5,
-    padding: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 2, height: 2 },
-    shadowOpacity: 1,
-    width: Dimensions.get('window').width * .95,
+    justifyContent: 'space-evenly',
+    width: Dimensions.get('window').width
   },
   formContainer: {
-    backgroundColor: "rgb(192,192,192)",
+    backgroundColor: 'rgba(115, 166, 134, .9)',
     borderColor: '#A14550',
     borderRadius: 30,
     borderWidth: 2,
     flexDirection: 'column',
+    width: Dimensions.get('window').width * 0.75,
     // height: Dimensions.get('window').height * .35,
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
     alignItems: 'center',
     padding: 25,
+    marginBottom: 100,
+    marginLeft: 20
   },
   formInput: {
-    alignItems: 'center',
-    backgroundColor: "#fff",
+    backgroundColor: '#d5fdd5',
+    width: Dimensions.get('window').width * .65,
+    height: 45,
+    paddingLeft: 10,
     borderColor: '#A14550',
     borderRadius: 30,
-    borderWidth: 1,
-    height: 40,
+    borderWidth: 2,
     justifyContent: 'center',
-    paddingLeft: 10,
-    marginTop: 10,
-    width: Dimensions.get('window').width * .60,
-    
+    alignItems: 'center',
+    marginTop: 10
   },
   errMsgContainer: {
     height: 20
@@ -54,5 +41,18 @@ export default StyleSheet.create({
     width: 35,
     height: 35
   },  
+  createBtn: {
+    backgroundColor: '#d5fdd5',
+    width: Dimensions.get('window').width * .4,
+    height: 45,
+    borderColor: '#A14550',
+    borderRadius: 30,
+    borderWidth: 2,
+    justifyContent: 'center'
+  },
+  text: {
+    textAlign: 'center',
+    fontWeight: 'bold'
+  }
 });
 
