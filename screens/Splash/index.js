@@ -5,7 +5,8 @@ import {
   Text, 
   ImageBackground, 
   Image,
-  TextInput, } from 'react-native';
+  TextInput,
+  Alert } from 'react-native';
 import {NavigationEvents} from 'react-navigation';
 import { fetchWeather, fetchGarden, fetchGardenEnv, signInUser } from '../../Api/ApiCalls';
 import { Header } from '../../components';
@@ -66,7 +67,8 @@ export default class Splash extends Component {
       await this.onEnterPress()
     }
     if (!userKey) {
-      this.setState({ loading: false, error: 'Email/password not found' })
+      this.setState({ loading: false, email: '', password: '' })
+      Alert.alert('Login Error', 'Email/Password incorrect')
     }
   };
 
