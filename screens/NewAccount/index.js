@@ -48,7 +48,7 @@ export default class Splash extends Component {
         style={styles.container}
       >
         <KeyboardAvoidingView behavior="padding">
-          <View style={styles.infoContainer}>
+          {/* <View style={styles.infoContainer}> */}
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
               <TouchableOpacity onPress={this.onBackPress}>
                 <Image  
@@ -56,7 +56,7 @@ export default class Splash extends Component {
                 style={[styles.backBtn, { marginRight: 10 }]}
                 />
               </TouchableOpacity>
-              <Header style={styles.header} fontsize={35}/>
+              <Header style={styles.header} fontsize={50}/>
             </View>
             <View style={styles.formContainer}>
               <TextInput 
@@ -100,11 +100,11 @@ export default class Splash extends Component {
               <View style={styles.errMsgContainer}>
                 {this.state.hasErrored && <Text>Whoops! Something is Wrong.</Text>}
               </View>
-              <TouchableOpacity style={styles.formInput} onPress={this.onSubmit}>
-                <Text style={{ fontWeight: 'bold' }}>Create Account!</Text>
+              <TouchableOpacity style={styles.createBtn} onPress={this.onSubmit}>
+                <Text style={styles.text}>Create Account!</Text>
               </TouchableOpacity>
             </View>
-          </View>
+          {/* </View> */}
         </KeyboardAvoidingView>
       </ImageBackground>
     )
