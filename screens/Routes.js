@@ -33,7 +33,7 @@ const AppNavigator = createStackNavigator(
     }
   },
   {
-  initialRouteName: "Splash",
+  initialRouteName: "Home",
   headerMode: "none"
   }
 );

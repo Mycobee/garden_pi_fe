@@ -6,7 +6,11 @@ import {
   Dimensions, 
   ImageBackground,
   Image } from 'react-native';
-import { Header, CurrentWeather, DataCircle } from '../../components';
+import { 
+  Header, 
+  CurrentWeather, 
+  DataCircle, 
+  NoData } from '../../components';
 import { getWeatherIcon, getRecordingTime } from '../../utilities';
 import { triggerWaterJob } from '../../Api/ApiCalls';
 import { LineChart } from 'react-native-chart-kit';
