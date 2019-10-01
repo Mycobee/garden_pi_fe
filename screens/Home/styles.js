@@ -38,6 +38,8 @@ export default StyleSheet.create({
   },
   forecastContainer: {
     flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: '#d5fdd5',
     borderColor: '#A14550',
     borderRadius: 30,
@@ -81,5 +83,17 @@ export default StyleSheet.create({
     marginRight: 12,
     marginLeft: 12,
     width: Dimensions.get('window').width * .4
+  },
+  errorContainer: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#d5fdd5',
+    borderColor: '#A14550',
+    borderRadius: 30,
+    borderWidth: 2,
+    width: 200, 
+    height: 30,
+    marginTop: Dimensions.get('window').height * .05
   }
 })

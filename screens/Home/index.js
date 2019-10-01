@@ -3,7 +3,6 @@ import {
   View, 
   Text, 
   TouchableOpacity, 
-  Button, 
   Dimensions, 
   ImageBackground,
   Image } from 'react-native';
@@ -118,22 +117,33 @@ export class index extends Component {
             >
             <Text>Add New Garden</Text>
             </TouchableOpacity> */}
-            <View style={styles.forecastContainer}>
-              <CurrentWeather 
+            {
+              this.state.currentWeather.temperature &&
+              <View style={styles.forecastContainer}>
+                <CurrentWeather 
                 weatherIcon={weatherIcon} 
                 temperature={this.state.currentWeather.temperature} 
                 precipitaiton={this.state.currentWeather.precipProbability} 
                 humidity={this.state.currentWeather.humidity} 
                 wind={this.state.currentWeather.windSpeed}
-              />
-            </View>
+                />
+              </View>
+            }
+            {
+              !this.state.currentWeather.temperature &&
+              <View style={styles.errorContainer}>
+                <Text>No Data Found</Text>
+              </View>
+            }
           </View>
           <View style={[styles.infoContainer, {height: Dimensions.get('window').height * .31}]}>
             <View>
               <View>
               <Text style={styles.text}>Soil Moisture</Text>
               </View>
-              <LineChart 
+              {
+                this.state.recentSoilData.length > 0 &&
+                <LineChart 
                 data={line}
                 width={Dimensions.get('window').width * .85}
                 height={Dimensions.get('window').height * .25}
@@ -156,23 +166,45 @@ export class index extends Component {
                   borderWidth: 2,
                 }}
               />
+              }
+              {
+                !this.state.recentSoilData.length &&
+                <View style={styles.errorContainer}>
+                  <Text 
+                    style={{ textAlign: 'center' }}
+                  >
+                    No Data Found
+                  </Text>
+                </View>
+              }
             </View>
           </View>
           <View style={[styles.infoContainer, {height: Dimensions.get('window').height * .23}]}>
-          <Text style={styles.timeText}>Last Recording  {recordingTime}
-          </Text>
-            <View style={{ flexDirection: 'row' }}>
+          {
+            this.state.recentSoilData.length > 0 &&
+            <View style={{ alignItems: 'center' }} >
+              <Text style={styles.timeText}>Last Recording  {recordingTime}
+              </Text>
+              <View style={{ flexDirection: 'row' }}>
                 <DataCircle 
-                  percent={this.state.currentSoilData.soil_moisture}
-                  title={'Soil Moisture:'}
-                  label={`${this.state.currentSoilData.soil_moisture}%`}
-                />
-                <DataCircle 
-                  percent={this.state.currentSoilData.soil_temperature}
-                  title={'Soil Temperature:'}
-                  label={`${this.state.currentSoilData.soil_temperature}°F`}
-                />
+                percent={this.state.currentSoilData.soil_moisture}
+                title={'Soil Moisture:'}
+                label={`${this.state.currentSoilData.soil_moisture}%`}
+              />
+              <DataCircle 
+                percent={this.state.currentSoilData.soil_temperature}
+                title={'Soil Temperature:'}
+                label={`${this.state.currentSoilData.soil_temperature}°F`}
+              />
             </View>
+            </View>
+          }
+          {
+            !this.state.recentSoilData.length &&
+            <View style={styles.errorContainer}>
+              <Text>No Soil Data Found</Text>
+            </View>
+          }
         </View>
         <View style={{ flexDirection: 'row', width: Dimensions.get('window').width * .9, justifyContent: 'space-between'}}>
             <TouchableOpacity 
