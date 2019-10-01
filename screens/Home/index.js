@@ -99,15 +99,15 @@ export class index extends Component {
             <View style={styles.headerContainer}>
               <TouchableOpacity onPress={this.onBackPress}>
                 <Image  
-                source={require('../../assets/images/back.png')}
-                style={[styles.backBtn, { marginRight: 10 }]}
+                source={require('../../assets/images/logout.png')}
+                style={[styles.backBtn, { marginRight: 25 }]}
                 />
               </TouchableOpacity>
               <Header style={styles.header} fontsize={35}/>
               <TouchableOpacity onPress={this.openCamera}>
               <Image  
                 source={require('../../assets/images/camera.png')}
-                style={[styles.backBtn, { marginLeft: 10 }]}
+                style={[styles.backBtn, { marginLeft: 25 }]}
               />
           </TouchableOpacity>
             </View>

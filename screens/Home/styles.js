@@ -27,7 +27,9 @@ export default StyleSheet.create({
     width: Dimensions.get('window').width * .8,
   },
   header: {
-    paddingTop: 200
+    paddingTop: 200,
+    marginLeft: 5,
+    marginRight: 5,
   },
   backBtn: {
     width: 35,
