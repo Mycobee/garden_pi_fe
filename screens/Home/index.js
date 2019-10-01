@@ -135,9 +135,10 @@ export class index extends Component {
             }
             {
               !this.state.currentWeather.temperature &&
-              <View style={styles.errorContainer}>
-                <Text>No Data Found</Text>
-              </View>
+              // <View style={styles.errorContainer}>
+              //   <Text>No Data Found</Text>
+              // </View>
+              <NoData dataType='Weather' />
             }
           </View>
           <View style={[styles.infoContainer, {height: Dimensions.get('window').height * .31}]}>
