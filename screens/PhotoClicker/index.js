@@ -1,5 +1,11 @@
 import React from 'react';
-import { Text, View, TouchableOpacity, CameraRoll, ImageBackground, Image } from 'react-native';
+import { 
+  Text, 
+  View, 
+  TouchableOpacity, 
+  CameraRoll, 
+  ImageBackground, 
+  Image } from 'react-native';
 import * as Permissions from 'expo-permissions';
 import { Camera } from 'expo-camera';
 import styles from './styles';
@@ -48,48 +54,61 @@ export default class PhotoClicker extends React.Component {
       return (
         <View style={{ alignItems: 'center', justifyContent: 'center' }}>
           <ImageBackground 
-          source={this.state.imageUri} 
-          style={styles.previewImage}
+            source={this.state.imageUri} 
+            style={styles.previewImage}
           >
           <View style={styles.cameraBtnContainer}>
             <TouchableOpacity 
               style={styles.cameraBtn} 
-              onPress={this.onSavePhotoPress}>
+              onPress={this.onSavePhotoPress}
+            >
               <Text style={{ fontWeight: 'bold', fontSize: 18 }}>
                 Save 
               </Text>
             </TouchableOpacity>
             <TouchableOpacity 
-            style={styles.cameraBtn}
-            onPress={this.onTakeNewPhotoPress}
-          >
-            <Text 
-            style={{ fontWeight: 'bold', fontSize: 18 }}
-          >
-            Re-snap
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </ImageBackground>
-        </View>
+              style={styles.cameraBtn}
+              onPress={this.onTakeNewPhotoPress}
+            >
+              <Text 
+              style={{ fontWeight: 'bold', fontSize: 18 }}
+              >
+              Re-snap
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </ImageBackground>
+      </View>
       )
     } else {
       return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <View style={{ 
+          flex: 1, 
+          alignItems: 'center', 
+          justifyContent: 'center' }}
+        >
           <Camera 
             ref={ref => {
               this.camera = ref;
             }}
             style={styles.cameraScreen} type={this.state.type}
           >
-          <TouchableOpacity onPress={this.onBackBtnPress} style={{ marginTop: 70, marginLeft: 30, position: 'absolute' }}>
+          <TouchableOpacity 
+            onPress={this.onBackBtnPress} 
+            style={{ 
+              marginTop: 70, 
+              marginLeft: 30, 
+              position: 'absolute' 
+            }}
+          >
             <Image  
               source={require('../../assets/images/back.png')}
               style={styles.backBtn}
             />
           </TouchableOpacity>
             <View
-              style={styles.cameraBtnContainer}>
+              style={styles.cameraBtnContainer}
+            >
               <TouchableOpacity
                 style={styles.cameraBtn}
                 onPress={() => {
@@ -99,12 +118,12 @@ export default class PhotoClicker extends React.Component {
                         ? Camera.Constants.Type.front
                         : Camera.Constants.Type.back,
                   });
-                }}>
+                }}
+              >
                 <Text 
                   style={{ 
                     fontSize: 18, 
                     fontWeight: 'bold',
-
                   }}
                 > 
                   Flip 
@@ -112,7 +131,8 @@ export default class PhotoClicker extends React.Component {
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.cameraBtn}
-                onPress={this.snapPhoto}>
+                onPress={this.snapPhoto}
+              >
                 <Text 
                   style={{ 
                     fontSize: 18, 
@@ -126,6 +146,6 @@ export default class PhotoClicker extends React.Component {
           </Camera>
         </View>
       );
-    }
-  }
+    };
+  };
 };

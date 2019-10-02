@@ -7,8 +7,14 @@ import {
   Image,
   TextInput,
   Alert } from 'react-native';
-import {NavigationEvents} from 'react-navigation';
-import { fetchWeather, fetchGarden, fetchGardenEnv, signInUser } from '../../Api/ApiCalls';
+import { NavigationEvents } from 'react-navigation';
+import { 
+  fetchWeather, 
+  fetchGarden, 
+  fetchGardenEnv, 
+  signInUser, 
+  fetchGraphData,
+  fetchPhotos } from '../../Api/ApiCalls';
 import { Header } from '../../components';
 import styles from './styles';
 
@@ -25,8 +31,8 @@ export default class Splash extends Component {
     password: ''
   };
 
-  resetState = async () => {
-    await this.setState({
+  resetState =() => {
+    this.setState({
       appLoaded: false,
       email: '',
       env: null,
@@ -35,7 +41,9 @@ export default class Splash extends Component {
       garden: null,
       loading: false,
       map: null,
-      password: ''
+      password: '',
+      averages: null,
+      photos: null
     });
   };
 
@@ -54,16 +62,28 @@ export default class Splash extends Component {
     .then(envData => this.setState({env: envData}))
   };
 
+  getAverages = async () => {
+    await fetchGraphData(6)
+    .then(avgs => this.setState({ averages: avgs }))
+  };
+
+  getPhotos = async () => {
+    await fetchPhotos()
+    .then(photos => this.setState({ photos: photos }))
+  };
+
   signIn = async () => {
     this.setState({ loading: true })
     const response = await signInUser(this.state)
     const userKey = response['api_key']
     if (userKey) {
-      this.setState({ email: '', password: '', error: '', appLoaded: true })
-      await this.getWeather()
-      await this.getGarden(userKey)
-      await this.getEnv(userKey)
-      this.setState({ loading: false })
+      this.setState({ email: '', password: '', error: '' })
+      await this.getWeather();
+      await this.getGarden(userKey);
+      await this.getEnv(userKey);
+      await this.getAverages();
+      await this.getPhotos();
+      this.setState({ loading: false, appLoaded: true })
       await this.onEnterPress()
     }
     if (!userKey) {
@@ -76,13 +96,15 @@ export default class Splash extends Component {
     this.props.navigation.navigate('Home', {
       foreCast: this.state.foreCast,
       env: this.state.env,
-    })
+      averages: this.state.averages,
+      photos: this.state.photos
+    });
   };
 
   onCreateNewPress = () => {
     this.setState({ email: '', password: '', error: '' })
     this.props.navigation.navigate('NewAccount')
-  }
+  };
 
   render() {
     return (
@@ -147,6 +169,6 @@ export default class Splash extends Component {
           </View>
         </View>
       </ImageBackground>
-    )
-  }
+    );
+  };
 };

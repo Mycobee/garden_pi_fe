@@ -1,7 +1,7 @@
 import { getRecordingDay } from './TimeCalculator'
 
 export const getDailyAverages = (data) => {
-  const records = data.map(datum => {
+  data.map(datum => {
     const date = new Date(datum['attributes'].created_at)
     const month = date.getMonth() + 1;
     const day = date.getDate()
@@ -16,5 +16,5 @@ export const getDailyAverages = (data) => {
   const yesterdayDate = new Date()
   const yesterdayDay = yesterdayDate.getDate() - 1;
   const yesterdayMonth = yesterdayDate.getMonth() + 1;
-  const sortingDate = `${yesterdayMonth}/${yesterdayDay}`
+  const sortingDate = `${yesterdayMonth}/${yesterdayDay}`;
 };
