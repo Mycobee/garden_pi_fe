@@ -197,8 +197,17 @@ displayForecastBoxes = () => {
         {
           this.state.photoUrl && this.state.pageLoaded  ? 
           <View>
-            <Text style={styles.text}>Most Recent Garden Photo</Text>
-            <Image source={{url: this.state.photoUrl}} style={{height: Dimensions.get('window').height * .2, width: Dimensions.get('window').width * .9, resizeMode: 'contain'}}/>
+            <Text style={styles.text}>
+              Most Recent Garden Photo
+            </Text>
+            <Image 
+              source={{url: this.state.photoUrl}} 
+              style={{
+                height: Dimensions.get('window').height * .25, 
+                width: Dimensions.get('window').width * .95, 
+                resizeMode: 'contain'
+              }}
+            />
           </View> :
           <NoData dataType='Photo' />
         }
