@@ -25,6 +25,8 @@ export class index extends Component {
       forecast: {},
       currentSoilData: {},
       recentSoilData: [],
+      averages: null,
+      photos: null
     }
   };
 
@@ -32,6 +34,8 @@ export class index extends Component {
     const { navigation } = this.props;
     const forecast = await navigation.getParam('foreCast')
     const env = await navigation.getParam('env').data
+    const averages = await navigation.getParam('averages')
+    const photos = await navigation.getParam('photos')
     const mostRecentEnvData = env[env.length - 1];
     const moistureData = env.map(soil => {
       return soil['attributes']
@@ -42,7 +46,9 @@ export class index extends Component {
       forecast: forecast['daily'].data,
       currentWeather: forecast.currently,
       currentSoilData: currentSoilData,
-      recentSoilData: this.getRecentMoisture(moistureData)
+      recentSoilData: this.getRecentMoisture(moistureData),
+      averages: averages,
+      photos: photos
     });
   };
 
@@ -62,7 +68,9 @@ export class index extends Component {
   onPress = () => {
     this.props.navigation.navigate('Data', {
       forecast: this.state.forecast,
-      env: this.state.env
+      env: this.state.env,
+      averages: this.state.averages,
+      photos: this.state.photos
     })
   };
 

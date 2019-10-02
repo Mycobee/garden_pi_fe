@@ -12,7 +12,6 @@ import {
 import { getWeatherIcon, getDailyAverages } from '../../utilities';
 import { LineChart } from 'react-native-chart-kit';
 import styles from './styles';
-import { fetchGraphData, fetchPhotos } from '../../Api/ApiCalls';
 import {TimeCalculator} from '../../utilities'
 
 const { width } = Dimensions.get('window');
@@ -27,7 +26,8 @@ export class Data extends Component {
       recentAvgDays: [],
       recentAvg: [],
       finalDays: [],
-      photoUrl: ''
+      photoUrl: '',
+      pageLoaded: false
     }
   };
 
@@ -37,20 +37,21 @@ export class Data extends Component {
     const { navigation } = this.props;
     const forecast = await navigation.getParam('forecast');
     const env = await navigation.getParam('env');
-    const averages = await fetchGraphData(6)
+    const averages = await navigation.getParam('averages');
+    const photo = await navigation.getParam('photos')
     const averageDays = Object.keys(averages.data.attributes)
     const days = averageDays.map((day) => {
       let ave = day.split(' ')[0]     
       return ave.split('-').reverse().splice(0,2).reverse().join('/')
       })
     const averageData = Object.values(averages.data.attributes)
-    const photo = await fetchPhotos()
     this.setState({
       forecast: forecast,
       env: env,
       recentAvgDays: days,
       recentAvg: averageData,
-      photoUrl: photo
+      photoUrl: photo,
+      pageLoaded: true
     })
     getDailyAverages(this.state.env)
   };
@@ -144,7 +145,7 @@ displayForecastBoxes = () => {
             )}
           >
             {
-              this.state.forecast ? 
+              this.state.forecast && this.state.pageLoaded ? 
               this.displayForecastBoxes() : 
               <NoData dataType='Weather' />
             }
@@ -152,7 +153,7 @@ displayForecastBoxes = () => {
         </View>
         <View style={{ flexDirection: 'row' }}>
           { 
-            this.state.forecast ? 
+            this.state.forecast && this.state.pageLoaded ? 
             this.displayDots() : 
             null
           }
@@ -160,7 +161,7 @@ displayForecastBoxes = () => {
       </View>
       <View style={[styles.infoContainer, { height: Dimensions.get('window').height * .295, padding: 5 }]}>
         {
-          this.state.recentAvg.length ? 
+          this.state.recentAvg.length && this.state.pageLoaded ? 
           <View>
             <Text style={styles.text}>Soil Moisture Avg By Day</Text>
             <LineChart 
@@ -194,7 +195,7 @@ displayForecastBoxes = () => {
         </View>
       <View style={styles.infoContainer}>
         {
-          this.state.photoUrl ? 
+          this.state.photoUrl && this.state.pageLoaded  ? 
           <View>
             <Text style={styles.text}>Most Recent Garden Photo</Text>
             <Image source={{url: this.state.photoUrl}} style={{height: Dimensions.get('window').height * .2, width: Dimensions.get('window').width * .9, resizeMode: 'contain'}}/>
