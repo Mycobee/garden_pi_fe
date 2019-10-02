@@ -12,10 +12,8 @@ import {
 import { getWeatherIcon, getDailyAverages } from '../../utilities';
 import { LineChart } from 'react-native-chart-kit';
 import styles from './styles';
-import {TimeCalculator} from '../../utilities'
 
 const { width } = Dimensions.get('window');
-
 
 export class Data extends Component {
   constructor(props) {
@@ -68,22 +66,22 @@ export class Data extends Component {
     this.props.navigation.navigate('PhotoPicker')
   };
 
-displayForecastBoxes = () => {
-  return this.state.forecast.map((datum, i) => {
-    const dt = new Date(datum.time * 1000 - 6000)
-    const shortenedTime = (dt.getMonth() + 1) + "/" + dt.getDate() + '/' + dt.getFullYear();
-    const weatherIcon = getWeatherIcon(datum.icon)
-    return (
-    <WeatherBox 
-    summary={datum.summary} 
-    highTemp={datum.temperatureHigh} 
-    lowTemp={datum.temperatureLow} 
-    time={shortenedTime}
-    icon={weatherIcon}
-    key={i} 
-    />
-    )
-  });
+  displayForecastBoxes = () => {
+    return this.state.forecast.map((datum, i) => {
+      const dt = new Date(datum.time * 1000 - 6000)
+      const shortenedTime = (dt.getMonth() + 1) + '/' + dt.getDate() + '/' + dt.getFullYear();
+      const weatherIcon = getWeatherIcon(datum.icon)
+      return (
+        <WeatherBox 
+          summary={datum.summary} 
+          highTemp={datum.temperatureHigh} 
+          lowTemp={datum.temperatureLow} 
+          time={shortenedTime}
+          icon={weatherIcon}
+          key={i} 
+        />
+      )
+    });
   };
 
   displayDots = () => {
@@ -102,6 +100,7 @@ displayForecastBoxes = () => {
       )
     });
   };
+
   render() {
     const weekMoistureLine = {
       labels: this.state.recentAvgDays.map(day => day),
@@ -111,11 +110,11 @@ displayForecastBoxes = () => {
     };
     return (
       <View>
-      <ImageBackground
-        source={require('../../assets/images/pottedPlants.jpg')}
-        style={styles.screenContainer}
-        onLoad={this.toggleBackgroundLoaded}
-      >
+        <ImageBackground
+          source={require('../../assets/images/pottedPlants.jpg')}
+          style={styles.screenContainer}
+          onLoad={this.toggleBackgroundLoaded}
+        >
       <View style={[styles.infoContainer, { height: Dimensions.get('window').height * .275 }]}>
         <View style={styles.headerContainer}>
           <TouchableOpacity onPress={this.onBackPress}>
@@ -125,12 +124,12 @@ displayForecastBoxes = () => {
             />
           </TouchableOpacity>
           <Header style={styles.header} fontsize={35}/>
-          <TouchableOpacity onPress={this.openCamera}>
-            <Image  
-              source={require('../../assets/images/camera.png')}
-              style={styles.backBtn}
-            />
-          </TouchableOpacity>
+            <TouchableOpacity onPress={this.openCamera}>
+              <Image  
+                source={require('../../assets/images/camera.png')}
+                style={styles.backBtn}
+              />
+            </TouchableOpacity>
         </View>
         <View style={styles.carouselScroll}>
           <ScrollView 
@@ -164,55 +163,55 @@ displayForecastBoxes = () => {
           this.state.recentAvg.length && this.state.pageLoaded ? 
           <View>
             <Text style={styles.text}>Soil Moisture Avg By Day</Text>
-            <LineChart 
-              data={weekMoistureLine}
-              width={Dimensions.get('window').width * .87}
-              height={Dimensions.get('window').height * .24}
-              withInnerLines={false}
-              yAxisLabel={'% '}
-              chartConfig={{
-                backgroundColor: '#d5fdd5',
-                backgroundGradientFrom: '#d5fdd5',
-                backgroundGradientTo: '#d5fdd5',
-                decimalPlaces: 0,
-                color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
-                style: {
+              <LineChart 
+                data={weekMoistureLine}
+                width={Dimensions.get('window').width * .87}
+                height={Dimensions.get('window').height * .24}
+                withInnerLines={false}
+                yAxisLabel={'% '}
+                chartConfig={{
+                  backgroundColor: '#d5fdd5',
+                  backgroundGradientFrom: '#d5fdd5',
+                  backgroundGradientTo: '#d5fdd5',
+                  decimalPlaces: 0,
+                  color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+                  style: {
+                    borderRadius: 30,
+                  }
+                }}
+                bezier
+                style={{
+                  marginTop: 0,
+                  marginVertical: 8,
+                  borderColor: '#A14550',
                   borderRadius: 30,
-                }
-              }}
-              bezier
-              style={{
-                marginTop: 0,
-                marginVertical: 8,
-                borderColor: '#A14550',
-                borderRadius: 30,
-                borderWidth: 2,
-              }}
+                  borderWidth: 2,
+                }}
               />
           </View> :
           <NoData dataType='Soil' />
         }
         </View>
-      <View style={styles.infoContainer}>
-        {
-          this.state.photoUrl && this.state.pageLoaded  ? 
-          <View>
-            <Text style={styles.text}>
-              Most Recent Garden Photo
-            </Text>
-            <Image 
-              source={{url: this.state.photoUrl}} 
-              style={{
-                height: Dimensions.get('window').height * .25, 
-                width: Dimensions.get('window').width * .95, 
-                resizeMode: 'contain'
-              }}
-            />
-          </View> :
-          <NoData dataType='Photo' />
-        }
-      </View>
-    </ImageBackground>
+        <View style={styles.infoContainer}>
+          {
+            this.state.photoUrl && this.state.pageLoaded  ? 
+            <View>
+              <Text style={styles.text}>
+                Most Recent Garden Photo
+              </Text>
+              <Image 
+                source={{url: this.state.photoUrl}} 
+                style={{
+                  height: Dimensions.get('window').height * .25, 
+                  width: Dimensions.get('window').width * .95, 
+                  resizeMode: 'contain'
+                }}
+              />
+            </View> :
+            <NoData dataType='Photo' />
+          }
+        </View>
+      </ImageBackground>
     </View>
     )
   }
