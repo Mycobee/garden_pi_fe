@@ -7,7 +7,7 @@ export default StyleSheet.create({
     backgroundColor: '#73A686',
     height: Dimensions.get('window').height,
     justifyContent: 'space-evenly',
-    width: Dimensions.get('window').width
+    width: Dimensions.get('window').width,
   },  
   textContainer: {
     alignItems: 'center',
@@ -30,46 +30,45 @@ export default StyleSheet.create({
     justifyContent: 'center',
     marginTop: Dimensions.get('window').height * 0.40,
     overflow: 'hidden',
-    width: 200
+    width: 200,
   },
   plantIcon: {
     height: 200,
-    width: 200
+    width: 200,
   },
   loginForm: {
-    backgroundColor: 'rgba(115, 166, 134, .7)',
-    width: Dimensions.get('window').width * .75,
-    height: Dimensions.get('window').height * .22,
     alignItems: 'center',
-    justifyContent: 'space-evenly',
+    backgroundColor: 'rgba(115, 166, 134, .7)',
     borderColor: '#A14550',
     borderRadius: 30,
     borderWidth: 2,
+    height: Dimensions.get('window').height * .22,
+    justifyContent: 'space-evenly',
+    width: Dimensions.get('window').width * .75,
   },
   loginInput: {
+    alignItems: 'center',
     backgroundColor: '#d5fdd5',
-    width: Dimensions.get('window').width * .65,
-    height: 45,
-    paddingLeft: 10,
     borderColor: '#A14550',
     borderRadius: 30,
     borderWidth: 2,
+    height: 45,
     justifyContent: 'center',
-    alignItems: 'center',
+    paddingLeft: 10,
+    width: Dimensions.get('window').width * .65,
   },
   loginBtn: {
     backgroundColor: '#d5fdd5',
-    width: Dimensions.get('window').width * .28,
-    height: 45,
-    // paddingLeft: 10,
     borderColor: '#A14550',
     borderRadius: 30,
     borderWidth: 2,
-    justifyContent: 'center'
+    height: 45,
+    justifyContent: 'center',
+    width: Dimensions.get('window').width * .28,
   },
   text: {
+    fontWeight: 'bold',
     textAlign: 'center',
-    fontWeight: 'bold'
   }
 });
 

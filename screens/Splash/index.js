@@ -31,8 +31,8 @@ export default class Splash extends Component {
     password: ''
   };
 
-  resetState = async () => {
-    await this.setState({
+  resetState =() => {
+    this.setState({
       appLoaded: false,
       email: '',
       env: null,
@@ -70,7 +70,7 @@ export default class Splash extends Component {
   getPhotos = async () => {
     await fetchPhotos()
     .then(photos => this.setState({ photos: photos }))
-  }
+  };
 
   signIn = async () => {
     this.setState({ loading: true })
@@ -98,13 +98,13 @@ export default class Splash extends Component {
       env: this.state.env,
       averages: this.state.averages,
       photos: this.state.photos
-    })
+    });
   };
 
   onCreateNewPress = () => {
     this.setState({ email: '', password: '', error: '' })
     this.props.navigation.navigate('NewAccount')
-  }
+  };
 
   render() {
     return (
@@ -169,6 +169,6 @@ export default class Splash extends Component {
           </View>
         </View>
       </ImageBackground>
-    )
-  }
+    );
+  };
 };

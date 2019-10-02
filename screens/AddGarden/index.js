@@ -36,7 +36,6 @@ export class AddGarden extends Component {
     navigator.geolocation.getCurrentPosition(
       position => {
         const location = JSON.stringify(position);
-
         this.setState({ location });
       },
       error => Alert.alert(error.message),
@@ -73,50 +72,52 @@ export class AddGarden extends Component {
         onLoad={this.toggleBackgroundLoaded}
       >
       <View style={[styles.infoContainer, {height: Dimensions.get('window').height * .08}]}>
-      <View style={styles.headerContainer}>
-        <TouchableOpacity onPress={this.onBackPress}>
-          <Image  
-            source={require('../../assets/images/back.png')}
-            style={[styles.backBtn, { marginRight: 10 }]}
-          />
-        </TouchableOpacity>
+        <View style={styles.headerContainer}>
+          <TouchableOpacity onPress={this.onBackPress}>
+            <Image  
+              source={require('../../assets/images/back.png')}
+              style={[styles.backBtn, { marginRight: 10 }]}
+            />
+          </TouchableOpacity>
           <Header style={styles.header} fontsize={35}/>
-        <TouchableOpacity onPress={this.openCamera}>
-          <Image  
-            source={require('../../assets/images/camera.png')}
-            style={[styles.backBtn, { marginLeft: 10 }]}
-          />
-        </TouchableOpacity>
-      </View>
+          <TouchableOpacity onPress={this.openCamera}>
+            <Image  
+              source={require('../../assets/images/camera.png')}
+              style={[styles.backBtn, { marginLeft: 10 }]}
+            />
+          </TouchableOpacity>
+        </View>
       </View>
       <View style={styles.infoContainer}>
-        <Text style={styles.text}>Add a New Garden</Text>
+        <Text style={styles.text}>
+          Add a New Garden
+        </Text>
         <TextInput
-          style={styles.input}
-          placeholder="Garden Name"
-          onChangeText={(name) => this.setState({name})}
-          value={this.state.name}
-          autoCorrect={true}
           autoCapitalize={'words'}
+          autoCorrect={true}
+          onChangeText={(name) => this.setState({name})}
+          placeholder="Garden Name"
+          style={styles.input}
+          value={this.state.name}
         />
         <TextInput
-          style={styles.input}
-          placeholder="Max Moisture (0-100)"
+          keyboardType={'decimal-pad'}
           onChangeText={(max_moisture) => this.setState({max_moisture})}
+          placeholder="Max Moisture (0-100)"
+          style={styles.input}
           value={this.state.max_moisture}
-          keyboardType={'decimal-pad'}
         />
         <TextInput
-          style={styles.input}
-          placeholder="Min Moisture (0-100)"
-          onChangeText={(min_moisture) => this.setState({min_moisture})}
-          value={this.state.min_moisture}
           keyboardType={'decimal-pad'}
+          onChangeText={(min_moisture) => this.setState({min_moisture})}
+          placeholder="Min Moisture (0-100)"
+          style={styles.input}
+          value={this.state.min_moisture}
         />
         <Text>Location: {this.state.location}</Text>
         <TouchableOpacity 
-          style={styles.moreDataBtn}
           onPress={this.findCoordinates}
+          style={styles.moreDataBtn}
         >
           <Text>Submit</Text>
         </TouchableOpacity>
