@@ -18,7 +18,7 @@ const DataCircle = ({ percent, title, label }) => {
         <Text>{label}</Text>
       </ProgressCircle>
     </View>
-  )
-}
+  );
+};
 
 export { DataCircle };
