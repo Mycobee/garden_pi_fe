@@ -109,11 +109,11 @@ export class index extends Component {
               </TouchableOpacity>
               <Header style={styles.header} fontsize={35}/>
               <TouchableOpacity onPress={this.openCamera}>
-              <Image  
-                source={require('../../assets/images/camera.png')}
-                style={[styles.backBtn, { marginLeft: 25 }]}
-              />
-          </TouchableOpacity>
+                <Image  
+                  source={require('../../assets/images/camera.png')}
+                  style={[styles.backBtn, { marginLeft: 25 }]}
+                />
+              </TouchableOpacity>
             </View>
             {/* <TouchableOpacity 
               style={styles.moreDataBtn}
@@ -135,19 +135,15 @@ export class index extends Component {
             }
             {
               !this.state.currentWeather.temperature &&
-              // <View style={styles.errorContainer}>
-              //   <Text>No Data Found</Text>
-              // </View>
               <NoData dataType='Weather' />
             }
           </View>
           <View style={[styles.infoContainer, {height: Dimensions.get('window').height * .31}]}>
             <View>
-              <View>
-              <Text style={styles.text}>Soil Moisture</Text>
-              </View>
               {
                 this.state.recentSoilData.length > 0 &&
+              <View>
+              <Text style={styles.text}>Soil Moisture</Text>
                 <LineChart 
                 data={line}
                 width={Dimensions.get('window').width * .85}
@@ -170,17 +166,12 @@ export class index extends Component {
                   borderRadius: 30,
                   borderWidth: 2,
                 }}
-              />
+                />
+              </View>
               }
               {
                 !this.state.recentSoilData.length &&
-                <View style={styles.errorContainer}>
-                  <Text 
-                    style={{ textAlign: 'center' }}
-                  >
-                    No Data Found
-                  </Text>
-                </View>
+                  <NoData dataType='Soil Moisture' />
               }
             </View>
           </View>
@@ -206,9 +197,7 @@ export class index extends Component {
           }
           {
             !this.state.recentSoilData.length &&
-            <View style={styles.errorContainer}>
-              <Text>No Soil Data Found</Text>
-            </View>
+            <NoData dataType='Soil' />
           }
         </View>
         <View style={{ flexDirection: 'row', width: Dimensions.get('window').width * .9, justifyContent: 'space-between'}}>

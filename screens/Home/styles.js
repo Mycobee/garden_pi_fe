@@ -9,6 +9,7 @@ export default StyleSheet.create({
   },
   infoContainer: {
     alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: 'rgba(115, 166, 134, .7)',
     padding: 10,
     margin: 5,
@@ -25,9 +26,10 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: Dimensions.get('window').width * .8,
+    marginBottom: 'auto'
   },
   header: {
-    paddingTop: 200,
+    // paddingTop: 200,
     marginLeft: 5,
     marginRight: 5,
   },

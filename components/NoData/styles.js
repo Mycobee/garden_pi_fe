@@ -8,10 +8,13 @@ export default StyleSheet.create({
     borderRadius: 30,
     borderWidth: 2,
     justifyContent: 'center',
-    marginTop: 15,
     padding: 2,
+    marginTop: 'auto',
+    marginBottom: 'auto',
+    marginLeft: 'auto',
+    marginRight: 'auto',
     width: Dimensions.get('window').width * .65,
-    height: Dimensions.get('window').height * .1
+    height: Dimensions.get('window').height * .1,
   },
   noDataText: {
     fontWeight: 'bold',

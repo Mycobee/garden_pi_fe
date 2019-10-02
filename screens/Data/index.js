@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header, WeatherBox } from '../../components';
+import { Header, WeatherBox, NoData } from '../../components';
 import { 
   View, 
   ScrollView, 
@@ -19,8 +19,8 @@ const { width } = Dimensions.get('window');
 
 
 export class Data extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       env: {},
       forecast: [],
@@ -67,45 +67,47 @@ export class Data extends Component {
     this.props.navigation.navigate('PhotoPicker')
   };
 
-  render() {
-    let position = Animated.divide(this.scrollX, width);
-    
-    const forecastBoxes = this.state.forecast.map((datum, i) => {
-      const dt = new Date(datum.time * 1000 - 6000)
-      const shortenedTime = (dt.getMonth() + 1) + "/" + dt.getDate() + '/' + dt.getFullYear();
-      const weatherIcon = getWeatherIcon(datum.icon)
-      return <WeatherBox 
-        summary={datum.summary} 
-        highTemp={datum.temperatureHigh} 
-        lowTemp={datum.temperatureLow} 
-        time={shortenedTime}
-        icon={weatherIcon}
-        key={i} 
-      />
-    });
+displayForecastBoxes = () => {
+  return this.state.forecast.map((datum, i) => {
+    const dt = new Date(datum.time * 1000 - 6000)
+    const shortenedTime = (dt.getMonth() + 1) + "/" + dt.getDate() + '/' + dt.getFullYear();
+    const weatherIcon = getWeatherIcon(datum.icon)
+    return (
+    <WeatherBox 
+    summary={datum.summary} 
+    highTemp={datum.temperatureHigh} 
+    lowTemp={datum.temperatureLow} 
+    time={shortenedTime}
+    icon={weatherIcon}
+    key={i} 
+    />
+    )
+  });
+  };
 
-    const dots = this.state.forecast.map((_, i) => {
+  displayDots = () => {
+    let position = Animated.divide(this.scrollX, width);
+    return this.state.forecast.map((_, i) => {
       let opacity = position.interpolate({
         inputRange: [i - 0.50000000001, i - 0.5, i, i + 0.5, i + 0.50000000001],
         outputRange: [0.3, 1, 1, 1, 0.3],
         extrapolate: 'clamp'
       });
-
       return (
         <Animated.View
           key={i}
           style={{ opacity, height: 10, width: 10, backgroundColor: 'black', margin: 8, borderRadius: 5 }}
         />
       )
-    })
+    });
+  };
+  render() {
     const weekMoistureLine = {
       labels: this.state.recentAvgDays.map(day => day),
       datasets: [{
         data: this.state.recentAvg
       }]
     };
-
-
     return (
       <View>
       <ImageBackground
@@ -129,56 +131,76 @@ export class Data extends Component {
             />
           </TouchableOpacity>
         </View>
-      <View style={styles.carouselScroll}>
-        <ScrollView 
-          style={styles.forecastContainer}
-          pagingEnabled={true}
-          showsHorizontalScrollIndicator={false}
-          horizontal 
-          scrollEventThrottle={16} 
-          showsHorizontalScrollIndicator={false}
-          onScroll={Animated.event(
-            [{ nativeEvent: { contentOffset: { x: this.scrollX } } }]
-          )}
-        >
-          {forecastBoxes}
-        </ScrollView>
-      </View>
-      <View style={{ flexDirection: 'row' }}>
-        {dots}
-      </View>
+        <View style={styles.carouselScroll}>
+          <ScrollView 
+            style={styles.forecastContainer}
+            pagingEnabled={true}
+            showsHorizontalScrollIndicator={false}
+            horizontal 
+            scrollEventThrottle={16} 
+            showsHorizontalScrollIndicator={false}
+            onScroll={Animated.event(
+              [{ nativeEvent: { contentOffset: { x: this.scrollX } } }]
+            )}
+          >
+            {
+              this.state.forecast ? 
+              this.displayForecastBoxes() : 
+              <NoData dataType='Weather' />
+            }
+          </ScrollView>
+        </View>
+        <View style={{ flexDirection: 'row' }}>
+          { 
+            this.state.forecast ? 
+            this.displayDots() : 
+            null
+          }
+        </View>
       </View>
       <View style={[styles.infoContainer, { height: Dimensions.get('window').height * .295, padding: 5 }]}>
-      <Text style={styles.text}>Soil Moisture Avg By Day</Text>
-        <LineChart 
-          data={weekMoistureLine}
-          width={Dimensions.get('window').width * .87}
-          height={Dimensions.get('window').height * .24}
-          withInnerLines={false}
-          yAxisLabel={'% '}
-          chartConfig={{
-            backgroundColor: '#d5fdd5',
-            backgroundGradientFrom: '#d5fdd5',
-            backgroundGradientTo: '#d5fdd5',
-            decimalPlaces: 0,
-            color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
-            style: {
-              borderRadius: 30,
-            }
-          }}
-          bezier
-          style={{
-            marginTop: 0,
-            marginVertical: 8,
-            borderColor: '#A14550',
-            borderRadius: 30,
-            borderWidth: 2,
-          }}
-          />
+        {
+          this.state.recentAvg.length ? 
+          <View>
+            <Text style={styles.text}>Soil Moisture Avg By Day</Text>
+            <LineChart 
+              data={weekMoistureLine}
+              width={Dimensions.get('window').width * .87}
+              height={Dimensions.get('window').height * .24}
+              withInnerLines={false}
+              yAxisLabel={'% '}
+              chartConfig={{
+                backgroundColor: '#d5fdd5',
+                backgroundGradientFrom: '#d5fdd5',
+                backgroundGradientTo: '#d5fdd5',
+                decimalPlaces: 0,
+                color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+                style: {
+                  borderRadius: 30,
+                }
+              }}
+              bezier
+              style={{
+                marginTop: 0,
+                marginVertical: 8,
+                borderColor: '#A14550',
+                borderRadius: 30,
+                borderWidth: 2,
+              }}
+              />
+          </View> :
+          <NoData dataType='Soil' />
+        }
         </View>
       <View style={styles.infoContainer}>
-        <Text style={styles.text}>Most Recent Garden Photo</Text>
-          <Image source={{url: this.state.photoUrl}} style={{height: Dimensions.get('window').height * .2, width: Dimensions.get('window').width * .9, resizeMode: 'contain'}}/>
+        {
+          this.state.photoUrl ? 
+          <View>
+            <Text style={styles.text}>Most Recent Garden Photo</Text>
+            <Image source={{url: this.state.photoUrl}} style={{height: Dimensions.get('window').height * .2, width: Dimensions.get('window').width * .9, resizeMode: 'contain'}}/>
+          </View> :
+          <NoData dataType='Photo' />
+        }
       </View>
     </ImageBackground>
     </View>
