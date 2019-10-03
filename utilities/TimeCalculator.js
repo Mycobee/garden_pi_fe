@@ -37,7 +37,7 @@ export const getRecordingDay = complexTime => {
       case 5: 
         return 'Friday';
       case 6:
-        return 'Satday';
+        return 'Saturday';
     }
   }
   return dayRecorded();
