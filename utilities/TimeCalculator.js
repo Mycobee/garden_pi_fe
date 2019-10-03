@@ -8,7 +8,7 @@ export const getRecordingTime = complexTime => {
     `${date.getMinutes()}`
   }
   const finalTimeRecorded = () => {
-    if (hourRecorded >= 12) {
+    if (hourRecorded >= 13) {
       return `${hourRecorded - 12}:${formatMinute()}PM`
     } else {
       return `${hourRecorded}:${formatMinute()}AM`
