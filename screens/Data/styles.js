@@ -10,19 +10,20 @@ export default StyleSheet.create({
   infoContainer: {
     alignItems: 'center',
     backgroundColor: 'rgba(115, 166, 134, .7)',
-    padding: 10,
-    margin: 5,
-    width: Dimensions.get('window').width * .95,
     borderColor: '#A14550',
     borderRadius: 30,
     borderWidth: 2,
+    justifyContent: 'center',
+    margin: 5,
+    padding: 10,
     shadowColor: '#000',
     shadowOffset: { width: 2, height: 2 },
     shadowOpacity: 1,
+    width: Dimensions.get('window').width * .95,
   },
   headerContainer: {
-    flexDirection: 'row',
     alignItems: 'center',
+    flexDirection: 'row',
     justifyContent: 'space-between',
     width: Dimensions.get('window').width * .9,
   },
@@ -30,15 +31,15 @@ export default StyleSheet.create({
     paddingTop: 200
   },
   text: {
+    color: '#d5fdd5',
     fontFamily: 'Helvetica',
-    fontWeight: 'bold',
     fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 8,
+    textAlign: 'center',
     textShadowColor:'black',
     textShadowOffset:{width: 2, height: 2},
     textShadowRadius: 5,
-    textAlign: 'center',
-    color: '#d5fdd5',
-    marginBottom: 8
   },
   carouselScroll: {
     height: Dimensions.get('window').height * .16,
@@ -48,7 +49,7 @@ export default StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     paddingTop: 5,
-    width: Dimensions.get('window').width * .85,
+    width: Dimensions.get('window').width * .856,
   },
   moistureGraphs: {
     display: 'flex',
@@ -56,18 +57,15 @@ export default StyleSheet.create({
     width: Dimensions.get('window').width * .88,
   },
   headerContainer: {
-    flexDirection: 'row',
     alignItems: 'center',
+    flexDirection: 'row',
     justifyContent: 'space-between',
     width: Dimensions.get('window').width * .8,
   },
   backBtn: {
+    height: 35,
     width: 35,
-    height: 35
   }, 
-  moreDataBtn: {
-    
-  },
   cameraBtn: {
     alignItems: 'center',
     backgroundColor: '#FAF0E6',
@@ -76,10 +74,10 @@ export default StyleSheet.create({
     borderWidth: 2,
     height: 50,
     justifyContent: 'center',
-    marginTop: 15,
     marginLeft: 'auto',
     marginRight: 'auto',
+    marginTop: 15,
     overflow: 'hidden',
-    width: 200
+    width: 200,
   }
 })

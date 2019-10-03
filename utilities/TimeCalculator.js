@@ -3,12 +3,12 @@ export const getRecordingTime = complexTime => {
   const hourRecorded = date.getHours();
   const minuteRecorded = date.getMinutes().toString();
   const formatMinute = () => {
-    return minuteRecorded.length == 1 
-      ? `0${date.getMinutes()}` 
-      : `${date.getMinutes()}`
+    return minuteRecorded.length == 1 ?
+    `0${date.getMinutes()}` :
+    `${date.getMinutes()}`
   }
   const finalTimeRecorded = () => {
-    if (hourRecorded >= 12) {
+    if (hourRecorded >= 13) {
       return `${hourRecorded - 12}:${formatMinute()}PM`
     } else {
       return `${hourRecorded}:${formatMinute()}AM`
@@ -25,19 +25,19 @@ export const getRecordingDay = complexTime => {
   const dayRecorded = () => {
     switch(dayUnitRecorded) {
       case 0:
-        return 'Sun';
+        return 'Sunday';
       case 1:
-        return 'Mon';
+        return 'Monday';
       case 2:
-        return 'Tues';
+        return 'Tuesday';
       case 3:
-        return 'Wed';
+        return 'Wednesday';
       case 4:
-        return 'Thur';
+        return 'Thursday';
       case 5: 
-        return 'Fri';
+        return 'Friday';
       case 6:
-        return 'Sat';
+        return 'Saturday';
     }
   }
   return dayRecorded();

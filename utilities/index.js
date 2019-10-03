@@ -1,5 +1,5 @@
-export * from './weatherIcon';
-export * from './TimeCalculator';
 export * from './DataCalculator';
+export * from './TimeCalculator';
+export * from './weatherIcon';
 
 export default {};

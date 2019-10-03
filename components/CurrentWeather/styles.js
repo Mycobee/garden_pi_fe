@@ -3,7 +3,6 @@ import { StyleSheet, Dimensions } from 'react-native';
 export default StyleSheet.create({
   currentWeatherContainer: {
     alignItems: 'center',
-    alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: 10,
@@ -15,11 +14,11 @@ export default StyleSheet.create({
     fontWeight: 'bold'
   },
   icon: {
-    width: 200,
-    height: 80,
+    alignItems: 'center',
     flexDirection: 'row',
+    height: 80,
     justifyContent: 'center',
-    alignItems: 'center'
+    width: 200,
   },
   bold: {
     fontSize: 15,

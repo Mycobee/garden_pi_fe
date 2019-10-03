@@ -10,59 +10,64 @@ export default StyleSheet.create({
   infoContainer: {
     alignItems: 'center',
     backgroundColor: 'rgba(115, 166, 134, .7)',
-    padding: 10,
-    margin: 5,
-    width: Dimensions.get('window').width * .95,
     borderColor: '#A14550',
     borderRadius: 30,
     borderWidth: 2,
+    justifyContent: 'center',
+    margin: 5,
+    padding: 10,
     shadowColor: '#000',
     shadowOffset: { width: 2, height: 2 },
     shadowOpacity: 1,
+    width: Dimensions.get('window').width * .95,
   },
   headerContainer: {
-    flexDirection: 'row',
     alignItems: 'center',
+    flexDirection: 'row',
     justifyContent: 'center',
+    marginBottom: 'auto',
     width: Dimensions.get('window').width * .8,
   },
   header: {
-    paddingTop: 200
+    marginLeft: 5,
+    marginRight: 5,
   },
   backBtn: {
+    height: 35,
     width: 35,
-    height: 35
   },  
   carouselScroll: {
     height: 200
   },
   forecastContainer: {
-    flexDirection: 'column',
+    alignItems: 'center',
     backgroundColor: '#d5fdd5',
     borderColor: '#A14550',
     borderRadius: 30,
     borderWidth: 2,
+    flexDirection: 'column',
+    justifyContent: 'center',
   },
   text: {
+    color: '#d5fdd5',
     fontFamily: 'Helvetica',
-    fontWeight: 'bold',
     fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 2,
+    textAlign: 'center',
     textShadowColor:'black',
     textShadowOffset:{width: 2, height: 2},
     textShadowRadius: 5,
-    textAlign: 'center',
-    color: '#d5fdd5',
-    marginBottom: 2
   },
   timeText: {
+    color: '#d5fdd5',
     fontFamily: 'Helvetica',
     fontSize: 16,
     fontWeight: 'bold',
+    marginBottom: 2,
     textShadowColor:'black',
     textShadowOffset:{width: 2, height: 2},
     textShadowRadius: 5,
-    color: '#d5fdd5',
-    marginBottom: 2
   },
   currentWidgets: {
     flexDirection: 'row'
@@ -75,11 +80,11 @@ export default StyleSheet.create({
     borderWidth: 2,
     height: Dimensions.get('window').width * .1,
     justifyContent: 'center',
-    overflow: 'hidden',
-    marginTop: 5,
     marginBottom: 5,
-    marginRight: 12,
     marginLeft: 12,
-    width: Dimensions.get('window').width * .4
+    marginRight: 12,
+    marginTop: 5,
+    overflow: 'hidden',
+    width: Dimensions.get('window').width * .4,
   }
 })
