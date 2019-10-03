@@ -35,7 +35,11 @@ Brian Plantico (https://github.com/bplantico)
 
 ###  Preview
 
-![pi](https://user-images.githubusercontent.com/43159025/66160334-273c9a80-e5e7-11e9-813b-d2c405cfb4cd.jpeg)
+![Untitled-4](https://user-images.githubusercontent.com/43159025/66161941-8fd94680-e5ea-11e9-98ca-ef5aa81643a9.gif)
+
+![Untitled-2](https://user-images.githubusercontent.com/43159025/66161816-5d2f4e00-e5ea-11e9-8551-01520a1469db.gif)
+
+![Untitled-3](https://user-images.githubusercontent.com/43159025/66161876-7a641c80-e5ea-11e9-8322-cd0b0cf99eeb.gif)
 
 #### Loading Splash Page
 ![loadingSplash](https://user-images.githubusercontent.com/46681659/64753222-a4d92300-d4df-11e9-9323-f663f375a1cc.jpg)
