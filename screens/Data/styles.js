@@ -49,7 +49,7 @@ export default StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     paddingTop: 5,
-    width: Dimensions.get('window').width * .85,
+    width: Dimensions.get('window').width * .856,
   },
   moistureGraphs: {
     display: 'flex',
