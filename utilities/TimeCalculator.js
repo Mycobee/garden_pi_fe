@@ -25,19 +25,19 @@ export const getRecordingDay = complexTime => {
   const dayRecorded = () => {
     switch(dayUnitRecorded) {
       case 0:
-        return 'Sun';
+        return 'Sunday';
       case 1:
-        return 'Mon';
+        return 'Monday';
       case 2:
-        return 'Tues';
+        return 'Tuesday';
       case 3:
-        return 'Wed';
+        return 'Wednesday';
       case 4:
-        return 'Thur';
+        return 'Thursday';
       case 5: 
-        return 'Fri';
+        return 'Friday';
       case 6:
-        return 'Sat';
+        return 'Satday';
     }
   }
   return dayRecorded();

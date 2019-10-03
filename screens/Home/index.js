@@ -11,7 +11,7 @@ import {
   CurrentWeather, 
   DataCircle, 
   NoData } from '../../components';
-import { getWeatherIcon, getRecordingTime } from '../../utilities';
+import { getWeatherIcon, getRecordingTime, getRecordingDay } from '../../utilities';
 import { triggerWaterJob } from '../../Api/ApiCalls';
 import { LineChart } from 'react-native-chart-kit';
 import styles from './styles';
@@ -93,6 +93,7 @@ export class index extends Component {
 
   render() {
     const recordingTime = getRecordingTime(this.state.currentSoilData.created_at)
+    const recordingDay = getRecordingDay(this.state.currentSoilData.created_at)
     const weatherIcon = getWeatherIcon(this.state.currentWeather.icon)
     const line = {
       labels: this.state.recentSoilData.map(time => time.created_at),
@@ -192,7 +193,7 @@ export class index extends Component {
             this.state.recentSoilData.length > 0 &&
             <View style={{ alignItems: 'center' }} >
               <Text style={styles.timeText}>
-                Last Recording  {recordingTime}
+                {recordingDay}, {recordingTime}
               </Text>
               <View style={{ flexDirection: 'row' }}>
                 <DataCircle 
