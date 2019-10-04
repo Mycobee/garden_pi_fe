@@ -1,0 +1,415 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  accessibilityIgnoresInvertColors={true}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#73A686",
+      "height": 1334,
+      "justifyContent": "space-evenly",
+      "width": 750,
+    }
+  }
+>
+  <Image
+    source=""
+    style={
+      Array [
+        Object {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+        Object {
+          "height": 1334,
+          "width": 750,
+        },
+        undefined,
+      ]
+    }
+  />
+  <View
+    onLayout={[Function]}
+    style={
+      Object {
+        "paddingBottom": 0,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+        }
+      }
+    >
+      <View
+        accessible={true}
+        isTVSelectable={true}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "opacity": 1,
+          }
+        }
+      >
+        <Image
+          source=""
+          style={
+            Array [
+              Object {
+                "height": 35,
+                "width": 35,
+              },
+              Object {
+                "marginRight": 10,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "fontFamily": "lemondrop",
+                "textShadowColor": "black",
+                "textShadowOffset": Object {
+                  "height": 2,
+                  "width": 2,
+                },
+                "textShadowRadius": 5,
+              },
+              Object {
+                "color": "#E64C3C",
+                "fontSize": 50,
+              },
+            ]
+          }
+        >
+          G
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "fontFamily": "lemondrop",
+                "textShadowColor": "black",
+                "textShadowOffset": Object {
+                  "height": 2,
+                  "width": 2,
+                },
+                "textShadowRadius": 5,
+              },
+              Object {
+                "color": "#FF9933",
+                "fontSize": 50,
+              },
+            ]
+          }
+        >
+          A
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "fontFamily": "lemondrop",
+                "textShadowColor": "black",
+                "textShadowOffset": Object {
+                  "height": 2,
+                  "width": 2,
+                },
+                "textShadowRadius": 5,
+              },
+              Object {
+                "color": "#F1C431",
+                "fontSize": 50,
+              },
+            ]
+          }
+        >
+          R
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "fontFamily": "lemondrop",
+                "textShadowColor": "black",
+                "textShadowOffset": Object {
+                  "height": 2,
+                  "width": 2,
+                },
+                "textShadowRadius": 5,
+              },
+              Object {
+                "color": "#187F03",
+                "fontSize": 50,
+              },
+            ]
+          }
+        >
+          D
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "fontFamily": "lemondrop",
+                "textShadowColor": "black",
+                "textShadowOffset": Object {
+                  "height": 2,
+                  "width": 2,
+                },
+                "textShadowRadius": 5,
+              },
+              Object {
+                "color": "#3998DB",
+                "fontSize": 50,
+              },
+            ]
+          }
+        >
+          E
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "fontFamily": "lemondrop",
+                "textShadowColor": "black",
+                "textShadowOffset": Object {
+                  "height": 2,
+                  "width": 2,
+                },
+                "textShadowRadius": 5,
+              },
+              Object {
+                "color": "#4b0082",
+                "fontSize": 50,
+              },
+            ]
+          }
+        >
+          N
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "fontFamily": "lemondrop",
+                "textShadowColor": "black",
+                "textShadowOffset": Object {
+                  "height": 2,
+                  "width": 2,
+                },
+                "textShadowRadius": 5,
+              },
+              Object {
+                "color": "#7f00ff",
+                "fontSize": 50,
+              },
+            ]
+          }
+        >
+          Pi
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "rgba(115, 166, 134, .9)",
+          "borderColor": "#A14550",
+          "borderRadius": 30,
+          "borderWidth": 2,
+          "flexDirection": "column",
+          "justifyContent": "center",
+          "marginBottom": 100,
+          "marginLeft": 20,
+          "padding": 25,
+          "width": 562.5,
+        }
+      }
+    >
+      <TextInput
+        allowFontScaling={true}
+        maxLength={20}
+        onChangeText={[Function]}
+        placeholder="First Name..."
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#d5fdd5",
+            "borderColor": "#A14550",
+            "borderRadius": 30,
+            "borderWidth": 2,
+            "height": 45,
+            "justifyContent": "center",
+            "marginTop": 10,
+            "paddingLeft": 10,
+            "width": 487.5,
+          }
+        }
+        underlineColorAndroid="transparent"
+        value=""
+      />
+      <TextInput
+        allowFontScaling={true}
+        maxLength={20}
+        onChangeText={[Function]}
+        placeholder="Last Name..."
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#d5fdd5",
+            "borderColor": "#A14550",
+            "borderRadius": 30,
+            "borderWidth": 2,
+            "height": 45,
+            "justifyContent": "center",
+            "marginTop": 10,
+            "paddingLeft": 10,
+            "width": 487.5,
+          }
+        }
+        underlineColorAndroid="transparent"
+        value=""
+      />
+      <TextInput
+        allowFontScaling={true}
+        onChangeText={[Function]}
+        placeholder="Email Address..."
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#d5fdd5",
+            "borderColor": "#A14550",
+            "borderRadius": 30,
+            "borderWidth": 2,
+            "height": 45,
+            "justifyContent": "center",
+            "marginTop": 10,
+            "paddingLeft": 10,
+            "width": 487.5,
+          }
+        }
+        underlineColorAndroid="transparent"
+        value=""
+      />
+      <TextInput
+        allowFontScaling={true}
+        autoCorrect={false}
+        maxLength={20}
+        onChangeText={[Function]}
+        placeholder="Password..."
+        rejectResponderTermination={true}
+        secureTextEntry={true}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#d5fdd5",
+            "borderColor": "#A14550",
+            "borderRadius": 30,
+            "borderWidth": 2,
+            "height": 45,
+            "justifyContent": "center",
+            "marginTop": 10,
+            "paddingLeft": 10,
+            "width": 487.5,
+          }
+        }
+        underlineColorAndroid="transparent"
+        value=""
+      />
+      <TextInput
+        allowFontScaling={true}
+        autoCorrect={false}
+        maxLength={20}
+        onChangeText={[Function]}
+        placeholder="Confirm Password..."
+        rejectResponderTermination={true}
+        secureTextEntry={true}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#d5fdd5",
+            "borderColor": "#A14550",
+            "borderRadius": 30,
+            "borderWidth": 2,
+            "height": 45,
+            "justifyContent": "center",
+            "marginTop": 10,
+            "paddingLeft": 10,
+            "width": 487.5,
+          }
+        }
+        underlineColorAndroid="transparent"
+        value=""
+      />
+      <View
+        style={
+          Object {
+            "height": 20,
+          }
+        }
+      />
+      <View
+        accessible={true}
+        isTVSelectable={true}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#d5fdd5",
+            "borderColor": "#A14550",
+            "borderRadius": 30,
+            "borderWidth": 2,
+            "height": 45,
+            "justifyContent": "center",
+            "opacity": 1,
+            "width": 300,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "fontWeight": "bold",
+              "textAlign": "center",
+            }
+          }
+        >
+          Create Account!
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;

@@ -85,8 +85,20 @@ describe('apiCalls', () => {
     it('should be able to return the garden given a url', () => {
       const expected = 'https://garden-pi-be.herokuapp.com/api/v1/gardens/1'
 
-      fetchGarden()
-      expect(global.fetch).toHaveBeenCalledWith(expected)
+      const userKey = 1234567
+
+      const options = {
+        method: 'GET',
+        body: JSON.stringify(),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': userKey
+        }
+      };
+
+      fetchGarden(userKey)
+      expect(global.fetch).toHaveBeenCalledWith(expected, options)
     })
 
     it('should return parsed response if ok', async () => {
@@ -129,8 +141,20 @@ describe('apiCalls', () => {
     it('should be able to return the garden env with a given url', () => {
       const expected = 'http://garden-pi-be.herokuapp.com/api/v1/gardens/1/env_measurements'
 
-      fetchGardenEnv()
-      expect(global.fetch).toHaveBeenCalledWith(expected)
+      const userKey = 1234567
+
+      const options = {
+        method: 'GET',
+        body: JSON.stringify(),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': userKey
+        }
+      };
+
+      fetchGardenEnv(userKey)
+      expect(global.fetch).toHaveBeenCalledWith(expected, options)
     })
 
     it('should return parsed response if ok', async () => {
