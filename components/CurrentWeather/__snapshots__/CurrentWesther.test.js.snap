@@ -23,7 +23,6 @@ exports[`renders correctly 1`] = `
         }
       }
     >
-       
       NaN
       °F
     </Text>
